@@ -38,10 +38,9 @@ class MapContainer extends React.Component {
   render() {
     return (
           <div>
-            <h1 className="text-center">My Maps</h1>
                   <Map
                     google={this.props.google}
-                    style={{ width: "80%", margin: "auto" }}
+                    style={{ width: "100%", margin: "auto" }}
                     className={"map"}
                     zoom={14}
                     onClick={this.onClick}
