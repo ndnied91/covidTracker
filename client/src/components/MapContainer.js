@@ -14,7 +14,7 @@ Geocode.setApiKey(keys.googleApiKey);
 Geocode.setLanguage("en");
 
 
-mapboxgl.accessToken = keys.mapBoxApi
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnk5MSIsImEiOiJja2JvZXZ6NHEwMjQ0Mnl0cHFibHZ1OTk4In0.lFoZqkWg_0GW8U4zMIdI3w'
 
 var bounds = [
      [-132.20714049463317 , 24.180932023716778], // Southwest coordinates
