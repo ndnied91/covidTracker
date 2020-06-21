@@ -7,7 +7,7 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
 
 import Geocode from "react-geocode"
 
-import keys from '../config.js'
+import keys from '../config/keys'
 
 
 
