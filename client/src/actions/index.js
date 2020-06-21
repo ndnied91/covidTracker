@@ -42,3 +42,27 @@ export const getDensityRate = (rate) =>{
     payload: rate
   }
 }
+
+
+
+export const getStatView = (view) =>{
+  //return an action
+// console.log(rate)
+  return {
+    type: 'GET_VIEW',
+    payload: view
+  }
+}
+
+
+
+
+
+export const getAddressView = (address) =>{
+  //return an action
+// console.log(rate)
+  return {
+    type: 'SHOW_ADDRESS',
+    payload: address
+  }
+}
