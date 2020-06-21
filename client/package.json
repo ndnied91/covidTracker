@@ -10,6 +10,7 @@
     "google-map-react": "^1.1.7",
     "google-maps-react": "^2.0.6",
     "http-proxy-middleware": "^1.0.4",
+    "mapbox-gl": "^1.11.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-load-script": "0.0.6",

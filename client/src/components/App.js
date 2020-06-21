@@ -19,7 +19,7 @@ class App extends React.Component{
                        <div className="left floated twelve wide column">
                            <div> <Menu/> </div>
 
-                            <div className="ui center aligned segment" style={{height: '700px', padding: 0}}> <MapContainer/> </div>
+                            <div className="ui center aligned segment" style={{height: '550px', padding: 0}}> <MapContainer/> </div>
                       </div>
 
 
