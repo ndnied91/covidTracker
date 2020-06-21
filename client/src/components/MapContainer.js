@@ -54,8 +54,7 @@ class MapContainer extends React.Component {
     map.on('click', (e) => {
       console.log(e)
       let zoom = Math.floor(map.getZoom()) //gets zoom level
-        // Geocode.setApiKey(keys.googleApiKey);
-        Geocode.setApiKey('AIzaSyBcWHZndb-Ui5SmuZIiJ2IpjO-U_Tgkavg');
+        Geocode.setApiKey(keys.googleApiKey);
 
             Geocode.fromLatLng(e.lngLat.lat, e.lngLat.lng).then(
               response => {
