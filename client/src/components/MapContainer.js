@@ -53,31 +53,31 @@ class MapContainer extends React.Component {
 
     map.on('click', (e) => {
       console.log(e)
-      // let zoom = Math.floor(map.getZoom()) //gets zoom level
-      //       Geocode.fromLatLng(e.lngLat.lat, e.lngLat.lng).then(
-      //         response => {
-      //             const address = response.results[0].formatted_address.replace(/,/g,"").split(' ').splice(-4) //ENTIRE ADDRESS to show
-      //
-      //               //depending on zoom level, different result will be shown to user
-      //                 if(zoom >=8){
-      //                   // City 9+ zoom
-      //                   this.props.getAddressView(address.join(' '))
-      //                   this.props.getStatView(response.results[0].formatted_address.replace(/,/g," ").split(' ').splice(-3)[0])
-      //                 }
-      //                 else if (zoom >=4 && zoom <=7){
-      //                   // State 4-8 zoom
-      //                   this.props.getAddressView(address.join(' '))
-      //                   this.props.getStatView(response.results.slice(-2)[0].formatted_address)
-      //                 }
-      //                 else {
-      //                    // Country 3 zoom
-      //                   this.props.getAddressView(address.join(' '))
-      //                   this.props.getStatView(response.results.slice(-1)[0].formatted_address)
-      //                 }
+      let zoom = Math.floor(map.getZoom()) //gets zoom level
+            Geocode.fromLatLng(e.lngLat.lat, e.lngLat.lng).then(
+              response => {
+                  const address = response.results[0].formatted_address.replace(/,/g,"").split(' ').splice(-4) //ENTIRE ADDRESS to show
 
-              // },
-              // error => console.error(error)
-          // );
+                    //depending on zoom level, different result will be shown to user
+                      if(zoom >=8){
+                        // City 9+ zoom
+                        this.props.getAddressView(address.join(' '))
+                        this.props.getStatView(response.results[0].formatted_address.replace(/,/g," ").split(' ').splice(-3)[0])
+                      }
+                      else if (zoom >=4 && zoom <=7){
+                        // State 4-8 zoom
+                        this.props.getAddressView(address.join(' '))
+                        this.props.getStatView(response.results.slice(-2)[0].formatted_address)
+                      }
+                      else {
+                         // Country 3 zoom
+                        this.props.getAddressView(address.join(' '))
+                        this.props.getStatView(response.results.slice(-1)[0].formatted_address)
+                      }
+
+              },
+              error => console.error(error)
+          );
 
 
 
