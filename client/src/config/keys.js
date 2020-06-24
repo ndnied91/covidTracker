@@ -5,10 +5,8 @@
 
 if(process.env.NODE_ENV ===  'production'){
   //return the production set of keys
-  module.exports = require('./prod')
-  console.log('production')
-  console.log(process.env.NODE_ENV)
-  console.log(process.env)
+  var keys = module.exports = require('./prod')
+  console.log(keys)
 
 }else{
   //we are in the developement - return correct keys
