@@ -91,7 +91,7 @@ class MapContainer extends React.Component {
 
 // export default Map
 export default connect(null ,  {getStatView , getAddressView})(GoogleApiWrapper({
-  apiKey: (keys.googleApiKey)
+  apiKey: ('AIzaSyBCY6c-v9nP7P1sFZMKm-yaSMTaGFWA6gw')
 })(MapContainer))
 
 
