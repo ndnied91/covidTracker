@@ -9,9 +9,12 @@ import Geocode from "react-geocode"
 
 import keys from '../config/keys'
 
+console.log(keys)
 
+// Geocode.setApiKey(keys.googleApiKey);
+Geocode.setApiKey('AIzaSyBCY6c-v9nP7P1sFZMKm-yaSMTaGFWA6gw');
+console.log(keys.googleApiKey)
 
-Geocode.setApiKey(keys.googleApiKey);
 Geocode.setLanguage("en");
 
 
