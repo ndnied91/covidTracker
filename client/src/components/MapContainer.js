@@ -1,104 +1,82 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {getStatView, getAddressView} from '../actions'
+import React, { useState, useEffect } from "react";
 
-import {Map, GoogleApiWrapper} from 'google-maps-react';
+// import { Map: LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
+// const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
+// import { LeafletMap , Marker, Popup, TileLayer } from 'react-leaflet';
+// const { Map, TileLayer, Marker, Popup } = window.ReactLeaflet;
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import {latLngBounds} from 'leaflet'
 
-
-import Geocode from "react-geocode"
-
-import keys from '../config/keys'
-
-console.log(keys)
-
-Geocode.setApiKey('AIzaSyBCY6c-v9nP7P1sFZMKm-yaSMTaGFWA6gw');
-console.log(keys.googleApiKey)
-
-Geocode.setLanguage("en");
-
-
+//
+// var southWest = this.Map.latLng(40.712, -74.227),
+//     northEast = this.Map.latLng(40.774, -74.125),
+//     bounds = this.Map.latLngBounds(southWest, northEast);
+//
 
 
 class MapContainer extends React.Component {
-    constructor(props) {
-    // console.log(props.getStatView)
-    super(props)
-    this.onClick = this.onClick.bind(this);
-  }
+    constructor() {
+        super();
+        this.state = {
+            lat: 40.66,
+            lng: -74.218,
+            zoom: 8,
 
+            // maxBounds: Map.latLngBounds(southWest, northEast);
+        }
+    }
 
-
-
-  onClick(t,map,coord) {
-    const { latLng } = coord;
-    const lat = latLng.lat();
-    const lng = latLng.lng();
-    let coords = {lat , lng}
-    // console.log(coords)
-    let zoom = map.zoom
-    // console.log(`Zoom : ${zoom}`)
-
-        Geocode.fromLatLng(lat, lng).then(
-                  response => {
-                      const address = response.results[0].formatted_address.replace(/,/g,"").split(' ').splice(-4) //ENTIRE ADDRESS to show
-                      // console.log(address.join(' '))
-                        //depending on zoom level, different result will be shown to user
-                          if(zoom >=9){
-                            // City 9+ zoom
-                            this.props.getAddressView(address.join(' '))
-                            this.props.getStatView(response.results[0].formatted_address.replace(/,/g," ").split(' ').splice(-3)[0])
-                          }
-                          else if (zoom >4 && zoom <=8){
-                            // State 4-8 zoom
-                            this.props.getAddressView(address.join(' '))
-                            this.props.getStatView(response.results.slice(-2)[0].formatted_address)
-                          }
-                          else {
-                             // Country 3 zoom
-                            this.props.getAddressView(address.join(' '))
-                            this.props.getStatView(response.results.slice(-1)[0].formatted_address)
-                          }
-
-                  },
-                  error => console.error(error)
-              );
-  }
 
   render() {
 
-    return (
-          <div>
-                  <Map
-                    google={this.props.google}
-                    initialCenter={{
-                      lat: 40.557171448551976, lng: -74.33444256656303
-                    }}
+    console.log(latLngBounds)
 
-                    style={{ width: "100%", margin: "auto" }}
-                    className={"map"}
-                    zoom={10}
-                    onClick={this.onClick}
+
+    const setBounds = (e)=>{
+      console.log(e)
+    }
+
+
+    const onClick =(e)=>{
+      console.log(e)
+      let clickInfo = {lat: e.latlng.lat , lng :e.latlng.lng , zoom: e.sourceTarget._zoom}
+      console.log(clickInfo)
+
+    }
+
+    const position = [this.state.lat, this.state.lng];
+
+
+
+    // const southWest = latLng(37.713159, -122.527084);
+    //     const northEast = this.latLng(37.814666, -122.365723);
+        // const bounds = this.latLngBounds(37.713159, -122.527084, 37.814666, -122.365723)
+
+    return(
+      <div>
+                 <Map
+                  style={{ height: "550px" , width: '100%' }}
+
+                  center={position}
+                  zoom={this.state.zoom}
+                  onClick={(e)=>onClick(e)}
                   >
-                  </Map>
-          </div>
-    );
+
+
+
+
+                   <TileLayer
+                       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                       url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                   />
+
+               </Map>
+
+           </div>
+    )
+
   }
 }
 
 
-// const mapStateToProps = (state) =>{
-//   console.log(state)
-//   return {}
-// }
-
-// export default Map
-export default connect(null ,  {getStatView , getAddressView})(GoogleApiWrapper({
-  apiKey: ('AIzaSyBCY6c-v9nP7P1sFZMKm-yaSMTaGFWA6gw')
-})(MapContainer))
-
-
-
-
-
-//this export needs to be wrapped with connect function
-//data needs to passed into redux store
+export default MapContainer;

@@ -4,11 +4,15 @@ import MapContainer from './MapContainer'
 import Menu from './Menu'
 import TrackingValues from './TrackingValues'
 
+// import {getData}  from '../config/utils/stateData.js'
+
 class App extends React.Component{
 
 
 
   render(){
+
+    // console.log(getData())
     return(
 
       <div className="ui title " style={{margin: '20px 20px 40px 40px'}}>
