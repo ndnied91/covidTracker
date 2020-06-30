@@ -1,82 +1,65 @@
 import React, { useState, useEffect } from "react";
+import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
+import { scaleQuantize } from "d3-scale";
+import { csv } from "d3-fetch";
 
-// import { Map: LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
-// const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
-// import { LeafletMap , Marker, Popup, TileLayer } from 'react-leaflet';
-// const { Map, TileLayer, Marker, Popup } = window.ReactLeaflet;
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import {latLngBounds} from 'leaflet'
+const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
-//
-// var southWest = this.Map.latLng(40.712, -74.227),
-//     northEast = this.Map.latLng(40.774, -74.125),
-//     bounds = this.Map.latLngBounds(southWest, northEast);
-//
+const colorScale = scaleQuantize()
+  .domain([1, 10])
+  .range([
+    "#ffedea",
+    "#ffcec5",
+    "#ffad9f",
+    "#ff8a75",
+    "#ff5533",
+    "#e2492d",
+    "#be3d26",
+    "#9a311f",
+    "#782618"
+  ]);
 
+const MapContainer = () => {
+  const [data, setData] = useState([]);
 
-class MapContainer extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            lat: 40.66,
-            lng: -74.218,
-            zoom: 8,
-
-            // maxBounds: Map.latLngBounds(southWest, northEast);
-        }
-    }
-
-
-  render() {
-
-    console.log(latLngBounds)
-
-
-    const setBounds = (e)=>{
-      console.log(e)
-    }
-
-
-    const onClick =(e)=>{
-      console.log(e)
-      let clickInfo = {lat: e.latlng.lat , lng :e.latlng.lng , zoom: e.sourceTarget._zoom}
-      console.log(clickInfo)
-
-    }
-
-    const position = [this.state.lat, this.state.lng];
-
-
-
-    // const southWest = latLng(37.713159, -122.527084);
-    //     const northEast = this.latLng(37.814666, -122.365723);
-        // const bounds = this.latLngBounds(37.713159, -122.527084, 37.814666, -122.365723)
-
-    return(
-      <div>
-                 <Map
-                  style={{ height: "550px" , width: '100%' }}
-
-                  center={position}
-                  zoom={this.state.zoom}
-                  onClick={(e)=>onClick(e)}
-                  >
-
-
-
-
-                   <TileLayer
-                       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                       url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                   />
-
-               </Map>
-
-           </div>
-    )
-
+  const onClick = (e) =>{
+    console.log(e)
   }
-}
 
+  useEffect(() => {
+    // https://www.bls.gov/lau/
+    csv("/unemployment-by-county-2017.csv").then(counties => {
+      console.log(counties)
+      setData(counties);
+    });
+  }, []);
+
+
+
+  return (
+    <div>
+          <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%'}}>
+          <ZoomableGroup zoom={1}>
+                <Geographies geography={geoUrl}>
+                  {({ geographies }) =>
+                    geographies.map(geo => {
+                      const cur = data.find(s => s.id === geo.id);
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          fill={colorScale(cur ? cur.unemployment_rate : "#EEE")}
+                          onClick = {()=> onClick(geo)}
+                        />
+                      );
+                    })
+                  }
+                </Geographies>
+            </ZoomableGroup>
+          </ComposableMap>
+
+    </div>
+  );
+};
 
 export default MapContainer;
