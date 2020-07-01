@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
+// import Controllers from './Controllers'
+import {connect} from 'react-redux'
+
 import { scaleQuantize } from "d3-scale";
 import { csv } from "d3-fetch";
-
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
+
+
 const colorScale = scaleQuantize()
-  .domain([1, 10])
+  // .domain([1, 10])
+  .domain([0, 1])
   .range([
     "#ffedea",
     "#ffcec5",
@@ -19,8 +24,12 @@ const colorScale = scaleQuantize()
     "#782618"
   ]);
 
-const MapContainer = () => {
+
+
+const MapContainer = (props) => {
   const [data, setData] = useState([]);
+
+  console.log(props)
 
   const onClick = (e) =>{
     console.log(e)
@@ -28,8 +37,8 @@ const MapContainer = () => {
 
   useEffect(() => {
     // https://www.bls.gov/lau/
-    csv("/unemployment-by-county-2017.csv").then(counties => {
-      console.log(counties)
+    csv("/income_normalized.csv").then(counties => {
+      // console.log(counties)
       setData(counties);
     });
   }, []);
@@ -38,18 +47,49 @@ const MapContainer = () => {
 
   return (
     <div>
-          <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%'}}>
-          <ZoomableGroup zoom={1}>
+          <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%' , backgroundColor : "#C0E5F6"}}>
+          <ZoomableGroup
+          zoom={1}
+          // onMoveStart(position)
+          >
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
                     geographies.map(geo => {
-                      const cur = data.find(s => s.id === geo.id);
+
+                        const cur = data.find(s => s.id === geo.id);
+                        const filter = colorScale(cur ? cur.income : "blue")
+
+
+
+                        const handleFliter=()=>{
+                          console.log(props)
+
+                          if(props.selection === 'income'){
+                                return filter
+                          }
+                          else {
+                            return null
+                          }
+
+
+
+                        }
+
                       return (
                         <Geography
+
                           key={geo.rsmKey}
                           geography={geo}
-                          fill={colorScale(cur ? cur.unemployment_rate : "#EEE")}
-                          onClick = {()=> onClick(geo)}
+
+
+                          fill={ handleFliter() }
+                          onClick = {()=> onClick(geo)  }
+                          style={{
+                            default: { outline: "none" },
+                            hover: { outline: "none" },
+                            pressed: { outline: "none" },
+                          }}
+
                         />
                       );
                     })
@@ -62,4 +102,10 @@ const MapContainer = () => {
   );
 };
 
-export default MapContainer;
+const mapStateToProps =(state)=>{
+  console.log(state)
+  return { selection: state.option.selection,
+            option: state.income_level.income_level}
+}
+
+export default connect(mapStateToProps )(MapContainer)
