@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "google-map-react": "^1.1.7",
     "path": "^0.12.7",
-    "react-geocode": "^0.2.1"
+    "react-geocode": "^0.2.1",
+    "react-sticky-mouse-tooltip": "0.0.1"
   }
 }

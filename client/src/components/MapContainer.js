@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 // import Controllers from './Controllers'
+
+
+import ToolTip from './MapToolTip'
+
 import {connect} from 'react-redux'
 
 import { scaleQuantize } from "d3-scale";
@@ -10,7 +14,6 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
 
 const colorScale = scaleQuantize()
-  // .domain([1, 10])
   .domain([0, 1])
   .range([
     "#ffedea",
@@ -26,32 +29,74 @@ const colorScale = scaleQuantize()
 
 
 
-const MapContainer = (props) => {
-  const [data, setData] = useState([]);
 
+
+
+  const colorScale1 = scaleQuantize()
+    .domain([0, 1])
+    .range([
+      "#F6F9FF",
+      "#EAF1FF",
+      "#E3ECFF",
+      "#D8E3FD",
+      "#C6D5FC",
+      "#B7CBFE",
+      "#A9C1FF",
+      "#9AB6FE",
+      "#8CACFE",
+      "#81A4FE",
+      "#7098FF",
+      "#638EFF",
+      "#487BFF",
+      "#336BFF",
+      "#1D5BFF",
+      "#0046FF"
+    ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const MapContainer = (props) => {
+  const [income, setIncome] = useState([]);
+  const [pop, setPop] = useState([]);
+
+  // console.log(props)
 
   const onClick = (e) =>{
     console.log(e)
   }
 
+const onHover =(e)=>{
+  console.log(e.id)
+}
+
+
+  useEffect(() => {
+    // https://www.bls.gov/lau/
+    csv("/income_normalized.csv").then(counties => {
+      setIncome(counties);
+    });
+  }, []);
+
 
 
 
   useEffect(() => {
-        // if(props.selection === 'income'){
-              csv("/income_normalized.csv").then(counties => {
-                setData(counties)
-              })
-        // }
-        // if(props.selection === 'density'){
-        //   csv(`/population_normalized.csv`).then(counties => {
-        //       setData(counties)
-        //       })
-        // }
-
-  });
-
-
+    // https://www.bls.gov/lau/
+    csv("/population_normalized.csv").then(counties => {
+      setPop(counties);
+    });
+  } ,[]);
 
 
 
@@ -59,83 +104,84 @@ const MapContainer = (props) => {
 
   return (
     <div>
+
           <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%' , backgroundColor : "#C0E5F6"}}>
-          <ZoomableGroup
-          zoom={1}
+
+          <ZoomableGroup zoom={1}
           // onMoveStart(position)
           >
+
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
                     geographies.map(geo => {
-                        // const cur = data.find(s => s.id === geo.id);
+                        // const cur = income.find(s => s.id === geo.id);
                         // const filter = colorScale(cur ? cur.income : "blue")
 
-                        const handleFilterData=()=>{
+                        const handleIncomeData=()=>{
+                          const cur = income.find(s => s.id === geo.id);
+                          // console.log(cur)
+                          const filter = colorScale(cur ? cur.income : "blue")
 
-                          const cur = data.find(s => s.id === geo.id);
-                          const filter = colorScale(cur ? cur.income : "blue" )
-
-
-                          if(props.selection === 'income' && props.option === null){
-                            // console.log(filter)
-                              return filter
-                            }
-                              if( props.selection === 'income' && props.option === 'high'){
-                                  if(cur && cur.income >= 0.7)
-                                      return filter
-                                }
-                                if( props.selection === 'income' && props.option === 'medium'){
-                                    if(cur && cur.income < 0.7 && cur.income >= 0.4)
-                                        return filter
-                                  }
-
-                                  if( props.selection === 'income' && props.option === 'low'){
-                                      if(cur && cur.income < 0.4)
-                                          return filter
-                                    }
-
-                          else if(props.selection === 'density' && props.option === null){
-                            // console.log(filter)
-                                    return filter
-                          }
+                                if(props.selection === 'income' && props.option === null) return filter
+                                  if( props.option === 'high'){  if(cur && cur.income >= 0.7) return filter }
+                                    if(props.option === 'medium'){ if(cur && cur.income < 0.7 && cur.income >= 0.4)  return filter }
+                                      if(props.option === 'low'){ if(cur && cur.income < 0.4) return filter }
+                              else {
+                                return null
+                              }
+                        } //end of handleFilterData
 
 
-                            else{
-                              return null
-                            }
+
+
+                        const handlePopulationData=()=>{
+                            const cur = pop.find(s => s.id === geo.id);
+                            const filter = colorScale1(cur ? cur.population : "blue")
+                              if(props.selection === 'density' && props.option === null) return filter
+
                         }
 
 
 
-const renderFilterData=()=>{
-  if(props.selection === 'income'){
-    return handleFilterData()
-  }
-}
 
+
+      const renderFilterData=()=>{
+        if(props.selection === 'income'){
+          return handleIncomeData()
+        }
+
+        if(props.selection === 'density'){
+          return handlePopulationData()
+        }
+
+      }
 
 
                       return (
                         <Geography
-
                           key={geo.rsmKey}
                           geography={geo}
-                          fill= {renderFilterData()}
-
+                          fill={ renderFilterData() }
                           onClick = {()=> onClick(geo)  }
+                          onMouseOver = { ()=> onHover(geo)}
+
+
                           style={{
                             default: { outline: "none" },
                             hover: { outline: "none" },
                             pressed: { outline: "none" },
                           }}
-
                         />
+
                       );
                     })
                   }
                 </Geographies>
+
             </ZoomableGroup>
+
           </ComposableMap>
+
 
     </div>
   );
