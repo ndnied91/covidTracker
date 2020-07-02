@@ -29,31 +29,27 @@ const colorScale = scaleQuantize()
 const MapContainer = (props) => {
   const [data, setData] = useState([]);
 
+  console.log(props)
 
   const onClick = (e) =>{
     console.log(e)
   }
 
 
-
-
   useEffect(() => {
-        // if(props.selection === 'income'){
-              csv("/income_normalized.csv").then(counties => {
-                setData(counties)
-              })
-        // }
-        // if(props.selection === 'density'){
-        //   csv(`/population_normalized.csv`).then(counties => {
-        //       setData(counties)
-        //       })
-        // }
-
-  });
+    // https://www.bls.gov/lau/
+    csv("/income_normalized.csv").then(counties => {
+      setData(counties);
+    });
+  }, []);
 
 
-
-
+  // useEffect(() => {
+  //   // https://www.bls.gov/lau/
+  //   csv("/population_normalized.csv").then(counties => {
+  //     setData(counties);
+  //   });
+  // }, []);
 
 
 
@@ -70,14 +66,12 @@ const MapContainer = (props) => {
                         // const cur = data.find(s => s.id === geo.id);
                         // const filter = colorScale(cur ? cur.income : "blue")
 
+
                         const handleFilterData=()=>{
-
                           const cur = data.find(s => s.id === geo.id);
-                          const filter = colorScale(cur ? cur.income : "blue" )
-
+                          const filter = colorScale(cur ? cur.income : "blue")
 
                           if(props.selection === 'income' && props.option === null){
-                            // console.log(filter)
                               return filter
                             }
                               if( props.selection === 'income' && props.option === 'high'){
@@ -94,34 +88,20 @@ const MapContainer = (props) => {
                                           return filter
                                     }
 
-                          else if(props.selection === 'density' && props.option === null){
-                            // console.log(filter)
-                                    return filter
+                          else {
+                            return null
                           }
 
 
-                            else{
-                              return null
-                            }
+
                         }
-
-
-
-const renderFilterData=()=>{
-  if(props.selection === 'income'){
-    return handleFilterData()
-  }
-}
-
-
 
                       return (
                         <Geography
 
                           key={geo.rsmKey}
                           geography={geo}
-                          fill= {renderFilterData()}
-
+                          fill={ handleFilterData() }
                           onClick = {()=> onClick(geo)  }
                           style={{
                             default: { outline: "none" },
