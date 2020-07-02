@@ -55,18 +55,31 @@ const MapContainer = (props) => {
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
                     geographies.map(geo => {
-
-                        const cur = data.find(s => s.id === geo.id);
-                        const filter = colorScale(cur ? cur.income : "blue")
-
+                        // const cur = data.find(s => s.id === geo.id);
+                        // const filter = colorScale(cur ? cur.income : "blue")
 
 
-                        const handleFliter=()=>{
-                          console.log(props)
+                        const handleFilterData=()=>{
+                          const cur = data.find(s => s.id === geo.id);
+                          const filter = colorScale(cur ? cur.income : "blue")
 
-                          if(props.selection === 'income'){
-                                return filter
-                          }
+                          if(props.selection === 'income' && props.option === null){
+                              return filter
+                            }
+                              if( props.selection === 'income' && props.option === 'high'){
+                                  if(cur && cur.income >= 0.7)
+                                      return filter
+                                }
+                                if( props.selection === 'income' && props.option === 'medium'){
+                                    if(cur && cur.income < 0.7 && cur.income >= 0.4)
+                                        return filter
+                                  }
+
+                                  if( props.selection === 'income' && props.option === 'low'){
+                                      if(cur && cur.income < 0.4)
+                                          return filter
+                                    }
+
                           else {
                             return null
                           }
@@ -80,9 +93,7 @@ const MapContainer = (props) => {
 
                           key={geo.rsmKey}
                           geography={geo}
-
-
-                          fill={ handleFliter() }
+                          fill={ handleFilterData() }
                           onClick = {()=> onClick(geo)  }
                           style={{
                             default: { outline: "none" },
@@ -103,7 +114,7 @@ const MapContainer = (props) => {
 };
 
 const mapStateToProps =(state)=>{
-  console.log(state)
+  // console.log(state)
   return { selection: state.option.selection,
             option: state.income_level.income_level}
 }
