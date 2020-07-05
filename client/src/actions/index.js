@@ -66,3 +66,17 @@ export const getAddressView = (address) =>{
     payload: address
   }
 }
+
+
+
+
+
+
+export const updateLocation = (location) =>{
+  //return an action
+// console.log(rate)
+  return {
+    type: 'UPDATE_LOCATION',
+    payload: location
+  }
+}

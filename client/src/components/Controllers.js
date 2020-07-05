@@ -34,6 +34,7 @@ render(){
 
 
 const mapStateToProps=(state)=>{
+  // console.log(state)
 
   return { selection: state.option.selection }
 }

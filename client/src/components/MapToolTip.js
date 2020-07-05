@@ -1,12 +1,21 @@
 import React from 'react';
-// import MouseTooltip from 'react-sticky-mouse-tooltip';
+import {connect} from 'react-redux'
 
-// console.log(props)
 
-const ToolTip =(props)=>{
-  console.log(props)
-  return <button>Hover</button>
+const ToolTip = (props)=>{
+
+      const handleLocation=()=>{
+            if(props.county !== undefined)
+                    return props.county
+      }
+        return  <div> {handleLocation()} </div>
+        
 }
 
 
- export default ToolTip
+
+const mapStateToProps = (state)=>{
+  return { county: state.updateLocation.county}
+}
+
+ export default connect(mapStateToProps)(ToolTip)

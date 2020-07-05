@@ -5,6 +5,7 @@ import incomeReducer from './incomeReducer'
 import densityReducer from './densityReducer'
 import statViewReducer from './statViewReducer'
 import showAddressReducer from './showAddressReducer'
+import updateLocationReducer from './updateLocationReducer'
 
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   income_level : incomeReducer,
   density_rate : densityReducer,
   stat_view: statViewReducer,
-  show_address : showAddressReducer
+  show_address : showAddressReducer,
+  updateLocation : updateLocationReducer
 })
