@@ -73,10 +73,20 @@ export const getAddressView = (address) =>{
 
 
 export const updateLocation = (location) =>{
-  //return an action
-// console.log(rate)
   return {
     type: 'UPDATE_LOCATION',
     payload: location
+  }
+}
+
+
+
+
+
+
+export const zoomLevel = (zoom) =>{
+  return {
+    type: 'ZOOM_LEVEL',
+    payload: zoom
   }
 }
