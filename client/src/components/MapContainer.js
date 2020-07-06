@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios"
 
 import {connect} from 'react-redux'
-import {updateLocation, zoomLevel} from '../actions'
+import {updateLocation, zoomLevel, timeUpdated} from '../actions'
 
 import { ComposableMap, ZoomableGroup } from "react-simple-maps";
 
@@ -16,8 +16,18 @@ import ToolTip from './MapToolTip'
 class MapContainer extends React.Component{
 
   async componentDidMount(){
-    const res =await axios.get('https://api.covid19api.com/countries')
-    console.log(res.data)
+
+    var today = new Date();
+    var date = (today.getMonth()+1)+'-'+today.getDate()+ '-' + today.getFullYear()
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date+' '+time;
+
+
+    const res = await axios.get('https://covid19-us-api.herokuapp.com/county')
+    console.log(res.data.message)
+
+    await this.props.timeUpdated(dateTime)
+
   }
 
 
@@ -48,58 +58,9 @@ const mapStateToProps =(state)=>{
   // console.log(state)
   return { selection: state.option.selection,
             option: state.income_level.income_level,
-            zoom: state.zoomLevel.zoom}
+            zoom: state.zoomLevel.zoom,
+            timeUpdated : state.timeUpdated
+            }
 }
 
-export default connect(mapStateToProps , {updateLocation , zoomLevel})(MapContainer)
-
-
-
-
-
-
-// const mapStateToProps =(state)=>{
-//   // console.log(state)
-//   return { selection: state.option.selection,
-//             option: state.income_level.income_level}
-// }
-//
-// export default connect( mapStateToProps,  {updateLocation , zoomLevel})(StateView)
-
-//
-//
-// import React from "react";
-//
-//
-// import {connect} from 'react-redux'
-//
-//
-// import CountyView from './MapOverlays/CountyView'
-// import ToolTip from './MapToolTip'
-//
-//
-//
-//
-// class MapContainer extends React.Component{
-//
-//     render(){
-//
-//         console.log(this.props.zoom)
-//   // {this.props.zoom !== undefined && this.props.zoom < 1.5 ? <CountyView/> : <div> StateView </div>}
-//
-//         return(
-//            <div>
-//                 <ToolTip/>
-//                 <CountyView/>
-//
-//           </div>
-//         )
-//     }
-// }
-//
-//
-// const mapStateToProps = (state) =>{
-//   return { zoom : state.zoomLevel.zoom}
-// }
-//
-// export default connect(mapStateToProps)(MapContainer)
+export default connect(mapStateToProps , {updateLocation , zoomLevel, timeUpdated})(MapContainer)

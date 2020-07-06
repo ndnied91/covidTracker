@@ -90,3 +90,25 @@ export const zoomLevel = (zoom) =>{
     payload: zoom
   }
 }
+
+
+
+
+
+export const timeUpdated = (time) =>{
+  return {
+    type: 'TIME_UPDATED',
+    payload: time
+  }
+}
+
+
+
+
+// export const deleteSurvey = (id) => async dispatch =>{
+//   // const res = await axios.delete(`/api/delete/${id} `)
+//   const res = await axios.get(`/api/surveys/delete/${id}`)
+//
+//   dispatch({ type: FETCH_SURVEYS , payload: res.data})
+//
+// }

@@ -7,6 +7,7 @@ import statViewReducer from './statViewReducer'
 import showAddressReducer from './showAddressReducer'
 import updateLocationReducer from './updateLocationReducer'
 import zoomLevelReducer from './zoomLevelReducer'
+import timeUpdatedReducer from './timeUpdatedReducer'
 
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   stat_view: statViewReducer,
   show_address : showAddressReducer,
   updateLocation : updateLocationReducer,
-  zoomLevel:zoomLevelReducer
+  zoomLevel:zoomLevelReducer,
+  time_updated: timeUpdatedReducer
 })

@@ -1,12 +1,14 @@
 import React from 'react'
 
-const TimeUpdated = () =>{
-
-  return(
-    <div> Last Updated xx:xx:xx xx/xx/xxxx</div>
-  )
+import {connect} from 'react-redux'
 
 
+const TimeUpdated = (props) =>{
+    return <div> {props.timeUpdated ? `Covid Data last updated ${props.timeUpdated}` : '' } </div>
 }
 
-export default TimeUpdated
+const mapStateToProps = (state)=>{
+  return {timeUpdated : state.time_updated.time_updated}
+}
+
+export default connect(mapStateToProps )(TimeUpdated)
