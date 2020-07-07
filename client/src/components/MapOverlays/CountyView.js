@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {  Geographies, Geography } from "react-simple-maps";
 
-import {updateLocation, zoomLevel} from '../../actions'
+import {updateLocation, zoomLevel , selectedCounty} from '../../actions'
 
 import {connect} from 'react-redux'
 
@@ -60,7 +60,10 @@ const CountyView =(props)=>{
 
   const onClick = (e) =>{
     console.log(e)
+    props.selectedCounty(e.properties.name)
   }
+
+
 
 const onHover =(e)=>{
   props.updateLocation(`${e.properties.name} County`  )
@@ -101,6 +104,7 @@ useEffect(() => {
                   // const filter = colorScale(cur ? cur.income : "blue")
 
             const handleIncomeData=()=>{
+
               const cur = income.find(s => s.id === geo.id);
               // console.log(cur)
               const filter = colorScale(cur ? cur.income : "blue")
@@ -149,8 +153,9 @@ const renderFilterData=()=>{
 
 
                     key={geo.rsmKey}
-                    // onClick = {((e)=> console.log(geo))}
+                    onClick = {((e)=> console.log(geo))}
                     geography={geo}
+
 
 
 
@@ -176,8 +181,7 @@ const renderFilterData=()=>{
                     // onMouseOver = { ()=> props.updateLocation(geo.id)}
 
                     style={{
-
-                      default: { outline: "none"   },
+                      default: { outline: "none" },
                       hover: { outline: "none" },
                       pressed: { outline: "none" }
                     }}
@@ -197,7 +201,7 @@ const mapStateToProps =(state)=>{
             option: state.income_level.income_level}
 }
 
-export default connect( mapStateToProps,  {updateLocation , zoomLevel})(CountyView)
+export default connect( mapStateToProps,  {updateLocation , zoomLevel , selectedCounty})(CountyView)
 
 
 //

@@ -39,6 +39,7 @@ const StateView = (props) => {
                                 strokeWidth="0.1"
                                 geography={geo}
                                 fill="none"
+                                // onClick = {()=> console.log(geographies) }
                               />
                             ))}
                             {geographies.map(geo => {

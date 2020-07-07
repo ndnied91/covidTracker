@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 
+
 import optionReducer from './optionReducer'
 import incomeReducer from './incomeReducer'
 import densityReducer from './densityReducer'
@@ -8,6 +9,8 @@ import showAddressReducer from './showAddressReducer'
 import updateLocationReducer from './updateLocationReducer'
 import zoomLevelReducer from './zoomLevelReducer'
 import timeUpdatedReducer from './timeUpdatedReducer'
+import covidCountyReducer from './covidCountyReducer'
+import selectedCountyReducer from './selectedCountyReducer'
 
 
 export default combineReducers({
@@ -18,5 +21,7 @@ export default combineReducers({
   show_address : showAddressReducer,
   updateLocation : updateLocationReducer,
   zoomLevel:zoomLevelReducer,
-  time_updated: timeUpdatedReducer
+  time_updated: timeUpdatedReducer,
+  county_covid_data : covidCountyReducer,
+  selected_County : selectedCountyReducer
 })

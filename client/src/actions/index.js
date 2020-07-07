@@ -7,6 +7,9 @@
 //     payload: selection
 //   }
 // }
+import axios from "axios"
+
+
 
 //action creater
 export const getOption = (option) =>{
@@ -104,11 +107,17 @@ export const timeUpdated = (time) =>{
 
 
 
+export const getCountyCovid = ()=> async dispatch =>{
+  const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
+  dispatch({type: 'COVID_COUNTY_DATA', payload: response.data.message})
+}
 
-// export const deleteSurvey = (id) => async dispatch =>{
-//   // const res = await axios.delete(`/api/delete/${id} `)
-//   const res = await axios.get(`/api/surveys/delete/${id}`)
-//
-//   dispatch({ type: FETCH_SURVEYS , payload: res.data})
-//
-// }
+
+
+export const selectedCounty = (county) =>{
+  return {
+    //THIS IS FOR SHOWING DATA WITIN THE STATS PANE
+    type: 'SELECTED_COUNTY',
+    payload: county
+  }
+}
