@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios"
+import axios from 'axios'
 
 import {connect} from 'react-redux'
 import {updateLocation, zoomLevel, timeUpdated, getCountyCovid } from '../actions'
@@ -15,14 +15,15 @@ import ToolTip from './MapToolTip'
 
 class MapContainer extends React.Component{
 
-   componentDidMount(){
-    this.props.getCountyCovid()
-        var today = new Date();
-        var date = (today.getMonth()+1)+'-'+today.getDate()+ '-' + today.getFullYear()
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date+' '+time;
-        // const res= await axios.get('https://covid19-us-api.herokuapp.com/county')
-         this.props.timeUpdated(dateTime)
+   async componentDidMount (){
+      this.props.getCountyCovid()
+          // var today = new Date();
+          // var date = (today.getMonth()+1)+'-'+today.getDate()+ '-' + today.getFullYear()
+          // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+          // var dateTime = date+' '+time;
+          const res= await axios.get('https://covid19-us-api.herokuapp.com/county')
+          console.log(res)
+           this.props.timeUpdated(res.data.message[0].last_update)
   }
 
 

@@ -4,17 +4,26 @@ import {connect} from 'react-redux'
 class Stats extends React.Component{
 
 
+
   render(){
+
+    const renderContent=()=>{
+      if(this.props.selected){
+        return <div> {this.props.selected.county } { this.props.selected.state} </div>
+      }
+    }
+
+
     return(
       <div className="ui raised segment" style={{height: '210px'}}>
 
       <div className="ui equal width center aligned padded grid">
-            <span className="ui header "> Stats </span>
-            <span className="ui right floated"> {this.props.address} </span>
+            <h2 className="ui header "> Stats </h2>
+            <div className="ui right floated"> {renderContent()} </div>
       </div>
 
 
-      <div className="">
+      <div className="covidStats">
           <div> {this.props.stats} </div>
       </div>
 
@@ -29,7 +38,8 @@ class Stats extends React.Component{
 
 
 const mapStateToProps = (state)=>{
-  return { stats: state.stat_view.view , address : state.show_address.address}
+  // console.log(st/ate.selected_County.selected_county)
+  return { selected : state.selected_County.selected_county}
 }
 
 export default connect(mapStateToProps )(Stats)
