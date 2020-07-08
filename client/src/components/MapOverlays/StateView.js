@@ -39,6 +39,7 @@ const StateView = (props) => {
                                 strokeWidth="0.1"
                                 geography={geo}
                                 fill="none"
+
                                 // onClick = {()=> console.log(geographies) }
                               />
                             ))}
@@ -51,8 +52,8 @@ const StateView = (props) => {
                                     centroid[0] > -160 &&
                                     centroid[0] < -67 &&
                                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
-                                      <Marker coordinates={centroid}>
-                                        <text y="2" fontSize={14} textAnchor="middle">
+                                      <Marker coordinates={centroid} >
+                                          <text y="2" fontSize={14} textAnchor="middle"  pointerEvents= 'none' >
                                           {cur.id}
                                         </text>
                                       </Marker>
@@ -62,7 +63,7 @@ const StateView = (props) => {
                                         dx={offsets[cur.id][0]}
                                         dy={offsets[cur.id][1]}
                                       >
-                                        <text x={4} fontSize={14} alignmentBaseline="middle">
+                                        <text x={4} fontSize={14} alignmentBaseline="middle" >
                                           {cur.id}
                                         </text>
                                       </Annotation>
@@ -74,6 +75,9 @@ const StateView = (props) => {
                         )}
                       </Geographies>
 
+
+
+    // <text y="2" fontSize={14} textAnchor="middle"  background= 'none !important' >
 
 
 
