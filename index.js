@@ -2,8 +2,40 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const axios = require('axios')
+const mongoose = require('mongoose')
 const app = express()
       app.use(bodyParser.json())
+
+
+const keys = require('./config/keys')
+//hiding the keys
+
+require('./MongoModels/County.js')
+//imported schema for creating the county object
+
+mongoose.connect(keys.mongoURI, ()=>{
+  console.log('successfully connected to database')
+  //connected to database , key is hidden 
+})
+
+
+
+// request('https://covid19-us-api.herokuapp.com/county')
+//load up the covid data
+//schedule it at some random time at night to update data
+
+// const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
+// console.log(response)
+
+const user = require('./covidData');
+console.log(`User: ${user.getName()}`);
+
+
+
+
+
+
 
 
       // this makes sure express behaves correctly

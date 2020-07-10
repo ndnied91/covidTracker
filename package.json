@@ -20,13 +20,17 @@
   },
   "homepage": "https://github.com/ndnied91/covidTracker#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
     "express": "^4.17.1",
     "google-map-react": "^1.1.7",
     "lodash": "^4.17.15",
+    "mongoose": "^5.9.22",
     "path": "^0.12.7",
     "react-geocode": "^0.2.1",
-    "react-sticky-mouse-tooltip": "0.0.1"
+    "react-sticky-mouse-tooltip": "0.0.1",
+    "request": "^2.88.2",
+    "request-json": "^0.6.5"
   }
 }

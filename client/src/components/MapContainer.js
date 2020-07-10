@@ -12,19 +12,57 @@ import ToolTip from './MapToolTip'
 
 // const geoUrl1 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-
 class MapContainer extends React.Component{
 
-   async componentDidMount (){
-      this.props.getCountyCovid()
-          // var today = new Date();
-          // var date = (today.getMonth()+1)+'-'+today.getDate()+ '-' + today.getFullYear()
-          // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-          // var dateTime = date+' '+time;
-          const res= await axios.get('https://covid19-us-api.herokuapp.com/county')
-          console.log(res)
-           this.props.timeUpdated(res.data.message[0].last_update)
-  }
+
+
+  async componentDidMount(){
+
+    // const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
+    //
+    //     response.data.message.forEach( function(obj, index) {
+    //          setTimeout(async function(){
+    //
+    //           const res = await axios.get(`https://geo.fcc.gov/api/census/block/find?latitude=${response.data.message[index].latitude}&longitude=${response.data.message[index].longitude}&format=json`)
+    //
+    //           console.log(response.data.message[index].county_name, response.data.message[index].state_name  + ": " + res.data.County.FIPS)
+    //
+    //
+    //         }, 2000 * (index + 1));
+    //      });
+    console.log('mounted')
+    // this.props.getCountyCovid()
+}
+
+
+
+
+
+
+
+
+
+
+   // async componentDidMount (){
+   //    this.props.getCountyCovid()
+   //        // var today = new Date();
+   //        // var date = (today.getMonth()+1)+'-'+today.getDate()+ '-' + today.getFullYear()
+   //        // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+   //        // var dateTime = date+' '+time;
+   //        const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
+   //        // this.props.timeUpdated(res.data.message[0].last_update)
+   //        // console.log(response.data.message)
+   //
+   //        response.data.message.forEach((county)=>{
+   //          console.log(county)
+   //           // const res = await axios.get(`https://geo.fcc.gov/api/census/block/find?latitude=${county.latitude}&longitude=${county.longitude}&format=json`)
+   //             // console.log(res)
+   //        })
+
+
+
+
+  // }
 
 
     render(){
