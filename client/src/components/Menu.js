@@ -23,19 +23,3 @@ class Menu extends React.Component{
 
 
 export default Menu
-
-
-
-
-
-// <div class="ui horizontal segments">
-//   <div class="ui segment">
-//     <p></p>
-//   </div>
-//   <div class="ui segment">
-//     <p></p>
-//   </div>
-//   <div class="ui segment">
-//     <p></p>
-//   </div>
-// </div>

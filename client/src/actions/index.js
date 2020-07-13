@@ -1,9 +1,9 @@
 import axios from "axios"
-import { csv } from "d3-fetch";
-import _ from 'lodash'
-
-const counties = []
+// import { csv } from "d3-fetch";
+// import _ from 'lodash'
+// const counties = []
 //action creater
+
 export const getOption = (option) =>{
   //return an action
 
@@ -29,11 +29,11 @@ export const getIncomeLevel = (level) =>{
 
 
 
-export const getDensityRate = (rate) =>{
+export const getPopulationRate = (rate) =>{
   //return an action
 // console.log(rate)
   return {
-    type: 'DENSITY_RATE',
+    type: 'POPULATION_RATE',
     payload: rate
   }
 }
@@ -101,18 +101,6 @@ export const timeUpdated = (time) =>{
 
 
 
-export const getCountyCovid = ()=> async dispatch =>{
-
-const covidList = []
-
-  csv('/countyState.csv').then( county => counties.push(county))
-  const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
-
-  await dispatch({type: 'COVID_COUNTY_DATA', payload: response.data.message})
-}
-
-
-
 export const selectedCounty = (county) =>{
   return {
     //THIS IS FOR SHOWING DATA WITIN THE STATS PANE
@@ -123,8 +111,29 @@ export const selectedCounty = (county) =>{
 
 
 
+export const fetchCovidData = () => async dispatch => {
+  const res = await axios.get('/api/countyData')
+    dispatch({ type: 'FETCH_COVID_DATA' , payload: res.data})
+}
 
 
+
+export const fetchHistoricCovidData = () => async dispatch => {
+  const res = await axios.get('/api/historicCountyData')
+    dispatch({ type: 'FETCH_HISTORIC_COVID_DATA' , payload: res.data})
+}
+
+
+
+
+
+// export const fetchSurveys = () => async dispatch => {
+//   const res = await axios.get('/api/surveys')
+//
+//   dispatch({ type: FETCH_SURVEYS , payload: res.data})
+// }
+//
+//
 
 
 // const res = await axios.get('https://geo.fcc.gov/api/census/block/find?latitude=46.1079526&longitude=-97.63078942&format=json')

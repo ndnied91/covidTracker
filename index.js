@@ -4,18 +4,47 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const axios = require('axios')
 const mongoose = require('mongoose')
+const path = require('path');
 const app = express()
       app.use(bodyParser.json())
 
 
 const keys = require('./config/keys')
 require('./MongoModels/County.js')
+require('./MongoModels/HistoricCovid.js')
 
 mongoose.connect(keys.mongoURI)
 
-//THIS NEEDS TO BE CALLED ONLY AT CERTAIN HOURS
-//everything covid data will come from here
-const covidData = require('./covidData.js');
+const County = mongoose.model('counties')
+const HistoricCounty = mongoose.model('counties_historic')
+
+var schedule = require('node-schedule');
+
+
+var rule = new schedule.RecurrenceRule();
+rule.hour = 14; //THIS IS IN EST TIME (USE EST TIME)
+rule.minute = 9;
+
+// schedule.scheduleJob('55 * * * *', function(){ every 55 min
+  schedule.scheduleJob(rule , function(){
+        const covidData = require('./covidData.js');
+      console.log(`starting covid data gathering at ${new Date()}`);
+});
+
+
+//HISTORIC DATA
+  // const covidData = require('./covidHistoricData.js');
+ //  needs to be optimized before implmeneting 
+ // pull in by specific county NOT ALL IN ONE SHOT
+
+
+
+//will make a call to database to retreive covid data
+app.get('/api/countyData' ,async (req,res)=>{
+  const counties = await County.find()
+  res.send(counties)
+      //will be updated to pull in county data
+})
 
 
 
@@ -28,7 +57,9 @@ const covidData = require('./covidData.js');
         // Express will serve up the index.html file
         // if it doesn't recognize the route
          //express will serve up the index.html if it doesnt recognize the route
-        const path = require('path');
+
+
+
         app.get('*', (req, res) => {
           res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
         });

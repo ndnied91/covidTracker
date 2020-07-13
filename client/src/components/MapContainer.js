@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios'
 
 import {connect} from 'react-redux'
-import {updateLocation, zoomLevel, timeUpdated, getCountyCovid } from '../actions'
+import {updateLocation, zoomLevel, timeUpdated  ,fetchCovidData  } from '../actions'
 
 import { ComposableMap, ZoomableGroup } from "react-simple-maps";
 
@@ -15,54 +15,18 @@ import ToolTip from './MapToolTip'
 class MapContainer extends React.Component{
 
 
-
-  async componentDidMount(){
-
-    // const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
-    //
-    //     response.data.message.forEach( function(obj, index) {
-    //          setTimeout(async function(){
-    //
-    //           const res = await axios.get(`https://geo.fcc.gov/api/census/block/find?latitude=${response.data.message[index].latitude}&longitude=${response.data.message[index].longitude}&format=json`)
-    //
-    //           console.log(response.data.message[index].county_name, response.data.message[index].state_name  + ": " + res.data.County.FIPS)
-    //
-    //
-    //         }, 2000 * (index + 1));
-    //      });
-    console.log('mounted')
-    // this.props.getCountyCovid()
+async componentDidMount(){
+  this.props.fetchCovidData()
+  console.log(this.props)
+  //gets covidData from database
+  // const res = await axios.get('https://covid19-us-api.herokuapp.com/county')
+  // console.log(res)
 }
-
-
-
-
-
-
-
-
-
-
-   // async componentDidMount (){
-   //    this.props.getCountyCovid()
-   //        // var today = new Date();
-   //        // var date = (today.getMonth()+1)+'-'+today.getDate()+ '-' + today.getFullYear()
-   //        // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-   //        // var dateTime = date+' '+time;
-   //        const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
-   //        // this.props.timeUpdated(res.data.message[0].last_update)
-   //        // console.log(response.data.message)
-   //
-   //        response.data.message.forEach((county)=>{
-   //          console.log(county)
-   //           // const res = await axios.get(`https://geo.fcc.gov/api/census/block/find?latitude=${county.latitude}&longitude=${county.longitude}&format=json`)
-   //             // console.log(res)
-   //        })
-
-
-
-
-  // }
+//
+// confirmed: 42307
+// deaths 2190
+// new cases 40
+// new deaths 0
 
 
     render(){
@@ -88,13 +52,11 @@ class MapContainer extends React.Component{
 
 
 const mapStateToProps =(state)=>{
-  // console.log(state)
   return { selection: state.option.selection,
             option: state.income_level.income_level,
             zoom: state.zoomLevel.zoom,
-            timeUpdated : state.timeUpdated,
-            countyCovid: state.county_covid_data
+            timeUpdated : state.timeUpdated
             }
 }
 
-export default connect(mapStateToProps , {updateLocation , zoomLevel, timeUpdated , getCountyCovid })(MapContainer)
+export default connect(mapStateToProps , {updateLocation , zoomLevel, timeUpdated , fetchCovidData })(MapContainer)
