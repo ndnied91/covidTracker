@@ -9,32 +9,13 @@ const app = express()
 
 
 const keys = require('./config/keys')
-//hiding the keys
-
 require('./MongoModels/County.js')
-//imported schema for creating the county object
 
-mongoose.connect(keys.mongoURI, ()=>{
-  console.log('successfully connected to database')
-  //connected to database , key is hidden 
-})
+mongoose.connect(keys.mongoURI)
 
-
-
-// request('https://covid19-us-api.herokuapp.com/county')
-//load up the covid data
-//schedule it at some random time at night to update data
-
-// const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
-// console.log(response)
-
-const user = require('./covidData');
-console.log(`User: ${user.getName()}`);
-
-
-
-
-
+//THIS NEEDS TO BE CALLED ONLY AT CERTAIN HOURS
+//everything covid data will come from here
+const covidData = require('./covidData.js');
 
 
 
@@ -54,6 +35,32 @@ console.log(`User: ${user.getName()}`);
       }
 
 
+
+
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT , ()=> console.log('running'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+// request('https://covid19-us-api.herokuapp.com/county')
+//load up the covid data
+//schedule it at some random time at night to update data
+
+// const response = await axios.get('https://covid19-us-api.herokuapp.com/county')
+// console.log(response)
+
+*/

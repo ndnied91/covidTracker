@@ -2,14 +2,18 @@ const mongoose = require('mongoose')
 const {Schema} = mongoose
 
 const countySchema = new Schema({
-  name : String,
-  // county : { type: Number  , default: 0 }
+  date: String,
   county :String,
-  coords : String,
-  cases : String
-  //THIS IS DUMMY DATA, will be updated when working
+  state : String,
+  fips : String,
+  cases : String,
+  deaths: String,
+  confirmed_cases: String,
+  confirmed_deaths: String,
+  probable_cases: String,
+  probable_deaths: String
 })
 
-mongoose.model('Counties', countySchema) //model class
+mongoose.model('counties', countySchema) //model class
 
 //we dont need to export mongoose models
