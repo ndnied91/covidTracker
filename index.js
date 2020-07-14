@@ -22,8 +22,8 @@ var schedule = require('node-schedule');
 
 
 var rule = new schedule.RecurrenceRule();
-rule.hour = 14; //THIS IS IN EST TIME (USE EST TIME)
-rule.minute = 9;
+rule.hour = 23; //THIS IS IN EST TIME (USE EST TIME)
+rule.minute = 0;
 
 // schedule.scheduleJob('55 * * * *', function(){ every 55 min
   schedule.scheduleJob(rule , function(){
@@ -34,7 +34,7 @@ rule.minute = 9;
 
 //HISTORIC DATA
   // const covidData = require('./covidHistoricData.js');
- //  needs to be optimized before implmeneting 
+ //  needs to be optimized before implmeneting
  // pull in by specific county NOT ALL IN ONE SHOT
 
 

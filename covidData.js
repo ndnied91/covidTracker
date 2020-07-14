@@ -33,4 +33,12 @@ module.exports = { covid: getCovidCountyData() }
 
 this makes a call to the nytimes github page and saves the updated covid data into the database
 
+
+
+
+https://github.com/nychealth/coronavirus-data/blob/master/by-boro.csv
+
+per boro
+
+
 */
