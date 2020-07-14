@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getOption , getIncomeLevel , getPopulationRate} from '../actions'
+import {getOption , getIncomeLevel , getPopulationRate } from '../actions'
 
 class Controller extends React.Component{
 
@@ -21,12 +21,18 @@ setOption(option){
 }
 
 
+resetOptions(){
+    this.props.getIncomeLevel(null)
+    this.props.getPopulationRate(null)
+    this.props.getOption(null)
+}
+
 render(){
       return(
             <div className="ui buttons">
               <button className="ui negative button" onClick={ () => this.setOption('income')}>Income</button>
               <button className="ui primary button"  onClick={ () => this.setOption('population')}> Population </button>
-              <button className="ui green button"  onClick={ () => this.setOption(null)}> Reset </button>
+              <button className="ui green button"  onClick={ () => this.resetOptions()}> Reset </button>
             </div>
 
       )
@@ -40,4 +46,4 @@ const mapStateToProps=(state)=>{
   return { selection: state.option.selection }
 }
 
-export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate})(Controller)
+export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate })(Controller)
