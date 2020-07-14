@@ -14,6 +14,7 @@ require('./MongoModels/County.js')
 require('./MongoModels/HistoricCovid.js')
 
 mongoose.connect(keys.mongoURI)
+console.log(keys.mongoURI)
 
 const County = mongoose.model('counties')
 const HistoricCounty = mongoose.model('counties_historic')
