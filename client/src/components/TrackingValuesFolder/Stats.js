@@ -17,8 +17,10 @@ const getnyccovidData = (id) =>{
                   return(
                       <div key={county.fips}>
                         <h3> {county.county} , {county.state} </h3>
-                        <div> Current Cases {county.cases + county.probable_cases} </div>
-                        <div> Current Deaths {Number(county.confirmed_deaths) + Number(county.probable_deaths) } </div>
+                        <div> Current Cases {county.cases} </div>
+                        <div> Current Probable Cases {county.probable_cases} </div>
+                        <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
+                        <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
                         <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
                    </div>
                   )
@@ -33,7 +35,7 @@ const getnyccovidData = (id) =>{
 
 
     const getCountyData = (id)=>{
-      console.log(id)
+      // console.log(id)
 
               return this.props.covidData.map((county)=>{
                  if(county.fips === id ){
@@ -41,8 +43,10 @@ const getnyccovidData = (id) =>{
                       return(
                           <div key={county.fips}>
                             <h3> {county.county} , {county.state} </h3>
-                            <div> Current Cases {county.cases + county.probable_cases} </div>
-                            <div> Current Deaths {Number(county.confirmed_deaths) + Number(county.probable_deaths) } </div>
+                            <div> Current Cases {county.cases} </div>
+                            <div> Current Probable Cases {county.probable_cases} </div>
+                            <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
+                            <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
                             <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
                        </div>
                       )

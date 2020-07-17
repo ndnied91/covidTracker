@@ -33,6 +33,7 @@ rule.minute = 0;
 });
 
 
+
 //HISTORIC DATA
   // const covidData = require('./covidHistoricData.js');
  //  needs to be optimized before implmeneting

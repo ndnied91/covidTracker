@@ -90,11 +90,16 @@ export const zoomLevel = (zoom) =>{
 
 
 
-export const timeUpdated = (time) =>{
-  return {
-    type: 'TIME_UPDATED',
-    payload: time
-  }
+// export const timeUpdated = (time) =>{
+//   return {
+//     type: 'TIME_UPDATED',
+//     payload: time
+//   }
+// }
+export const timeUpdated = () => async dispatch => {
+  const res = await axios.get('/api/countyData')
+    // console.log(res.data[0].date)
+    dispatch({ type: 'TIME_UPDATED' , payload: res.data[0].date})
 }
 
 
@@ -113,6 +118,7 @@ export const selectedCounty = (county) =>{
 
 export const fetchCovidData = () => async dispatch => {
   const res = await axios.get('/api/countyData')
+    // console.log(res.data[0].date)
     dispatch({ type: 'FETCH_COVID_DATA' , payload: res.data})
 }
 

@@ -13,8 +13,8 @@ renderOption(){
       return(
         <div className="">
             <h2> Please select a Income Class to filter on map </h2>
-            <button className="ui blue button" onClick={ () => this.props.getIncomeLevel('high')}>Upper Class</button>
-            <button className="ui yellow button" onClick={ () => this.props.getIncomeLevel('medium')}>Middle Class</button>
+            <button className="ui red button" onClick={ () => this.props.getIncomeLevel('high')}>Upper Class</button>
+            <button className="ui red button" onClick={ () => this.props.getIncomeLevel('medium')}>Middle Class</button>
             <button className="ui red button" onClick={ () => this.props.getIncomeLevel('low')} >Lower Class</button>
          </div>
       )
@@ -22,14 +22,46 @@ renderOption(){
 
     else if(this.props.option === 'population'){
         return(
-          <div>
+          // <div className="ui grid centered" style={{padding: '5px'}}>
+          <div >
             <h2> Please select range of Density </h2>
-              <button className="ui green button" onClick={ () => this.props.getPopulationRate('less15')}> Less then 1.5 </button>
-              <button className="ui red button" onClick={ () => this.props.getPopulationRate('1524')} >1.5 - 2.4</button>
-              <button className="ui yellow button" onClick={ () => this.props.getPopulationRate('2534')} > 2.5-3.4</button>
-              <button className="ui blue button" onClick={ () => this.props.getPopulationRate('35plus')}> 3.5mill +</button>
+            <div className="ui three column grid">
+             <div className="column">
+                <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('100')}>Less then 100k </button>
+              </div>
 
-        </div>
+              <div className="column">
+            <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('100-200')}> 100k-200k </button>
+               </div>
+
+               <div className="column">
+              <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('200-300')}> 200k-300k </button>
+                </div>
+
+                <div className="column">
+                <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('300-500')}> 300k-500k </button>
+                 </div>
+
+                 <div className="column">
+                  <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('500-1m')}> 500k-1million </button>
+                  </div>
+
+                  <div className="column">
+                     <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('1m-15')}> 1million+  </button>
+                   </div>
+
+
+
+
+
+
+              </div>
+           </div>
+
+
+
+
+
         )
       }
       return(
@@ -54,20 +86,24 @@ renderIncome(){
 
 renderPopulation(){
       if (this.props.population_rate){
-       if (this.props.population_rate === 'less10'){
-         return <div className="ui green button"> Less then 10  </div>
+       if (this.props.population_rate === '100'){
+         console.log('trst')
+         return <div className="ui red button"> Less then 100k </div>
        }
-       else if (this.props.population_rate === '10-49.9'){
+       else if (this.props.population_rate === '100-200'){
          return <div className="ui red button"> 10-49.9 </div>
        }
-       else if (this.props.population_rate === '50-249.9'){
-         return <div className="ui yellow button"> 50-249.9 </div>
+       else if (this.props.population_rate === '200-300'){
+         return <div className="ui yellow button"> 200-300 </div>
+       }
+       else if (this.props.population_rate === '250plus'){
+         return <div className="ui blue button"> 250 or more </div>
        }
        else if (this.props.population_rate === '250plus'){
          return <div className="ui blue button"> 250 or more </div>
        }
        else
-         return <div>  </div>
+         return <div> </div>
     }
 }
 
@@ -76,8 +112,9 @@ renderPopulation(){
 
 
   render(){
+    // console.log(this.props)
     return(
-      <div className="ui raised segment" style={{height: '200px'}} >
+      <div className="ui raised segment" style={{height: '300px'}} >
         {this.renderOption()}
         {this.renderIncome()}
         {this.renderPopulation()}
@@ -93,7 +130,7 @@ const mapStateToProps = (state)=>{
   // console.log(state)
   return { option : state.option.selection ,
            income_level: state.income_level.income_level,
-           population_rate : state.population_rate.density_rate
+           population_rate : state.population_rate.population_rate
          }
 }
 

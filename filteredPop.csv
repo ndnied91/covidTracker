@@ -1,0 +1,388 @@
+id,name,population
+01001,"Autauga County, Alabama",55533
+01003,"Baldwin County, Alabama",217855
+01005,"Barbour County, Alabama",24872
+01007,"Bibb County, Alabama",22367
+01009,"Blount County, Alabama",57771
+01011,"Bullock County, Alabama",10174
+01013,"Butler County, Alabama",19631
+01015,"Calhoun County, Alabama",114331
+01017,"Chambers County, Alabama",33600
+01019,"Cherokee County, Alabama",26014
+01021,"Chilton County, Alabama",44163
+01023,"Choctaw County, Alabama",12833
+01025,"Clarke County, Alabama",23918
+01027,"Clay County, Alabama",13294
+01029,"Cleburne County, Alabama",15010
+01031,"Coffee County, Alabama",51950
+01033,"Colbert County, Alabama",55004
+01035,"Conecuh County, Alabama",12292
+01037,"Coosa County, Alabama",10643
+01039,"Covington County, Alabama",36953
+01041,"Crenshaw County, Alabama",13825
+01043,"Cullman County, Alabama",83418
+01045,"Dale County, Alabama",49143
+01047,"Dallas County, Alabama",38294
+01049,"DeKalb County, Alabama",71407
+01051,"Elmore County, Alabama",81011
+01053,"Escambia County, Alabama",36524
+01055,"Etowah County, Alabama",102611
+01057,"Fayette County, Alabama",16445
+01059,"Franklin County, Alabama",31298
+01061,"Geneva County, Alabama",26306
+01063,"Greene County, Alabama",8209
+01065,"Hale County, Alabama",14749
+01067,"Henry County, Alabama",17173
+01069,"Houston County, Alabama",104770
+01071,"Jackson County, Alabama",51621
+01073,"Jefferson County, Alabama",659429
+01075,"Lamar County, Alabama",13882
+01077,"Lauderdale County, Alabama",92604
+01079,"Lawrence County, Alabama",32941
+01081,"Lee County, Alabama",163656
+01083,"Limestone County, Alabama",96177
+01085,"Lowndes County, Alabama",9974
+01087,"Macon County, Alabama",18321
+01089,"Madison County, Alabama",367004
+01091,"Marengo County, Alabama",19056
+01093,"Marion County, Alabama",29750
+01095,"Marshall County, Alabama",96170
+01097,"Mobile County, Alabama",413908
+01099,"Monroe County, Alabama",21062
+01101,"Montgomery County, Alabama",226504
+01103,"Morgan County, Alabama",119203
+01105,"Perry County, Alabama",9070
+01107,"Pickens County, Alabama",19980
+01109,"Pike County, Alabama",33242
+01111,"Randolph County, Alabama",22727
+01113,"Russell County, Alabama",57784
+01115,"St Clair County, Alabama",88654
+01117,"Shelby County, Alabama",215583
+01119,"Sumter County, Alabama",12634
+01121,"Talladega County, Alabama",80137
+01123,"Tallapoosa County, Alabama",40535
+01125,"Tuscaloosa County, Alabama",208319
+01127,"Walker County, Alabama",63669
+01129,"Washington County, Alabama",16402
+01131,"Wilcox County, Alabama",10599
+01133,"Winston County, Alabama",23693
+02013,"Aleutians East Borough, Alaska",3395
+02016,"Aleutians West Census Area, Alaska",5640
+02020,"Anchorage Municipality, Alaska",290521
+02050,"Bethel Census Area, Alaska",18219
+02060,"Bristol Bay Borough, Alaska",880
+02068,"Denali Borough, Alaska",2032
+02070,"Dillingham Census Area, Alaska",4991
+02090,"Fairbanks North Star Borough, Alaska",98565
+02100,"Haines Borough, Alaska",2488
+02105,"Hoonah-Angoon Census Area, Alaska",2155
+02110,"Juneau City and Borough, Alaska",32037
+02122,"Kenai Peninsula Borough, Alaska",58561
+02130,"Ketchikan Gateway Borough, Alaska",13856
+02150,"Kodiak Island Borough, Alaska",13250
+02158,"Kusilvak Census Area, Alaska",8323
+02164,"Lake and Peninsula Borough, Alaska",1596
+02170,"Matanuska-Susitna Borough, Alaska",107115
+02180,"Nome Census Area, Alaska",10053
+02185,"North Slope Borough, Alaska",9850
+02188,"Northwest Arctic Borough, Alaska",7694
+02195,"Petersburg Borough, Alaska",3244
+02198,"Prince of Wales-Hyder Census Area, Alaska",6360
+02220,"Sitka City and Borough, Alaska",8554
+02230,"Skagway Municipality, Alaska",1169
+02240,"Southeast Fairbanks Census Area, Alaska",6937
+02261,"Valdez-Cordova Census Area, Alaska",9161
+02275,"Wrangell City and Borough, Alaska",2538
+02282,"Yakutat City and Borough, Alaska",596
+02290,"Yukon-Koyukuk Census Area, Alaska",5359
+04001,"Apache County, Arizona",71731
+04003,"Cochise County, Arizona",126411
+04005,"Coconino County, Arizona",142523
+04007,"Gila County, Arizona",53801
+04009,"Graham County, Arizona",37995
+04011,"Greenlee County, Arizona",9448
+04012,"La Paz County, Arizona",21039
+04013,"Maricopa County, Arizona",4402403
+04015,"Mohave County, Arizona",209292
+04017,"Navajo County, Arizona",110242
+04019,"Pima County, Arizona",1036554
+04021,"Pinal County, Arizona",446806
+04023,"Santa Cruz County, Arizona",46395
+04025,"Yavapai County, Arizona",231772
+04027,"Yuma County, Arizona",211612
+05001,"Arkansas County, Arkansas",17726
+05003,"Ashley County, Arkansas",20012
+05005,"Baxter County, Arkansas",41624
+05007,"Benton County, Arkansas",272266
+05009,"Boone County, Arkansas",37385
+05011,"Bradley County, Arkansas",10838
+05013,"Calhoun County, Arkansas",5227
+05015,"Carroll County, Arkansas",28097
+05017,"Chicot County, Arkansas",10442
+05019,"Clark County, Arkansas",22313
+05021,"Clay County, Arkansas",14763
+05023,"Cleburne County, Arkansas",24994
+05025,"Cleveland County, Arkansas",7995
+05027,"Columbia County, Arkansas",23586
+05029,"Conway County, Arkansas",20825
+05031,"Craighead County, Arkansas",108816
+05033,"Crawford County, Arkansas",63379
+05035,"Crittenden County, Arkansas",48363
+05037,"Cross County, Arkansas",16630
+05057,"Dallas County, Arkansas",7152
+05039,"Desha County, Arkansas",11507
+05041,"Drew County, Arkansas",18328
+05043,"Faulkner County, Arkansas",125138
+05045,"Franklin County, Arkansas",17764
+05047,"Fulton County, Arkansas",12308
+05049,"Garland County, Arkansas",98966
+05051,"Grant County, Arkansas",18180
+05053,"Greene County, Arkansas",45339
+05055,"Hempstead County, Arkansas",21685
+05059,"Hot Spring County, Arkansas",33672
+05061,"Howard County, Arkansas",13302
+05063,"Independence County, Arkansas",37768
+05065,"Izard County, Arkansas",13582
+05067,"Jackson County, Arkansas",16753
+05069,"Jefferson County, Arkansas",68067
+05071,"Johnson County, Arkansas",26659
+05073,"Lafayette County, Arkansas",6679
+05075,"Lawrence County, Arkansas",16432
+05077,"Lee County, Arkansas",8976
+05079,"Lincoln County, Arkansas",13184
+05081,"Little River County, Arkansas",12297
+05083,"Logan County, Arkansas",21673
+05085,"Lonoke County, Arkansas",73391
+05087,"Madison County, Arkansas",16362
+05089,"Marion County, Arkansas",16665
+05091,"Miller County, Arkansas",43362
+05093,"Mississippi County, Arkansas",41236
+05095,"Monroe County, Arkansas",6880
+05097,"Montgomery County, Arkansas",8910
+05099,"Nevada County, Arkansas",8308
+05101,"Newton County, Arkansas",7800
+05103,"Ouachita County, Arkansas",23620
+05105,"Perry County, Arkansas",10380
+05107,"Phillips County, Arkansas",18054
+05109,"Pike County, Arkansas",10666
+05111,"Poinsett County, Arkansas",23903
+05113,"Polk County, Arkansas",20019
+05115,"Pope County, Arkansas",63594
+05117,"Prairie County, Arkansas",8082
+05127,"Pulaski County, Arkansas",391918
+05119,"Randolph County, Arkansas",17970
+05121,"St Francis County, Arkansas",25509
+05123,"Saline County, Arkansas",121074
+05125,"Scott County, Arkansas",10339
+05129,"Searcy County, Arkansas",7930
+05131,"Sebastian County, Arkansas",127570
+05133,"Sevier County, Arkansas",17061
+05135,"Sharp County, Arkansas",17290
+05137,"Stone County, Arkansas",12454
+05139,"Union County, Arkansas",39139
+05141,"Van Buren County, Arkansas",16635
+05143,"Washington County, Arkansas",236611
+05145,"White County, Arkansas",78381
+05147,"Woodruff County, Arkansas",6466
+05149,"Yell County, Arkansas",21462
+06001,"Alameda County, California",1666756
+06003,"Alpine County, California",1089
+06005,"Amador County, California",39405
+06007,"Butte County, California",230339
+06009,"Calaveras County, California",45698
+06011,"Colusa County, California",21418
+06013,"Contra Costa County, California",1150519
+06015,"Del Norte County, California",27740
+06017,"El Dorado County, California",190746
+06019,"Fresno County, California",991950
+06021,"Glenn County, California",27967
+06023,"Humboldt County, California",136244
+06025,"Imperial County, California",181523
+06027,"Inyo County, California",17946
+06029,"Kern County, California",893758
+06031,"Kings County, California",151382
+06033,"Lake County, California",64317
+06035,"Lassen County, California",30618
+06037,"Los Angeles County, California",7000000
+06039,"Madera County, California",156882
+06041,"Marin County, California",259662
+06043,"Mariposa County, California",17405
+06045,"Mendocino County, California",87401
+06047,"Merced County, California",274151
+06049,"Modoc County, California",8800
+06051,"Mono County, California",14403
+06053,"Monterey County, California",433950
+06055,"Napa County, California",138789
+06057,"Nevada County, California",99508
+06059,"Orange County, California",3175973
+06061,"Placer County, California",392330
+06063,"Plumas County, California",18741
+06065,"Riverside County, California",2445789
+06067,"Sacramento County, California",1538746
+06069,"San Benito County, California",61467
+06071,"San Bernardino County, California",2166753
+06073,"San Diego County, California",3333861
+06075,"San Francisco County, California",880696
+06077,"San Joaquin County, California",752491
+06079,"San Luis Obispo County, California",283354
+06081,"San Mateo County, California",768681
+06083,"Santa Barbara County, California",445780
+06085,"Santa Clara County, California",1932337
+06087,"Santa Cruz County, California",273841
+06089,"Shasta County, California",179709
+06091,"Sierra County, California",2997
+06093,"Siskiyou County, California",43550
+06095,"Solano County, California",445725
+06097,"Sonoma County, California",498643
+06099,"Stanislaus County, California",548126
+06101,"Sutter County, California",96348
+06103,"Tehama County, California",64018
+06105,"Trinity County, California",12567
+06107,"Tulare County, California",464589
+06109,"Tuolumne County, California",54387
+06111,"Ventura County, California",848142
+06113,"Yolo County, California",220118
+06115,"Yuba County, California",77557
+08001,"Adams County, Colorado",511354
+08003,"Alamosa County, Colorado",16248
+08005,"Arapahoe County, Colorado",651797
+08007,"Archuleta County, Colorado",13730
+08009,"Baca County, Colorado",3584
+08011,"Bent County, Colorado",5808
+08013,"Boulder County, Colorado",324636
+08014,"Broomfield County, Colorado",69324
+08015,"Chaffee County, Colorado",20041
+08017,"Cheyenne County, Colorado",1859
+08019,"Clear Creek County, Colorado",9604
+08021,"Conejos County, Colorado",8181
+08023,"Costilla County, Colorado",3812
+08025,"Crowley County, Colorado",5957
+08027,"Custer County, Colorado",4934
+08029,"Delta County, Colorado",30884
+08031,"Denver County, Colorado",716265
+08033,"Dolores County, Colorado",2060
+08035,"Douglas County, Colorado",342989
+08037,"Eagle County, Colorado",54943
+08039,"Elbert County, Colorado",26303
+08041,"El Paso County, Colorado",712089
+08043,"Fremont County, Colorado",47959
+08045,"Garfield County, Colorado",59701
+08047,"Gilpin County, Colorado",6112
+08049,"Grand County, Colorado",15511
+08051,"Gunnison County, Colorado",17167
+08053,"Hinsdale County, Colorado",808
+08055,"Huerfano County, Colorado",6887
+08057,"Jackson County, Colorado",1395
+08059,"Jefferson County, Colorado",579392
+08061,"Kiowa County, Colorado",1379
+08063,"Kit Carson County, Colorado",7159
+08065,"Lake County, Colorado",7846
+08067,"La Plata County, Colorado",56299
+08069,"Larimer County, Colorado",350660
+08071,"Las Animas County, Colorado",14508
+08073,"Lincoln County, Colorado",5606
+08075,"Logan County, Colorado",22268
+08077,"Mesa County, Colorado",152951
+08079,"Mineral County, Colorado",772
+08081,"Moffat County, Colorado",13183
+08083,"Montezuma County, Colorado",26152
+08085,"Montrose County, Colorado",42206
+08087,"Morgan County, Colorado",28769
+08089,"Otero County, Colorado",18338
+08091,"Ouray County, Colorado",4822
+08093,"Park County, Colorado",18525
+08095,"Phillips County, Colorado",4285
+08097,"Pitkin County, Colorado",17976
+08099,"Prowers County, Colorado",12079
+08101,"Pueblo County, Colorado",167422
+08103,"Rio Blanco County, Colorado",6330
+08105,"Rio Grande County, Colorado",11271
+08107,"Routt County, Colorado",25507
+08109,"Saguache County, Colorado",6840
+08111,"San Juan County, Colorado",764
+08113,"San Miguel County, Colorado",8180
+08115,"Sedgwick County, Colorado",2276
+08117,"Summit County, Colorado",30817
+08119,"Teller County, Colorado",25113
+08121,"Washington County, Colorado",4888
+08123,"Weld County, Colorado",314815
+08125,"Yuma County, Colorado",9947
+09001,"Fairfield County, Connecticut",916829
+09003,"Hartford County, Connecticut",894014
+09005,"Litchfield County, Connecticut",189927
+09007,"Middlesex County, Connecticut",165676
+09009,"New Haven County, Connecticut",862477
+09011,"New London County, Connecticut",274055
+09013,"Tolland County, Connecticut",152691
+09015,"Windham County, Connecticut",118428
+10001,"Kent County, Delaware",178540
+10003,"New Castle County, Delaware",557550
+10005,"Sussex County, Delaware",229389
+11000,"District of Columbia, District of Columbia",701547
+12001,"Alachua County, Florida",269043
+12003,"Baker County, Florida",29210
+12005,"Bay County, Florida",174705
+12007,"Bradford County, Florida",28201
+12009,"Brevard County, Florida",601942
+12011,"Broward County, Florida",1952778
+12013,"Calhoun County, Florida",14105
+12015,"Charlotte County, Florida",188910
+12017,"Citrus County, Florida",149657
+12019,"Clay County, Florida",219252
+12021,"Collier County, Florida",384902
+12023,"Columbia County, Florida",71686
+12027,"DeSoto County, Florida",38001
+12029,"Dixie County, Florida",16826
+12031,"Duval County, Florida",957755
+12033,"Escambia County, Florida",318316
+12035,"Flagler County, Florida",115081
+12037,"Franklin County, Florida",12125
+12039,"Gadsden County, Florida",45660
+12041,"Gilchrist County, Florida",18582
+12043,"Glades County, Florida",13811
+12045,"Gulf County, Florida",13639
+12047,"Hamilton County, Florida",14428
+12049,"Hardee County, Florida",26937
+12051,"Hendry County, Florida",42022
+12053,"Hernando County, Florida",193920
+12055,"Highlands County, Florida",106221
+12057,"Hillsborough County, Florida",1471968
+12059,"Holmes County, Florida",19617
+12061,"Indian River County, Florida",159923
+12063,"Jackson County, Florida",46414
+12065,"Jefferson County, Florida",14246
+12067,"Lafayette County, Florida",8422
+12069,"Lake County, Florida",367118
+12071,"Lee County, Florida",770577
+12073,"Leon County, Florida",293582
+12075,"Levy County, Florida",41503
+12077,"Liberty County, Florida",8354
+12079,"Madison County, Florida",18493
+12081,"Manatee County, Florida",403253
+12083,"Marion County, Florida",365579
+12085,"Martin County, Florida",161000
+12086,"Miami-Dade County, Florida",2716940
+12087,"Monroe County, Florida",74228
+12089,"Nassau County, Florida",88625
+12091,"Okaloosa County, Florida",210738
+12093,"Okeechobee County, Florida",42168
+12095,"Orange County, Florida",1393452
+12097,"Osceola County, Florida",375751
+12099,"Palm Beach County, Florida",1496770
+12101,"Pasco County, Florida",553947
+12103,"Pinellas County, Florida",974996
+12105,"Polk County, Florida",724777
+12107,"Putnam County, Florida",74521
+12109,"St Johns County, Florida",264672
+12111,"St Lucie County, Florida",328297
+12113,"Santa Rosa County, Florida",184313
+12115,"Sarasota County, Florida",433742
+12117,"Seminole County, Florida",471826
+12119,"Sumter County, Florida",132420
+12121,"Suwannee County, Florida",44417
+12123,"Taylor County, Florida",21569
+12125,"Union County, Florida",15237
+12127,"Volusia County, Florida",553284
+12129,"Wakulla County, Florida",33739
+12131,"Walton County, Florida",74071
+12133,"Washington County, Florida",25473

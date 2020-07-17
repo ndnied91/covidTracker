@@ -10,7 +10,7 @@ class TrackingValues extends React.Component{
   render(){
     return(
       <div className="ui raised segment" >
-          <Filter/>
+          <Filter />
           <Stats/>
           <CurveGraph/>
       </div>
