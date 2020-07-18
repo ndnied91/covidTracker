@@ -23,10 +23,18 @@ var schedule = require('node-schedule');
 
 
 var rule = new schedule.RecurrenceRule();
-rule.hour = 15; //THIS IS IN EST TIME (USE EST TIME)
-rule.minute = 57;
+// rule.hour = 15; //THIS IS IN EST TIME (USE EST TIME)
+// rule.minute = 57;
+
+rule.hour = 20;
+rule.minute = 03;
+
+
+
 
 console.log(`CURRENT TIME IS :  ${new Date()}`);
+
+//heroku is in Coordianted Universal Time
 
 // schedule.scheduleJob('55 * * * *', function(){ every 55 min
   schedule.scheduleJob(rule , function(){
