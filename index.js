@@ -23,11 +23,14 @@ var schedule = require('node-schedule');
 
 
 var rule = new schedule.RecurrenceRule();
-rule.hour = 23; //THIS IS IN EST TIME (USE EST TIME)
-rule.minute = 0;
+rule.hour = 15; //THIS IS IN EST TIME (USE EST TIME)
+rule.minute = 57;
+
+console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 // schedule.scheduleJob('55 * * * *', function(){ every 55 min
   schedule.scheduleJob(rule , function(){
+        console.log('STARTING')
         const covidData = require('./covidData.js');
       console.log(`starting covid data gathering at ${new Date()}`);
 });
