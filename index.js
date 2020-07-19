@@ -36,13 +36,15 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 //heroku is in Coordianted Universal Time
 
-// schedule.scheduleJob('55 * * * *', function(){ every 55 min
-  schedule.scheduleJob(rule , function(){
+schedule.scheduleJob('55 * * * *', function(){ every 55 min
+  // schedule.scheduleJob(rule , function(){
         console.log('STARTING')
         const covidData = require('./covidData.js');
       console.log(`starting covid data gathering at ${new Date()}`);
 });
 
+
+const covidData = require('./covidData.js');
 
 
 //HISTORIC DATA

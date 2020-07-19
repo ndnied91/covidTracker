@@ -10,6 +10,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 // const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/counties-albers-10m.json'
 
 const fillColor = '#f2f3f4'
+// const fillColor = 'transparent'
 
 
 // const stateBoundaries = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
@@ -107,14 +108,13 @@ useEffect(() => {
 
 
   return (
-
+    <>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => {
                 // console.log(geo)
                   // const cur = income.find(s => s.id === geo.id);
                   // const filter = incomeScale(cur ? cur.income : "blue")
-
             const handleIncomeData=()=>{
               let fullArr = []
               const cur = income.find(s => s.id === geo.id);
@@ -213,6 +213,7 @@ useEffect(() => {
 
 
 
+
 const renderFilterData=()=>{
   if(props.selection === 'income'){
     return handleIncomeData()
@@ -224,14 +225,14 @@ const renderFilterData=()=>{
 
 }
 
-                return (
-                  <Geography
+
+        return (
+          <Geography
                     stroke="black"
                     strokeWidth="0.3"
                     strokeOpacity="0.2"
                     key={geo.rsmKey}
                     geography={geo}
-
 
                     fill =  {(function() {
                        switch (props.selection) {
@@ -249,8 +250,6 @@ const renderFilterData=()=>{
 
                     onClick = { ()=> onClick(geo) }
                     onMouseOver = { ()=> onHover(geo)}
-
-
 // <path tabindex="0" class="rsm-geography " d="" stroke="black" stroke-width="0.3" stroke-opacity="0.2" fill="#f2f3f4" style="outline: none;"></path>
 // <path tabindex="0" class="rsm-geography " d="" stroke="black" stroke-width="0.3" stroke-opacity="0.2" style="outline: none;"></path>
 //document.getElementsByTagName('path').style.fill
@@ -264,10 +263,17 @@ const renderFilterData=()=>{
                   />
                 );
               })
+
             }
-          </Geographies>
+      </Geographies>
+
+</>
+
+
   )
+
 }
+
 
 
 

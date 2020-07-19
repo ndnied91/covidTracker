@@ -3,10 +3,12 @@ import React from "react";
 import {connect} from 'react-redux'
 import {updateLocation, timeUpdated , fetchCovidData  } from '../actions'
 
-import { ComposableMap, ZoomableGroup } from "react-simple-maps";
+import { ComposableMap, ZoomableGroup  } from "react-simple-maps";
 
 import CountyView from './MapOverlays/CountyView'
 import StateView from './MapOverlays/StateView'
+import CovidView from './MapOverlays/CovidView'
+
 import ToolTip from './MapToolTip'
 
 import PopulationLegend from './Legends/PopulationLegend'
@@ -42,20 +44,23 @@ async componentDidMount(){
 
 
 
+
+
         return(
            <div>
 
             <ToolTip/>
 
-
                 <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%' , backgroundColor : "#C0E5F6" }}  >
                         <ZoomableGroup
-                                       zoom={1} maxZoom={4}
                         style={{ default: { outline: "1px solid red" } , pressed: { outline: "none" }  }} >
-                                  <CountyView />
-                                  <StateView/>
+
+                               <CountyView/>
+                               <StateView/>
+                               <CovidView/>
                         </ZoomableGroup>
-              </ComposableMap>
+
+                </ComposableMap>
 
               {renderLegend()}
 
@@ -67,10 +72,9 @@ async componentDidMount(){
 
 
 const mapStateToProps =(state)=>{
-  // console.log(state)
   return { selection: state.option.selection,
             option: state.income_level.income_level,
-            timeUpdated : state.timeUpdated
+            time : state.time_updated.time_updated
             }
 }
 
