@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {  Geographies, Geography } from "react-simple-maps";
 import getStateInfo from './utils/stateFipsConverter'
-import {updateLocation, zoomLevel , selectedCounty} from '../../actions'
+import {updateLocation , selectedCounty} from '../../actions'
 import {connect} from 'react-redux'
 
 import { scaleQuantize } from "d3-scale";
@@ -279,4 +279,4 @@ const mapStateToProps =(state)=>{
           }
 }
 
-export default connect( mapStateToProps,  {updateLocation , zoomLevel , selectedCounty})(CountyView)
+export default connect( mapStateToProps,  {updateLocation, selectedCounty})(CountyView)

@@ -33,6 +33,7 @@ render(){
               <button className="ui negative button" onClick={ () => this.setOption('income')}>Income</button>
               <button className="ui primary button"  onClick={ () => this.setOption('population')}> Population </button>
               <button className="ui green button"  onClick={ () => this.resetOptions()}> Reset </button>
+
             </div>
 
       )

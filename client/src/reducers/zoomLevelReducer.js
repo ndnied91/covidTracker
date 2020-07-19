@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  zoom: null
+  zoom: 1
 }
 
 
