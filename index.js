@@ -22,6 +22,24 @@ const HistoricCounty = mongoose.model('counties_historic')
 var schedule = require('node-schedule');
 
 
+// const covidd = require('./covidUnion.js');
+// const covidCounties = require('./countiesWithCoords.js')
+//
+// let counties = covidCounties.getCounties()
+//
+// filteredCounties = []
+//
+// counties.forEach( (county)=>{
+//   filteredCounties.push({ county : county.county_name , state:  county.state_name, lat: county.latitude, lng: county.longitude})
+//   return filteredCounties
+// })
+//
+// filteredCounties.forEach((i)=>{
+//   console.log(i.county , i.state, i.lat , i.lng + ',')
+// })
+
+
+
 var rule = new schedule.RecurrenceRule();
 // rule.hour = 15; //THIS IS IN EST TIME (USE EST TIME)
 // rule.minute = 57;
@@ -29,22 +47,17 @@ var rule = new schedule.RecurrenceRule();
 rule.hour = 20;
 rule.minute = 03;
 
-
-
-
 console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 //heroku is in Coordianted Universal Time
 
-schedule.scheduleJob('55 * * * *', function(){ 
+schedule.scheduleJob('55 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
         console.log(`starting covid data gathering at ${new Date()}`);
         const covidData = require('./covidData.js');
 });
 
-
-// const covidData = require('./covidData.js');
-
+const covidData = require('./covidData.js');
 
 //HISTORIC DATA
   // const covidData = require('./covidHistoricData.js');

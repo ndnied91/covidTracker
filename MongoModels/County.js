@@ -11,7 +11,10 @@ const countySchema = new Schema({
   confirmed_cases: String,
   confirmed_deaths: String,
   probable_cases: String,
-  probable_deaths: String
+  probable_deaths: String,
+  // latitude : String,
+  // longitude : String
+  coords : {latitude :  String  ,longitude : String }
 })
 
 mongoose.model('counties', countySchema) //model class
