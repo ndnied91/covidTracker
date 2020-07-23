@@ -16,6 +16,15 @@ const CovidView =(props)=>{
 
   const [data, setData] = useState([]);
 
+  const markers1 = []
+
+    props.covidData.forEach((item, i) => {
+      // console.log( i , item.county , item.coords.latitude , item.coords.longitude )
+      if(Number(item.coords.longitude) !==0)
+        markers1.push({ markerOffset: -15 , index : i , name : item.county , coordinates: [Number(item.coords.longitude) ,  Number(item.coords.latitude) ] })
+    });
+
+
   const markers = [
     { markerOffset: -15, name: "KANSAS", coordinates: [-98.4842, 39.0119,] },
     { markerOffset: -15, name: "NEBRASKA", coordinates: [-99.9018, 41.925] },
@@ -42,11 +51,8 @@ const CovidView =(props)=>{
      </Geographies>
 
      {markers.map(({ name, coordinates }) => (
-
            <Marker
               key ={name}
-              // key={geo.rsmKey}
-               // geography={geo}
               coordinates={coordinates}
               fill="#777"
               >
@@ -68,7 +74,8 @@ const CovidView =(props)=>{
 
 const mapStateToProps =(state)=>{
   // console.log(state)
-  return { selection: state.option.selection }
+  return { selection: state.option.selection,
+          covidData : state.covidData }
 }
 
 export default connect( mapStateToProps  )(CovidView)

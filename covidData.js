@@ -27,7 +27,7 @@ const getCoords = (county, state)=>{
                 if(coords[0] !== undefined){
                   return { latitude : coords[0].lat  , longitude : coords[0].lng }
                 }  else return  { latitude : null  , longitude : null }
-                  //returns null if this cant find it 
+                  //returns null if this cant find it
 }
 
 const getCovidCountyData = async() => {

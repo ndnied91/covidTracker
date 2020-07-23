@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {  Geographies, Geography } from "react-simple-maps";
+import {  Geographies, Geography , Marker } from "react-simple-maps";
 import getStateInfo from './utils/stateFipsConverter'
 import {updateLocation , selectedCounty} from '../../actions'
 import {connect} from 'react-redux'
+
+import Markers from './Markers'
+
+import { feature } from "topojson-client"
 
 import { scaleQuantize } from "d3-scale";
 import { csv } from "d3-fetch";
@@ -58,10 +62,13 @@ const incomeScale = scaleQuantize()
 
 
 
+
+
 const CountyView =(props)=>{
 
   const [income, setIncome] = useState([]);
   const [pop, setPop] = useState([]);
+  // const [geographies, setGeographies] = useState([])
 
 //beginning of onClick call
 
@@ -103,8 +110,23 @@ useEffect(() => {
 
 
 
+const renderMarkers=()=>{
+  console.log(props.covidData)
 
 
+  return props.covidData.map((county)=>(
+
+    <Marker
+        key={county._id}
+        coordinates={ [-98.4842, 39.0119] } >
+        // coordinates={ [county.coords.longitude , county.coords.latitude] || [0,0]} >
+
+        <circle r={5} fill="#F00" stroke="#fff" strokeWidth={1} />
+    </Marker>
+  ))
+
+
+}
 
 
   return (
@@ -226,6 +248,7 @@ const renderFilterData=()=>{
 }
 
 
+
         return (
           <Geography
                     stroke="black"
@@ -261,13 +284,16 @@ const renderFilterData=()=>{
                       pressed: { fill: "#AAA", outline: "none" },
                     }}
                   />
+
                 );
               })
 
             }
       </Geographies>
-
+      <Markers/>
 </>
+
+// {renderMarkers()}
 
 
   )
@@ -281,7 +307,8 @@ const mapStateToProps =(state)=>{
   // console.log(state)
   return { selection: state.option.selection,
             income_level: state.income_level.income_level,
-            population_rate : state.population_rate.population_rate
+            population_rate : state.population_rate.population_rate,
+            covidData : state.covidData
           }
 }
 

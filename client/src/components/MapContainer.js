@@ -7,13 +7,19 @@ import { ComposableMap, ZoomableGroup  } from "react-simple-maps";
 
 import CountyView from './MapOverlays/CountyView'
 import StateView from './MapOverlays/StateView'
-import CovidView from './MapOverlays/CovidView'
+// import CovidView from './MapOverlays/CovidView'
 
 import ToolTip from './MapToolTip'
+// import Markers from './MapOverlays/Markers'
 
+// import MarkerClass from './MapOverlays/MarkerClass'
 import PopulationLegend from './Legends/PopulationLegend'
 import IncomeLegend from './Legends/IncomeLegend'
 
+
+// import Markers from './MapOverlays/Markers'
+
+// import ActualMarkers from './MapOverlays/ActualMarkers'
 // const geoUrl1 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 class MapContainer extends React.Component{
@@ -50,25 +56,22 @@ async componentDidMount(){
            <div>
 
             <ToolTip/>
-
                 <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%' , backgroundColor : "#C0E5F6" }}  >
                         <ZoomableGroup
-                        style={{ default: { outline: "1px solid red" } , pressed: { outline: "none" }  }} >
+                              style={{ default: { outline: "1px solid red" } , pressed: { outline: "none" }  }} >
 
-                               <CountyView/>
-                               <StateView/>
-                               <CovidView/>
+                           <CountyView/>
+                           <StateView/>
                         </ZoomableGroup>
-
                 </ComposableMap>
 
-              {renderLegend()}
 
           </div>
         )
     }
 }
 
+  // {renderLegend()}
 
 
 const mapStateToProps =(state)=>{
