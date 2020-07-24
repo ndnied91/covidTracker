@@ -22,7 +22,14 @@ import IncomeLegend from './Legends/IncomeLegend'
 // import ActualMarkers from './MapOverlays/ActualMarkers'
 // const geoUrl1 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+
+
 class MapContainer extends React.Component{
+ //  constructor(props) {
+ //   super(props);
+ //     this.state = { geographies : null  }
+ // }
+
 
 
 async componentDidMount(){

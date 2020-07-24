@@ -5,7 +5,7 @@ import { geoEqualEarth, geoPath } from "d3-geo"
 import { feature } from "topojson-client"
 
 const cities = [
-  { name: "Tokyo",          coordinates: [139.6917,35.6895],  population: 37843000 },
+  { name: "Tokyo", coordinates: [139.6917,35.6895],  population: 37843000 },
   // { name: "Jakarta",        coordinates: [106.8650,-6.1751],  population: 30539000 },
   // { name: "Delhi",          coordinates: [77.1025,28.7041],   population: 24998000 },
   // { name: "Manila",         coordinates: [120.9842,14.5995],  population: 24123000 },
@@ -35,8 +35,6 @@ const cities = [
   // { name: "Tianjin",        coordinates: [117.3616,39.3434],  population: 10920000 },
   // { name: "Osaka",          coordinates: [135.5022, 34.6937],    population: 10858000 },
   { name: "Baldwin",    coordinates: [-87.72352514,30.73589116], population: 10750000 }
-
-
 ]
 
 const projection = geoEqualEarth()
@@ -90,7 +88,7 @@ const WorldMap = () => {
           cities.map((city, i) => (
             <circle
               key={ `marker-${i}` }
-              cx={ projection(city.coordinates)[0] }
+              cx={ projection(city.coordinates)[0]  }
               cy={ projection(city.coordinates)[1] }
               r={ city.population / 3000000 }
               fill="#E91E63"

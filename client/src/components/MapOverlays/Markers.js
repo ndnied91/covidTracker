@@ -1,14 +1,42 @@
 import React from 'react'
 import { Geographies, Geography , Marker } from "react-simple-maps";
 
-import { geoEqualEarth, geoPath  , geoAlbersUsa } from "d3-geo"
+import { geoEqualEarth, geoPath   } from "d3-geo"
 import { feature } from "topojson-client"
+import * as topojson from 'topojson'
+import * as d3 from 'd3'
 
 import {connect} from 'react-redux'
+import { geoAlbersUsa } from "d3-composite-projections";
+// import d3GeoProjection from 'd3-geo-projection'
+
 
 
 // const projection = geoAlbersUsa()
 //   .scale(160)
+
+const projection = geoAlbersUsa()
+console.log(projection)
+
+const path = geoPath(projection)
+console.log(path)
+
+projection.scale(100).translate([ 800 / 2, 450 / 2 ])
+
+// console.log(path)
+
+const cities = [
+  { name: "Washington", coordinates: [120.7401,47.751] },
+  { name: "Baldwin", coordinates: [-87.72352514, 30.73589116] }
+]
+
+
+// cities.map((city)=>{
+//   console.log(city.coordinates[0])
+// })
+
+
+
 
 
 
@@ -16,13 +44,27 @@ const Markers = (props) => {
   // console.log(props.covidData)
 // console.log(props.covidData)
 
-const projection=()=>{
-  return geoAlbersUsa()
-    .scale(1)
-    // .translate([800 / 2, 450 / 2]);
-}
-// const markers1 = []
+// const projection=()=>{
+//   return geoAlbersUsa()
+//     .scale(0)
 
+      // return geoEqualEarth()
+      // .scale(100)
+
+    // .translate([800 / 2, 450 / 2]);
+// }
+
+// var path = d3_geo.geoPath()
+//     .projection(projection);
+
+
+// var path = d3.geoPath().projection(projection);
+
+
+// const markers1 = []
+// const handleMarkerClick = i => {
+//   console.log("Marker: ", cities[i])
+// }
 
 // const {userInfo, setUserInfo} = useContext(userInfoContext);
 
@@ -77,25 +119,24 @@ const projection=()=>{
 //       ))
 // }
 
-if(props.covidData){
-  props.covidData.map((county)=>{
-    console.log(county.coords.longitude , county.coords.latitude)
-  })
-}
+// if(props.covidData){
+//   props.covidData.map((county)=>{
+//     console.log([county.coords.longitude , county.coords.latitude])
+//   })
+// }
 
 
-
+     // {props.covidData.map((county, i) => (
+                    // coordinates={ county.coords.latitude, county.coords.longitude }
 const renderMarkers1 =()=>{
   return(
   <g className="markers">
-           {props.covidData.map((county, i) => (
+
+            {cities.map((city, i) => (
              <circle
                key={`marker-${i}`}
-
-               // cx={projection(county.coords.latitude)}
-               cx={county.coords.latitude}
-               // cy={projection(county.coords.longitude)}
-               cy={county.coords.longitude}
+               cx={ projection(city.coordinates)[0]  }
+               cy={ projection(city.coordinates)[1] }
                r={4}
                fill="#000"
                stroke="#FFFFFF"

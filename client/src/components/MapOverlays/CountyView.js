@@ -4,9 +4,11 @@ import getStateInfo from './utils/stateFipsConverter'
 import {updateLocation , selectedCounty} from '../../actions'
 import {connect} from 'react-redux'
 
+import { geoAlbersUsa, geoPath   } from "d3-geo"
+
 import Markers from './Markers'
 
-import { feature } from "topojson-client"
+// import { feature } from "topojson-client"
 
 import { scaleQuantize } from "d3-scale";
 import { csv } from "d3-fetch";
@@ -16,8 +18,17 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 const fillColor = '#f2f3f4'
 // const fillColor = 'transparent'
 
+const projection = geoAlbersUsa()
 
 // const stateBoundaries = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+
+// const projection = geoAlbersUsa()
+// console.log(projection)
+  // .scale(160)
+  // .translate([ 800 / 2, 450 / 2 ])
+
+
+
 const incomeScale = scaleQuantize()
   .domain([0, 1])
   .range([
@@ -68,7 +79,8 @@ const CountyView =(props)=>{
 
   const [income, setIncome] = useState([]);
   const [pop, setPop] = useState([]);
-  // const [geographies, setGeographies] = useState([])
+    const [geographies, setGeographies] = useState([])
+
 
 //beginning of onClick call
 
@@ -101,32 +113,81 @@ useEffect(() => {
 
 useEffect(() => {
   // https://www.bls.gov/lau/
-  // csv("/population_normalized.csv").then(counties => {
   csv("/FULLY_VERIFIED_POP.csv").then(counties => {
     setPop(counties);
-  });
+  })
 } ,[]);
 
 
 
 
-const renderMarkers=()=>{
-  console.log(props.covidData)
+// const renderMarkers=()=>{
+  // props.covidData.map((county)=>{
+  // console.log(  county.coords.longitude  ,  county.coords.latitude  )
+  // })
+  //
+  // return props.covidData.map((county)=>(
+  //
+  //   <Marker
+  //       key={county._id}
+  //       // coordinates={  [county.coords.longitude, county.coords.latitude][0] , [county.coords.longitude, county.coords.latitude][1]  } >
+  //       coordinates={  county.coords.longitude  ,  county.coords.latitude  } >
+  //
+  //       <circle r={5} fill="#F00" stroke="#fff" strokeWidth={1} />
+  //   </Marker>
+  // ))
+// }
+
+const cities = [
+  { name: "Cali", coordinates: [-119.4179, 36.7783] },
+  { name: "Nyc", coordinates: [-74.006, 40.7128] }
+]
 
 
-  return props.covidData.map((county)=>(
 
-    <Marker
-        key={county._id}
-        coordinates={ [-98.4842, 39.0119] } >
-        // coordinates={ [county.coords.longitude , county.coords.latitude] || [0,0]} >
+const renderMarkers=()=> {
+  // return props.covidData.map((location, i) => {
+  return cities.map((location, i) => {
+    return (
+      <Marker
+          key={ i }
+          // onClick = { this.onMarkerClick }
+          title = { location.county }
+          // position = {  [location.coordinates.longitude , location.coordinates.latitude] }
+          // position = { ( (location.coords.longitude) , (location.coords.latitude)  ) }
+            // position = {  position(-74.006, 40.7128) }
+          // coordinates = {[-74.006, 40.7128]}
+          coordinates = {[ location.coordinates[0] , location.coordinates[1] ]}
+          // desc = { location.desc }
+          // animation = { this.state.animation[i] }
+          name = { location.county }
+          >
+           <circle r={4} fill="#F53"  />
+      </Marker>
+    )
 
-        <circle r={5} fill="#F00" stroke="#fff" strokeWidth={1} />
-    </Marker>
-  ))
+
+  })
+// return(
+//
+//   <>
+//    <Marker
+//      coordinates={[-74.006, 40.7128]}>
+//        <circle r={4} fill="#F53" />
+//      </Marker>
+//
+//     <Marker
+//          coordinates={[-119.4179, 36.7783]}>
+//            <circle r={4} fill="#F53" />
+//      </Marker>
+//
+// </>
+//    )
 
 
 }
+
+
 
 
   return (
@@ -254,6 +315,7 @@ const renderFilterData=()=>{
                     stroke="black"
                     strokeWidth="0.3"
                     strokeOpacity="0.2"
+                    strokeLinejoin= "round"
                     key={geo.rsmKey}
                     geography={geo}
 
@@ -269,7 +331,6 @@ const renderFilterData=()=>{
                            return fillColor;
                        }
                      })()}
-
 
                     onClick = { ()=> onClick(geo) }
                     onMouseOver = { ()=> onHover(geo)}
@@ -290,10 +351,24 @@ const renderFilterData=()=>{
 
             }
       </Geographies>
-      <Markers/>
-</>
 
+      
+{renderMarkers()}
+
+
+
+
+</>
+    // <svg height='550px' width='100%'> <Markers/></svg>
 // {renderMarkers()}
+
+
+// <Marker
+//    coordinates={[-74.006, 40.7128]}>
+//      <circle r={4} fill="#F53" />
+//    </Marker>
+
+
 
 
   )

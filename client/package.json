@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "d3-fetch": "^1.2.0",
+    "d3-geo-projection": "^2.9.0",
     "d3-scale": "^3.2.1",
     "esri": "0.0.1-security",
     "esri-loader": "^2.14.0",
