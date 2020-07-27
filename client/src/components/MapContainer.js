@@ -52,7 +52,6 @@ async componentDidMount(){
             return <IncomeLegend/>
           }
           return
-
       }
 
 
@@ -72,13 +71,13 @@ async componentDidMount(){
                         </ZoomableGroup>
                 </ComposableMap>
 
-
+                {renderLegend()}
           </div>
         )
     }
 }
 
-  // {renderLegend()}
+
 
 
 const mapStateToProps =(state)=>{

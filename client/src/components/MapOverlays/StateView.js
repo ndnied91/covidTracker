@@ -75,12 +75,6 @@ const StateView = (props) => {
                         )}
                       </Geographies>
 
-
-
-    // <text y="2" fontSize={14} textAnchor="middle"  background= 'none !important' >
-
-
-
   );
 };
 

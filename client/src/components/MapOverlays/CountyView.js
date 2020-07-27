@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {  Geographies, Geography , Marker } from "react-simple-maps";
+import {  Geographies, Geography  } from "react-simple-maps";
 import getStateInfo from './utils/stateFipsConverter'
 import {updateLocation , selectedCounty} from '../../actions'
 import {connect} from 'react-redux'
 
-import { geoAlbersUsa, geoPath   } from "d3-geo"
-
 import Markers from './Markers'
-
-// import { feature } from "topojson-client"
 
 import { scaleQuantize } from "d3-scale";
 import { csv } from "d3-fetch";
@@ -16,16 +12,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 // const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/counties-albers-10m.json'
 
 const fillColor = '#f2f3f4'
-// const fillColor = 'transparent'
 
-const projection = geoAlbersUsa()
-
-// const stateBoundaries = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
-
-// const projection = geoAlbersUsa()
-// console.log(projection)
-  // .scale(160)
-  // .translate([ 800 / 2, 450 / 2 ])
 
 
 
@@ -79,8 +66,6 @@ const CountyView =(props)=>{
 
   const [income, setIncome] = useState([]);
   const [pop, setPop] = useState([]);
-    const [geographies, setGeographies] = useState([])
-
 
 //beginning of onClick call
 
@@ -121,71 +106,48 @@ useEffect(() => {
 
 
 
-// const renderMarkers=()=>{
-  // props.covidData.map((county)=>{
-  // console.log(  county.coords.longitude  ,  county.coords.latitude  )
-  // })
-  //
-  // return props.covidData.map((county)=>(
-  //
-  //   <Marker
-  //       key={county._id}
-  //       // coordinates={  [county.coords.longitude, county.coords.latitude][0] , [county.coords.longitude, county.coords.latitude][1]  } >
-  //       coordinates={  county.coords.longitude  ,  county.coords.latitude  } >
-  //
-  //       <circle r={5} fill="#F00" stroke="#fff" strokeWidth={1} />
-  //   </Marker>
-  // ))
+
+
+
+// const cities = []
+
+
+// const states = ['Washington' , 'Nevada' , 'Idaho' , 'Montana' , 'Wyoming' ,  'Colorado', 'Utah', 'New Mexico' , 'Arizona' , 'Texas' , 'Oklahoma' , 'North Dakota' , 'Minnesota' , 'Wisconsin' , 'Michigan' , 'Missouri',
+//  'Arkansas', 'Louisiana' , 'Mississippi' , 'Illinois' , 'Tennessee', 'Alabama', 'Georgia' , 'Florida', 'South Carolina' , 'North Carolina' , 'Indiana' , 'Kentucky',
+// 'Virginia' , 'West Virginia', 'Maryland', 'Delaware', 'Connecticut' , 'New Jersey' , 'New York', 'Rhode Island' , 'Massachusetts', 'New Hampshire' , 'Vermont', 'Maine', 'Pennsylvania' , 'Ohio' , 'Iowa' , 'Kansas' , 'Oklahama',
+//  'Hawaii' , 'Oregon' , 'Nebraska']
+// // const states = ['New Jersey']
+// console.log(states.length)
+//
+// props.covidData.forEach((item, i) => {
+//   if(item.coords.latitude !== null){
+//         if(states.includes(item.state) ){
+//           cities.push(item)
+//         }
+//   }
+//
+//
+// });
+
+
+
+
+// const renderMarkers=()=> {
+//
+//   return cities.map((location, i) => {
+//     return (
+//       <Marker
+//           key={ i }
+//           coordinates= {[ location.coords.longitude , location.coords.latitude]}
+//           >
+//            <circle r={2} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />
+//       </Marker>
+//     )
+//   })
+//
 // }
 
-const cities = [
-  { name: "Cali", coordinates: [-119.4179, 36.7783] },
-  { name: "Nyc", coordinates: [-74.006, 40.7128] }
-]
 
-
-
-const renderMarkers=()=> {
-  // return props.covidData.map((location, i) => {
-  return cities.map((location, i) => {
-    return (
-      <Marker
-          key={ i }
-          // onClick = { this.onMarkerClick }
-          title = { location.county }
-          // position = {  [location.coordinates.longitude , location.coordinates.latitude] }
-          // position = { ( (location.coords.longitude) , (location.coords.latitude)  ) }
-            // position = {  position(-74.006, 40.7128) }
-          // coordinates = {[-74.006, 40.7128]}
-          coordinates = {[ location.coordinates[0] , location.coordinates[1] ]}
-          // desc = { location.desc }
-          // animation = { this.state.animation[i] }
-          name = { location.county }
-          >
-           <circle r={4} fill="#F53"  />
-      </Marker>
-    )
-
-
-  })
-// return(
-//
-//   <>
-//    <Marker
-//      coordinates={[-74.006, 40.7128]}>
-//        <circle r={4} fill="#F53" />
-//      </Marker>
-//
-//     <Marker
-//          coordinates={[-119.4179, 36.7783]}>
-//            <circle r={4} fill="#F53" />
-//      </Marker>
-//
-// </>
-//    )
-
-
-}
 
 
 
@@ -334,9 +296,7 @@ const renderFilterData=()=>{
 
                     onClick = { ()=> onClick(geo) }
                     onMouseOver = { ()=> onHover(geo)}
-// <path tabindex="0" class="rsm-geography " d="" stroke="black" stroke-width="0.3" stroke-opacity="0.2" fill="#f2f3f4" style="outline: none;"></path>
-// <path tabindex="0" class="rsm-geography " d="" stroke="black" stroke-width="0.3" stroke-opacity="0.2" style="outline: none;"></path>
-//document.getElementsByTagName('path').style.fill
+
 
 
                     style={{
@@ -351,24 +311,9 @@ const renderFilterData=()=>{
 
             }
       </Geographies>
-
-      
-{renderMarkers()}
-
-
-
+      <Markers/>
 
 </>
-    // <svg height='550px' width='100%'> <Markers/></svg>
-// {renderMarkers()}
-
-
-// <Marker
-//    coordinates={[-74.006, 40.7128]}>
-//      <circle r={4} fill="#F53" />
-//    </Marker>
-
-
 
 
   )
@@ -382,8 +327,7 @@ const mapStateToProps =(state)=>{
   // console.log(state)
   return { selection: state.option.selection,
             income_level: state.income_level.income_level,
-            population_rate : state.population_rate.population_rate,
-            covidData : state.covidData
+            population_rate : state.population_rate.population_rate
           }
 }
 
