@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getOption , getIncomeLevel , getPopulationRate } from '../actions'
+import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity } from '../actions'
 
 class Controller extends React.Component{
 
@@ -21,15 +21,38 @@ setOption(option){
 }
 
 
+
+
+showCovidData(){
+    if( this.props.covid_densityDots === 'on' ){
+      this.props.showOrHideCovidDensity('off')
+    }
+
+    else if(this.props.showOrHideCovidDensity('off')){
+          this.props.showOrHideCovidDensity('on')
+      }
+}
+
+
+
+
 resetOptions(){
     this.props.getIncomeLevel(null)
     this.props.getPopulationRate(null)
     this.props.getOption(null)
+    this.props.showOrHideCovidDensity('off')
 }
 
 render(){
+
+  console.log(this.props.covid_densityDots)
+
       return(
             <div className="ui buttons">
+              <button className="ui yellow button" onClick={ () => this.showCovidData()}>COVID</button>
+                //create a new reducer
+
+
               <button className="ui negative button" onClick={ () => this.setOption('income')}>Income</button>
               <button className="ui primary button"  onClick={ () => this.setOption('population')}> Population </button>
               <button className="ui green button"  onClick={ () => this.resetOptions()}> Reset </button>
@@ -42,9 +65,8 @@ render(){
 
 
 const mapStateToProps=(state)=>{
-  // console.log(state)
-
-  return { selection: state.option.selection }
+  return { selection: state.option.selection ,
+            covid_densityDots : state.covid_densityDots.covid_dots }
 }
 
-export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate })(Controller)
+export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity })(Controller)

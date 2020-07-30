@@ -23,6 +23,4 @@ const mapStateToProps = (state)=>{
  export default connect(mapStateToProps)(ToolTip)
 
 
-
-// 
-// style={{backgroundColor : "#C0E5F6" }
+//THIS CONTROLS AND DISPLAYS WHAT COUNTY IS BEING HOVERED OVER

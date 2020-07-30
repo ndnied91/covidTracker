@@ -25,18 +25,10 @@ import IncomeLegend from './Legends/IncomeLegend'
 
 
 class MapContainer extends React.Component{
- //  constructor(props) {
- //   super(props);
- //     this.state = { geographies : null  }
- // }
-
 
 
 async componentDidMount(){
   this.props.fetchCovidData()
-  //gets covidData from database
-  // const res = await axios.get('https://covid19-us-api.herokuapp.com/county')
-  // console.log(res)
 }
 
 
