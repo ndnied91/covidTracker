@@ -17,11 +17,11 @@ console.log(props.covidData)
 
 
 const cities = []
-// const states = ['Washington' , 'Nevada' , 'Idaho' , 'Montana' , 'Wyoming' ,  'Colorado', 'Utah', 'New Mexico' , 'Arizona' , 'Texas' , 'Oklahoma' , 'North Dakota' , 'Minnesota' , 'Wisconsin' , 'Michigan' , 'Missouri',
-//  'Arkansas', 'Louisiana' , 'Mississippi' , 'Illinois' , 'Tennessee', 'Alabama', 'Georgia' , 'Florida', 'South Carolina' , 'North Carolina' , 'Indiana' , 'Kentucky',
-// 'Virginia' , 'West Virginia', 'Maryland', 'Delaware', 'Connecticut' , 'New Jersey' , 'New York', 'Rhode Island' , 'Massachusetts', 'New Hampshire' , 'Vermont', 'Maine', 'Pennsylvania' , 'Ohio' , 'Iowa' , 'Kansas' , 'Oklahama',
-//  'Hawaii' , 'Oregon' , 'Nebraska']
-const states = ['Georgia']
+const states = ['Washington' , 'Nevada' , 'Idaho' , 'Montana' , 'Wyoming' ,  'Colorado', 'Utah', 'New Mexico' , 'Arizona' , 'Texas' , 'Oklahoma' , 'North Dakota' , 'Minnesota' , 'Wisconsin' , 'Michigan' , 'Missouri',
+ 'Arkansas', 'Louisiana' , 'Mississippi' , 'Illinois' , 'Tennessee', 'Alabama', 'Georgia' , 'Florida', 'South Carolina' , 'North Carolina' , 'Indiana' , 'Kentucky',
+'Virginia' , 'West Virginia', 'Maryland', 'Delaware', 'Connecticut' , 'New Jersey' , 'New York', 'Rhode Island' , 'Massachusetts', 'New Hampshire' , 'Vermont', 'Maine', 'Pennsylvania' , 'Ohio' , 'Iowa' , 'Kansas' , 'Oklahama',
+ 'Hawaii' , 'Oregon' , 'Nebraska', 'California']
+// const states = ['California']
 
 
 
@@ -48,8 +48,8 @@ const renderMarkers=()=> {
           coordinates= {[ location.coords.longitude , location.coords.latitude]}
           >
 
-      
-        <circle r={(location.cases/10000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />
+
+      <circle r={(location.cases/10000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />
 
       </Marker>
     )
