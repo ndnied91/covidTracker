@@ -9,9 +9,6 @@ import {
 
 import allStates from "./data/allStates.json";
 
-import {updateLocation, zoomLevel} from '../../actions'
-import {connect} from 'react-redux'
-
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const offsets = {
@@ -40,7 +37,6 @@ const StateView = (props) => {
                                 geography={geo}
                                 fill="none"
 
-                                // onClick = {()=> console.log(geographies) }
                               />
                             ))}
                             {geographies.map(geo => {
@@ -80,10 +76,6 @@ const StateView = (props) => {
 
 
 
-const mapStateToProps =(state)=>{
-  // console.log(state)
-  return { selection: state.option.selection,
-            option: state.income_level.income_level}
-}
 
-export default connect( mapStateToProps,  {updateLocation , zoomLevel})(StateView)
+
+export default StateView

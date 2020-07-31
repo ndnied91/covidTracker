@@ -23,22 +23,22 @@ props.covidData.forEach((item, i) => {
 });
 
 
-const renderMarkers=()=> {
 
-  return cities.map((location, i) => {
-    return (
-      <Marker
-          key={ i }
-          coordinates= {[ location.coords.longitude , location.coords.latitude]}
-          >
-           <circle r={(location.cases/10000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />
-      </Marker>
-    )
+const renderMarkers=()=> {
+      return cities.map((location, i) => {
+        return (
+          <Marker
+              key={ i }
+              coordinates= {[ location.coords.longitude , location.coords.latitude]}
+              >
+            { props.covidFilter === 'cases' ?   <circle r={(location.cases/10000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' /> :
+                                                <circle r={(location.confirmed_deaths/1000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />  }
+
+          </Marker>
+        )
   })
 
 }
-
-
 
     return renderMarkers()
 
@@ -46,7 +46,8 @@ const renderMarkers=()=> {
 
 
 const mapStateToProps = (state)=>{
-  return { covidData : state.covidData}
+  return { covidData : state.covidData ,
+            covidFilter : state.cases_or_deaths.selection}
 }
 
 export default connect(mapStateToProps)(Markers)

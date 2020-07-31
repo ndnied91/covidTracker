@@ -74,7 +74,6 @@ const CountyView =(props)=>{
         let county = e.properties.name
         let id = e.id
             props.selectedCounty( {county , state, id})
-            // console.log(e)
     }
 
 

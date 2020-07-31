@@ -125,6 +125,15 @@ export const showOrHideCovidDensity = (dots) =>{
 
 
 
+export const selectedFilterCovid = (option) =>{
+  return {
+    type: 'CASES_OR_DEATHS',
+    payload: option
+  }
+}
+
+
+
 
 
 

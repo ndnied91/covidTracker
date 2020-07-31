@@ -13,6 +13,7 @@ import selectedCountyReducer from './selectedCountyReducer'
 import covidDataReducer from './covidDataReducer'
 // import covidDataHistoricReducer from './covidDataHistoricReducer'
 import showOrHideCovidDensityReducer from './showOrHideCovidDensityReducer'
+import casesOrDeathsReducer from './casesOrDeathsReducer'
 
 
 export default combineReducers({
@@ -27,6 +28,7 @@ export default combineReducers({
   selected_County : selectedCountyReducer,
   covidData : covidDataReducer,
   // historicCovidData : covidDataHistoricReducer
-  covid_densityDots : showOrHideCovidDensityReducer
+  covid_densityDots : showOrHideCovidDensityReducer,
+  cases_or_deaths : casesOrDeathsReducer
 
 })

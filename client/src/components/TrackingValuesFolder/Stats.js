@@ -36,9 +36,9 @@ const getnyccovidData = (id) =>{
 
 
     const getCountyData = (id)=>{
-      // console.log(id)
               return this.props.covidData.map((county)=>{
                  if(county.fips === id ){
+                   // console.log(county)
                       return(
                           <div key={county.fips}>
                             <h3> {county.county} , {county.state} </h3>

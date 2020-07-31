@@ -44,19 +44,12 @@ resetOptions(){
 }
 
 render(){
-
-  console.log(this.props.covid_densityDots)
-
       return(
             <div className="ui buttons">
-              <button className="ui yellow button" onClick={ () => this.showCovidData()}>COVID</button>
-                //create a new reducer
-
-
+              <button className="ui yellow button" onClick={ () => this.showCovidData()}>Covid Data</button>
               <button className="ui negative button" onClick={ () => this.setOption('income')}>Income</button>
               <button className="ui primary button"  onClick={ () => this.setOption('population')}> Population </button>
               <button className="ui green button"  onClick={ () => this.resetOptions()}> Reset </button>
-
             </div>
 
       )

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {getIncomeLevel , getPopulationRate} from '../../actions'
+import {getIncomeLevel , getPopulationRate , selectedFilterCovid} from '../../actions'
 
 
 class Filter extends React.Component{
@@ -87,7 +87,6 @@ renderIncome(){
 renderPopulation(){
       if (this.props.population_rate){
        if (this.props.population_rate === '100'){
-         console.log('trst')
          return <div className="ui red button"> Less then 100k </div>
        }
        else if (this.props.population_rate === '100-200'){
@@ -109,15 +108,26 @@ renderPopulation(){
 
 
 
+renderCovidOptions(){
+  if(this.props.covid_densityDots === 'on'){
+    return(
+      <div>
+        <div className="ui yellow button" onClick={ () => this.props.selectedFilterCovid('cases') } > Cases </div>
+        <div className="ui yellow button" onClick={ () => this.props.selectedFilterCovid('deaths') } > Deaths </div>
+       </div>
+    )
+  }
+}
 
 
   render(){
-    // console.log(this.props)
+    // console.log(this.props.covidFilter)
     return(
       <div className="ui raised segment" style={{height: '300px'}} >
         {this.renderOption()}
         {this.renderIncome()}
         {this.renderPopulation()}
+        {this.renderCovidOptions()}
 
        </div>
 
@@ -130,8 +140,10 @@ const mapStateToProps = (state)=>{
   // console.log(state)
   return { option : state.option.selection ,
            income_level: state.income_level.income_level,
-           population_rate : state.population_rate.population_rate
+           population_rate : state.population_rate.population_rate,
+           covid_densityDots: state.covid_densityDots.covid_dots,
+           covidFilter : state.cases_or_deaths.selection
          }
 }
 
-export default connect(mapStateToProps, { getIncomeLevel , getPopulationRate  })(Filter)
+export default connect(mapStateToProps, { getIncomeLevel , getPopulationRate , selectedFilterCovid })(Filter)
