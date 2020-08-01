@@ -11,7 +11,7 @@ import zoomLevelReducer from './zoomLevelReducer'
 import timeUpdatedReducer from './timeUpdatedReducer'
 import selectedCountyReducer from './selectedCountyReducer'
 import covidDataReducer from './covidDataReducer'
-// import covidDataHistoricReducer from './covidDataHistoricReducer'
+import covidDataHistoricReducer from './covidDataHistoricReducer'
 import showOrHideCovidDensityReducer from './showOrHideCovidDensityReducer'
 import casesOrDeathsReducer from './casesOrDeathsReducer'
 
@@ -27,8 +27,8 @@ export default combineReducers({
   time_updated: timeUpdatedReducer,
   selected_County : selectedCountyReducer,
   covidData : covidDataReducer,
-  // historicCovidData : covidDataHistoricReducer
   covid_densityDots : showOrHideCovidDensityReducer,
-  cases_or_deaths : casesOrDeathsReducer
+  cases_or_deaths : casesOrDeathsReducer,
+  historicCovidData : covidDataHistoricReducer
 
 })

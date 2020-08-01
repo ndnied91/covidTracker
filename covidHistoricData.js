@@ -10,18 +10,19 @@ const getHistoricCovidData = async() => {
            if (error) throw error;
 
            else{
-                  // County.collection.drop(()=>{console.log('cleared database')})
+                  HistoricCounty.collection.drop(()=>{console.log('cleared database')})
                        data.forEach( eachCounty =>{
-                         if(eachCounty.date >= '2020-06-30'){
+                         if(eachCounty.date >= '2020-07-20'){
+                           //this date needs to be dynamic
                                 const historicCounty = new HistoricCounty({
                                   date: eachCounty.date, county: eachCounty.county ,
                                   state: eachCounty.state, fips : eachCounty.fips,
                                   cases : eachCounty.cases, deaths: eachCounty.deaths,
-                                  confirmed_cases: eachCounty.confirmed_cases, confirmed_deaths: eachCounty.confirmed_deaths,
-                                  probable_cases: eachCounty.probable_cases, probable_deaths: eachCounty.probable_deaths
+                                  // confirmed_cases: eachCounty.confirmed_cases, confirmed_deaths: eachCounty.confirmed_deaths,
+                                  // probable_cases: eachCounty.probable_cases, probable_deaths: eachCounty.probable_deaths
                                 })
                                   historicCounty.save(()=>{console.log(`updating datbase:  ${eachCounty.county}`)})
-                                  console.log(eachCounty)
+                                  // console.log(eachCounty)
                           } //date
                       })
                     }

@@ -22,21 +22,7 @@ const HistoricCounty = mongoose.model('counties_historic')
 var schedule = require('node-schedule');
 
 
-// const covidd = require('./covidUnion.js');
-// const covidCounties = require('./countiesWithCoords.js')
-//
-// let counties = covidCounties.getCounties()
-//
-// filteredCounties = []
-//
-// counties.forEach( (county)=>{
-//   filteredCounties.push({ county : county.county_name , state:  county.state_name, lat: county.latitude, lng: county.longitude})
-//   return filteredCounties
-// })
-//
-// filteredCounties.forEach((i)=>{
-//   console.log(i.county , i.state, i.lat , i.lng + ',')
-// })
+
 
 
 
@@ -60,7 +46,8 @@ schedule.scheduleJob('55 * * * *', function(){
 const covidData = require('./covidData.js');
 
 //HISTORIC DATA
-  // const covidData = require('./covidHistoricData.js');
+  // const historicCovidData = require('./covidHistoricData.js');
+
  //  needs to be optimized before implmeneting
  // pull in by specific county NOT ALL IN ONE SHOT
 
@@ -73,6 +60,13 @@ app.get('/api/countyData' ,async (req,res)=>{
       //will be updated to pull in county data
 })
 
+
+
+app.get('/api/historicCountyData' ,async (req,res)=>{
+  const historicCounty = await HistoricCounty.find()
+  res.send(historicCounty)
+      //will be updated to pull in HISTORICAL county data
+})
 
 
       // this makes sure express behaves correctly
