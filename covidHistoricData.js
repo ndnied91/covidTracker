@@ -12,7 +12,7 @@ const getHistoricCovidData = async() => {
            else{
                   HistoricCounty.collection.drop(()=>{console.log('cleared database')})
                        data.forEach( eachCounty =>{
-                         if(eachCounty.date >= '2020-07-20'){
+                         if(eachCounty.date >= '2020-07-22'){
                            //this date needs to be dynamic
                                 const historicCounty = new HistoricCounty({
                                   date: eachCounty.date, county: eachCounty.county ,

@@ -17,7 +17,7 @@ class App extends React.Component{
 
                 <div className="ui grid" style={{width: '100%'}}>
 
-                       <div className="left floated twelve wide column">
+                       <div className="left floated twelve wide column" style={{paddingTop: '60px'}}>
                            <div> <Menu/> </div>
 
                             <div className="ui center aligned segment" style={{height: '655px', padding: 0 , backgroundColor : "#C0E5F6" }}>

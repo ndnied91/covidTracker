@@ -46,7 +46,7 @@ schedule.scheduleJob('55 * * * *', function(){
 const covidData = require('./covidData.js');
 
 //HISTORIC DATA
-  // const historicCovidData = require('./covidHistoricData.js');
+  const historicCovidData = require('./covidHistoricData.js');
 
  //  needs to be optimized before implmeneting
  // pull in by specific county NOT ALL IN ONE SHOT

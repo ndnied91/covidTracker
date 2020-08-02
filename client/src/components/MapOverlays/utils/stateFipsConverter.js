@@ -53,7 +53,7 @@ export default function getStateInfo (code){
         }
 
         if(code >= 17001 && code <=17203){
-          return 'Illinios'
+          return 'Illinois'
         }
 
         if(code >= 18001 && code <=18183){
