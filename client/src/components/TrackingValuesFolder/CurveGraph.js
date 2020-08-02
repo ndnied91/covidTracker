@@ -189,15 +189,7 @@ return (
     return(
       <div>
         <div className="ui raised segment" style={{height: '300px'}}>
-
             <h3> Trending Graph </h3>
-
-
-
-
-
-
-
         </div>
 
 
