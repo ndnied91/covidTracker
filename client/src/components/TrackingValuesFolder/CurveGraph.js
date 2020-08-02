@@ -190,6 +190,7 @@ return (
       <div>
         <div className="ui raised segment" style={{height: '300px'}}>
             <h3> Trending Graph </h3>
+            { this.props.historiCovidData.length !==0 && this.props.selected_County ? renderContent() : 'Loading Data' }
         </div>
 
 
@@ -199,7 +200,7 @@ return (
 }
 
 // {testData()}
-// { this.props.historiCovidData.length !==0 && this.props.selected_County ? renderContent() : 'Loading Data' }
+
 
 
 const mapStateToProps= (state)=>{
