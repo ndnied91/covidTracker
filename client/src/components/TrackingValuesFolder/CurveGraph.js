@@ -194,7 +194,7 @@ return (
 
 
 
-{ this.props.historiCovidData.length !==0 && this.props.selected_County ? renderContent() : 'Loading Data' }
+
 
 
 
@@ -207,6 +207,7 @@ return (
 }
 
 // {testData()}
+// { this.props.historiCovidData.length !==0 && this.props.selected_County ? renderContent() : 'Loading Data' }
 
 
 const mapStateToProps= (state)=>{

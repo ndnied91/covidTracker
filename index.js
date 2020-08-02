@@ -62,11 +62,11 @@ app.get('/api/countyData' ,async (req,res)=>{
 
 
 
-// app.get('/api/historicCountyData' ,async (req,res)=>{
-//   const historicCounty = await HistoricCounty.find()
-//   res.send(historicCounty)
-//       //will be updated to pull in HISTORICAL county data
-// })
+app.get('/api/historicCountyData' ,async (req,res)=>{
+  const historicCounty = await HistoricCounty.find()
+  res.send(historicCounty)
+      //will be updated to pull in HISTORICAL county data
+})
 
 
       // this makes sure express behaves correctly
