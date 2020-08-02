@@ -21,7 +21,7 @@ const getHistoricCovidData = async() => {
                                   // confirmed_cases: eachCounty.confirmed_cases, confirmed_deaths: eachCounty.confirmed_deaths,
                                   // probable_cases: eachCounty.probable_cases, probable_deaths: eachCounty.probable_deaths
                                 })
-                                  historicCounty.save(()=>{console.log(`updating datbase:  ${eachCounty.county}`)})
+                                  historicCounty.save()
                                   // console.log(eachCounty)
                           } //date
                       })
