@@ -46,7 +46,9 @@ schedule.scheduleJob('55 * * * *', function(){
 const covidData = require('./covidData.js');
 
 //HISTORIC DATA
-  const historicCovidData = require('./covidHistoricData.js');
+
+
+  // const historicCovidData = require('./covidHistoricData.js');
 
  //  needs to be optimized before implmeneting
  // pull in by specific county NOT ALL IN ONE SHOT
@@ -62,11 +64,11 @@ app.get('/api/countyData' ,async (req,res)=>{
 
 
 
-// app.get('/api/historicCountyData' ,async (req,res)=>{
-//   const historicCounty = await HistoricCounty.find()
-//   res.send(historicCounty)
-//       //will be updated to pull in HISTORICAL county data
-// })
+app.get('/api/historicCountyData' ,async (req,res)=>{
+  const historicCounty = await HistoricCounty.find()
+  res.send(historicCounty)
+      //will be updated to pull in HISTORICAL county data
+})
 
 
       // this makes sure express behaves correctly
