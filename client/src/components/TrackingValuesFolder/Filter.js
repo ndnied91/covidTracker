@@ -52,9 +52,6 @@ renderOption(){
 
 
 
-
-
-
               </div>
            </div>
 
@@ -65,7 +62,7 @@ renderOption(){
         )
       }
       return(
-          <div> Please select an option to filter </div>
+          <h2> Please select an option to filter </h2>
       )
 }
 

@@ -4,10 +4,10 @@ import {combineReducers} from 'redux'
 import optionReducer from './optionReducer'
 import incomeReducer from './incomeReducer'
 import populationReducer from './populationReducer'
-import statViewReducer from './statViewReducer'
-import showAddressReducer from './showAddressReducer'
+// import statViewReducer from './statViewReducer'
+// import showAddressReducer from './showAddressReducer'
 import updateLocationReducer from './updateLocationReducer'
-import zoomLevelReducer from './zoomLevelReducer'
+// import zoomLevelReducer from './zoomLevelReducer'
 import timeUpdatedReducer from './timeUpdatedReducer'
 import selectedCountyReducer from './selectedCountyReducer'
 import covidDataReducer from './covidDataReducer'
@@ -20,10 +20,10 @@ export default combineReducers({
   option: optionReducer,
   income_level : incomeReducer,
   population_rate : populationReducer,
-  stat_view: statViewReducer,
-  show_address : showAddressReducer,
+  // stat_view: statViewReducer,
+  // show_address : showAddressReducer,
   updateLocation : updateLocationReducer,
-  zoomLevel:zoomLevelReducer,
+  // zoomLevel:zoomLevelReducer,
   time_updated: timeUpdatedReducer,
   selected_County : selectedCountyReducer,
   covidData : covidDataReducer,

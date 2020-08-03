@@ -11,20 +11,8 @@ class CurveGraph extends React.Component{
   }
 
 
-
-
-
-
   render(){
-    // this.props.historiCovidData.forEach((item, i) => {
-    //   if(item.county === "Cook" && item.state === 'Illinois'){
-    //     console.log(item)
-    //   }
-    // });
 
-
-  //props come in
-  console.log(this.props)
   let graphData =[]
 
   const newyork = [ 'Kings', 'Queens', 'Richmond', 'New York' , 'Bronx' ]
@@ -39,15 +27,10 @@ class CurveGraph extends React.Component{
                        }
                      }
 
-                    // if ( this.props.selected_County.county ==='Cook' && this.props.selected_County.state  ===  'Illinois' ){
-                    //   console.log('clcked cook county')
-                    // }
 
                      if(item.county === this.props.selected_County.county  && item.state === this.props.selected_County.state ){
-                       // console.log(item)
-                       // console.log(this.props.selected_County.county)
-                       graphData.push( {date:item.date , cases: item.cases}  )
-                       graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
+                        graphData.push( {date:item.date , cases: item.cases}  )
+                        graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
                       }
 
 
@@ -55,20 +38,11 @@ class CurveGraph extends React.Component{
             }
     }
        getDate()
-       // gets the data from the click event, sorts it
-
-    // const renderContent=()=>{
-    //   ///gets the Graph Data and maps over it
-    //   return graphData.map( (item)=>{
-    //     return <div key={item.date}> {item.date} : {item.cases} </div>
-    //   })
-    // }
 
 
 
           const renderContent=()=>{
 
-            // console.log(graphData)
             const labels = []
             const cases = []
 
@@ -76,7 +50,7 @@ class CurveGraph extends React.Component{
                 labels.push(item.date)
                 cases.push(item.cases)
               });
-              // console.log(labels)
+
 
 
             const data = {
@@ -105,7 +79,6 @@ class CurveGraph extends React.Component{
                   ]
                 };
 
-
                       return (
                            <div>
                              <Line data={data}
@@ -115,26 +88,6 @@ class CurveGraph extends React.Component{
                            </div>
                          );
           }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const testData=()=>{
 
@@ -176,13 +129,18 @@ return (
                />
      </div>
    );
-
-
-
-
 }
 
+const showStatus = () =>{
+  if(this.props.historiCovidData.length === 0 ){
+    return <div> Loading Data </div>
+  }
+    else if(this.props.historiCovidData.length>0 && this.props.selected_County === null){
+      return  <div> Please select a county </div>
+    }
+    else return renderContent()
 
+}
 
 
 
@@ -190,7 +148,7 @@ return (
       <div>
         <div className="ui raised segment" style={{height: '300px'}}>
             <h3> Trending Graph </h3>
-            { this.props.historiCovidData.length !==0 && this.props.selected_County ? renderContent() : 'Loading Data' }
+            {showStatus()}
         </div>
 
 
@@ -198,8 +156,6 @@ return (
     )
   }
 }
-
-// {testData()}
 
 
 

@@ -35,6 +35,11 @@ rule.minute = 03;
 
 console.log(`CURRENT TIME IS :  ${new Date()}`);
 
+
+
+
+
+
 //heroku is in Coordianted Universal Time
 
 schedule.scheduleJob('55 * * * *', function(){
@@ -43,20 +48,22 @@ schedule.scheduleJob('55 * * * *', function(){
         const covidData = require('./covidData.js');
 });
 
-const covidData = require('./covidData.js');
+// const covidData = require('./covidData.js');
 
 //HISTORIC DATA
 
 
     //THIS IS A PROBLEM APPERENTLY
-  // const historicCovidData = require('./covidHistoricData.js');
+// const historicCovidData = require('./covidHistoricData.js');
 
  //  needs to be optimized before implmeneting
  // pull in by specific county NOT ALL IN ONE SHOT
 
 
 
- schedule.scheduleJob('45 * * * *', function(){
+ //
+ schedule.scheduleJob('* 10 * * *', function(){
+   //updates everyday at 10am
    // schedule.scheduleJob(rule , function(){
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
          const historicCovidData = require('./covidHistoricData.js');

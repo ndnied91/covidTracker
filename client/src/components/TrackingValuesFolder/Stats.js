@@ -70,9 +70,10 @@ const getnyccovidData = (id) =>{
     return(
       <div className="ui raised segment" style={{height: '210px'}}>
 
-      <div className="ui equal width center aligned padded grid">
-            <h2 className="ui header "> Stats </h2>
-            <div className="ui right floated"> {renderContent()} </div>
+      <div >
+            <h3> Stats </h3>
+
+            <div className="ui left floated"> {renderContent()} </div>
       </div>
 
 
