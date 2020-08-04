@@ -31,7 +31,6 @@ const getHistoricCovidData = async() => {
                        data.forEach( eachCounty =>{
                          if(eachCounty.date >= filterDate ){
                            //this date needs to be dynamic
-                            console.log(eachCounty)
                                 const historicCounty = new HistoricCounty({
                                   date: eachCounty.date, county: eachCounty.county ,
                                   state: eachCounty.state, fips : eachCounty.fips,
@@ -39,12 +38,10 @@ const getHistoricCovidData = async() => {
                                   // confirmed_cases: eachCounty.confirmed_cases, confirmed_deaths: eachCounty.confirmed_deaths,
                                   // probable_cases: eachCounty.probable_cases, probable_deaths: eachCounty.probable_deaths
                                 })
-                                  historicCounty.save( ()=> console.log( 'saving: ' + eachCounty.county))
-                                  console.log(eachCounty)
-
+                                  historicCounty.save()
                           } //date
                       })
-                      console.log('updated historical database')
+                      console.log(`updated historical database at ${d.toLocaleString()}`)
                     }
                 })
 

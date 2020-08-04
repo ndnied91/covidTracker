@@ -37,6 +37,12 @@ const StateView = (props) => {
                                 geography={geo}
                                 fill="none"
 
+                                style={{
+                                  default: { outline: "none" },
+                                  hover: { fill: "none", outline: "none" },
+                                  pressed: { fill: "none", outline: "none" },
+                                }}
+
                               />
                             ))}
                             {geographies.map(geo => {
