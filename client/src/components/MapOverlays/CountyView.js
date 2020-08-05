@@ -79,7 +79,7 @@ const CountyView =(props)=>{
 
 //end of onCLick call
 
-const onHover =(e)=>{
+const onHover =(e )=>{
   props.updateLocation(`${e.properties.name} County`  )
 
 }
@@ -231,6 +231,8 @@ const renderFilterData=()=>{
 
 }
 
+  const cellStyle =  { fill: "red", stroke: "#FFF", strokeWidth: 0.5, outline: 'none' };
+
 
         return (
           <Geography
@@ -240,7 +242,25 @@ const renderFilterData=()=>{
                     strokeLinejoin= "round"
                     key={geo.rsmKey}
                     geography={geo}
+                    disableOptimization ={true}
 
+                    style={{
+                      default: { outline : "none" },
+                      pressed: {
+                            fill: "#FF5722",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.75,
+                            outline: "none",
+                          },
+                      hover: { fill: "rgba(166, 166, 166, 0.75)", outline: "none" }
+                    }}
+
+
+
+
+
+
+                    //
                     fill =  {(function() {
                        switch (props.selection) {
                          case 'income':
@@ -254,16 +274,10 @@ const renderFilterData=()=>{
                        }
                      })()}
 
+
                     onClick = { ()=> onClick(geo) }
                     onMouseOver = { ()=> onHover(geo)}
 
-
-
-                    style={{
-                      default: { outline: "none" },
-                      hover: { fill: "rgba(166, 166, 166, 0.75)", outline: "none" },
-                      pressed: { fill: "#AAA", outline: "none" },
-                    }}
                   />
 
                 );
