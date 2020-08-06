@@ -12,11 +12,11 @@ class TimeUpdated extends React.Component{
 
   render(){
       return(
-        // <div class="ui segment">
-        <div
-          style={{ fontSize: '16px' , margin: 'auto' , height: '50%' }}> {this.props.time ? `Covid Data last updated ${this.props.time}` : '' } </div>
 
-          // </div>
+        <div
+          style={{ fontSize: '18px' , margin: 'auto' , height: '50%' }}> {this.props.time ? `Covid Data last updated ${this.props.time}` : '' } </div>
+
+
       )
 
   }

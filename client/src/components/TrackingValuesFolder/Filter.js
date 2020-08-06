@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import {getIncomeLevel , getPopulationRate , selectedFilterCovid} from '../../actions'
 
+import '../../srcStyles.css'
 
 class Filter extends React.Component{
 
@@ -12,10 +13,25 @@ renderOption(){
     if(  this.props.option === 'income'){
       return(
         <div className="">
-            <h2> Please select a Income Class to filter on map </h2>
-            <button className="ui red button" onClick={ () => this.props.getIncomeLevel('high')}>Upper Class</button>
-            <button className="ui red button" onClick={ () => this.props.getIncomeLevel('medium')}>Middle Class</button>
-            <button className="ui red button" onClick={ () => this.props.getIncomeLevel('low')} >Lower Class</button>
+            <h2 style={{textAlign: 'center'}}> Select a Income Class to filter on map </h2>
+
+            <div className="padded">
+              <button className="incomeStyling ui fluid button"  onClick={ () => this.props.getIncomeLevel('high')}>Upper Class</button>
+            </div>
+
+            <div className="padded">
+              <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('medium')}>Middle Class</button>
+            </div>
+
+            <div className="padded">
+              <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('low')} >Lower Class</button>
+            </div>
+
+
+
+
+
+
          </div>
       )
     }
@@ -23,46 +39,49 @@ renderOption(){
     else if(this.props.option === 'population'){
         return(
           // <div className="ui grid centered" style={{padding: '5px'}}>
-          <div >
-            <h2> Please select range of Density </h2>
-            <div className="ui three column grid">
-             <div className="column">
-                <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('100')}>Less then 100k </button>
-              </div>
+          <div>
+            <h2 style={{paddingBottom : '15px' , textAlign: 'center'}}> Please select range of Population </h2>
 
-              <div className="column">
-            <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('100-200')}> 100k-200k </button>
-               </div>
+                 <div className="ui two column grid">
+                   <div className="row" style={{marginTop : '-10px'}}>
+                        <div className="column">
+                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('100')}>Less then 100k </button>
+                        </div>
 
-               <div className="column">
-              <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('200-300')}> 200k-300k </button>
-                </div>
-
-                <div className="column">
-                <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('300-500')}> 300k-500k </button>
-                 </div>
-
-                 <div className="column">
-                  <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('500-1m')}> 500k-1million </button>
-                  </div>
-
-                  <div className="column">
-                     <button className="ui mini blue button" onClick={ () => this.props.getPopulationRate('1m-15')}> 1million+  </button>
+                        <div className="column">
+                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('100-200')}> 100k-200k </button></div>
+                        </div>
                    </div>
 
+                   <div className="ui two column grid">
+                     <div className="row" style={{marginTop : '-20px'}}>
+                          <div className="column">
+                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('200-300')}> 200k-300k </button>
+                          </div>
+                          <div className="column">
+                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('300-500')}> 300k-500k </button>
+                          </div>
+                     </div>
+                  </div>
 
+                  <div className="ui two column grid">
+                    <div className="row" style={{marginTop : '-20px'}}>
+                         <div className="column">
+                              <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('500-1m')}> 500k-1million </button>
+                         </div>
+                         <div className="column">
+                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('1m-15')}> 1million+  </button>
+                         </div>
+                    </div>
+                 </div>
 
-              </div>
-           </div>
-
-
-
+          </div>
 
 
         )
       }
       return(
-          <h2> Please select an option to filter </h2>
+          <h2 style={{textAlign: 'center'}}> Please select an option to filter </h2>
       )
 }
 
@@ -70,13 +89,13 @@ renderOption(){
 renderIncome(){
         if (this.props.income_level ){
          if (this.props.income_level === 'high'){
-           return <div className="ui blue button"> UPPER </div>
+           return <div className="ui floating message centeredText" > Upper Class </div>
          }
          else if (this.props.income_level === 'medium'){
-           return <div className="ui yellow button"> MEDIUM </div>
+           return <div className="ui floating message centeredText"> Middle Class </div>
          }
          else
-           return <div className="ui red button"> LOW </div>
+           return <div className="ui floating message centeredText"> Lower Class </div>
       }
 }
 
@@ -84,19 +103,22 @@ renderIncome(){
 renderPopulation(){
       if (this.props.population_rate){
        if (this.props.population_rate === '100'){
-         return <div className="ui red button"> Less then 100k </div>
+         return <div className="ui floating message centeredText"> Less then 100k </div>
        }
        else if (this.props.population_rate === '100-200'){
-         return <div className="ui red button"> 10-49.9 </div>
+         return <div className="ui floating message centeredText"> 10-49.9 </div>
        }
        else if (this.props.population_rate === '200-300'){
-         return <div className="ui yellow button"> 200-300 </div>
+         return <div className="ui floating message centeredText"> 200-300 </div>
        }
-       else if (this.props.population_rate === '250plus'){
-         return <div className="ui blue button"> 250 or more </div>
+       else if (this.props.population_rate === '300-500'){
+         return <div className="ui floating message centeredText" > 300-500 </div>
        }
-       else if (this.props.population_rate === '250plus'){
-         return <div className="ui blue button"> 250 or more </div>
+       else if (this.props.population_rate === '500-1m'){
+         return <div className="ui floating message centeredText"> 500-1m </div>
+       }
+       else if (this.props.population_rate === '1m-15'){
+         return <div className="ui floating message centeredText" > 1million+ </div>
        }
        else
          return <div> </div>
@@ -108,10 +130,22 @@ renderPopulation(){
 renderCovidOptions(){
   if(this.props.covid_densityDots === 'on'){
     return(
-      <div>
-        <div className="ui yellow button" onClick={ () => this.props.selectedFilterCovid('cases') } > Cases </div>
-        <div className="ui yellow button" onClick={ () => this.props.selectedFilterCovid('deaths') } > Deaths </div>
-       </div>
+<div>
+    <h3 style={{textAlign: 'center', paddingTop : '10px'}}> Covid Filter </h3>
+       <div className="ui two column grid stackable" >
+         <div className="row" >
+              <div className="column">
+                <div className="ui fluid  button covidStyling" onClick={ () => this.props.selectedFilterCovid('cases') } > Cases </div>
+              </div>
+
+              <div className="column">
+                  <div className="ui fluid button covidStyling" onClick={ () => this.props.selectedFilterCovid('deaths') } > Deaths </div>
+              </div>
+         </div>
+         </div>
+         <p style={{ paddingTop : '1px' , paddingBottom: '5px'}} > *Filters Cases by Default </p>
+  </div>
+
     )
   }
 }
@@ -120,11 +154,15 @@ renderCovidOptions(){
   render(){
     // console.log(this.props.covidFilter)
     return(
-      <div className="ui raised segment" style={{height: '300px'}} >
+      <div className="ui raised segment" style={{height: 'auto', minHeight: '200px' , backgroundColor: 'rgba(247, 249, 251)'}} >
         {this.renderOption()}
         {this.renderIncome()}
         {this.renderPopulation()}
-        {this.renderCovidOptions()}
+
+        <div style={{paddingTop: '5px'}}>
+          {this.renderCovidOptions()}
+          </div>
+
 
        </div>
 

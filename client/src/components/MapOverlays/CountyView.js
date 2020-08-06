@@ -16,19 +16,40 @@ const fillColor = '#f2f3f4'
 
 
 
-const incomeScale = scaleQuantize()
-  .domain([0, 1])
-  .range([
-    "#ffedea",
-    "#ffcec5",
-    "#ffad9f",
-    "#ff8a75",
-    "#ff5533",
-    "#e2492d",
-    "#be3d26",
-    "#9a311f",
-    "#782618"
-  ]);
+// const incomeScale = scaleQuantize()
+//   .domain([0, 1])
+//   .range([
+//     "#ffedea",
+//     "#ffcec5",
+//     "#ffad9f",
+//     "#ff8a75",
+//     "#ff5533",
+//     "#e2492d",
+//     "#be3d26",
+//     "#9a311f",
+//     "#782618"
+//   ]);
+//
+
+
+
+
+   const incomeScale = scaleQuantize()
+    .domain([0, 1])
+    .range([
+      "#FDFEFD",
+      "#DEE8E0",
+      "#BFD3C5",
+      "#9EBFAD",
+      "#7DAB9A",
+      "#5B998C",
+      "#388783",
+      "#2F686E",
+      "#254A54",
+      "#1A2F3C"
+      ]);
+
+
 
 
 
@@ -63,26 +84,18 @@ const incomeScale = scaleQuantize()
 
 
 const CountyView =(props)=>{
-
   const [income, setIncome] = useState([]);
   const [pop, setPop] = useState([]);
-  // const [clickedCounty, setclickedCounty] = usetState([])
 
 //beginning of onClick call
-
     const onClick = (e) =>{
         let state = getStateInfo(e.id)
         let county = e.properties.name
         let id = e.id
             props.selectedCounty( {county , state, id})
 
-            // e.style ={ backgroundColor : 'blue'}
-            console.log(e)
+            // console.log(e)
 
-    }
-
-    const handleColor=(e)=>{
-      console.log(e)
     }
 
 
@@ -107,6 +120,7 @@ useEffect(() => {
 useEffect(() => {
   // https://www.bls.gov/lau/
   csv("/FULLY_VERIFIED_POP.csv").then(counties => {
+    // console.log(counties)
     setPop(counties);
   })
 } ,[]);

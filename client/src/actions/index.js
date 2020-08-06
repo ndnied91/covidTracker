@@ -1,8 +1,9 @@
 import axios from "axios"
-// import { csv } from "d3-fetch";
+import { csv } from "d3-fetch";
 // import _ from 'lodash'
 // const counties = []
 //action creater
+
 
 export const getOption = (option) =>{
   //return an action
@@ -135,8 +136,6 @@ export const selectedFilterCovid = (option) =>{
 
 
 
-
-
 export const fetchCovidData = () => async dispatch => {
   const res = await axios.get('/api/countyData')
     // console.log(res.data[0].date)
@@ -148,4 +147,13 @@ export const fetchCovidData = () => async dispatch => {
 export const fetchHistoricCovidData = () => async dispatch => {
   const res = await axios.get('/api/historicCountyData')
     dispatch({ type: 'FETCH_HISTORIC_COVID_DATA' , payload: res.data})
+}
+
+
+
+
+export const getPopulationForStats = ()=> async dispatch =>{
+  const res = await csv("/FULLY_VERIFIED_POP.csv")
+
+  dispatch({ type: 'GET_POPULATION_STATS' , payload: res})
 }

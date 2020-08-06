@@ -18,8 +18,7 @@ class CurveGraph extends React.Component{
   const newyork = [ 'Kings', 'Queens', 'Richmond', 'New York' , 'Bronx' ]
     const getDate = async ()=>{
           if(this.props.historiCovidData !== undefined && this.props.selected_County){
-                return this.props.historiCovidData.map((item, i) => {
-
+                 return this.props.historiCovidData.map((item, i) => {
                       if (newyork.includes(this.props.selected_County.county) && this.props.selected_County.state  ===  'New York' ){
                        if(item.county === 'New York City' && item.state === 'New York'){
                          graphData.push( {date:item.date , cases: item.cases}  )
@@ -59,8 +58,8 @@ class CurveGraph extends React.Component{
                     {
                       label: 'Covid Trend',
                       lineTension: 0.1,
-                      backgroundColor: 'rgba(75,192,192,0.4)',
-                      borderColor: 'rgba(75,192,192,1)',
+                      backgroundColor: 'rgba(179,72,80,0.4)',
+                      borderColor: 'rgba(179,72,80,1)',
                       borderCapStyle: 'butt',
                       borderDash: [],
                       borderDashOffset: 0.0,
@@ -69,8 +68,8 @@ class CurveGraph extends React.Component{
                       pointBackgroundColor: '#fff',
                       pointBorderWidth: 1,
                       pointHoverRadius: 5,
-                      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                      pointHoverBorderColor: 'rgba(220,220,220,1)',
+                      pointHoverBackgroundColor: '#B23850',
+                      pointHoverBorderColor: '#B23850',
                       pointHoverBorderWidth: 2,
                       pointRadius: 1,
                       pointHitRadius: 10,
@@ -89,47 +88,47 @@ class CurveGraph extends React.Component{
                          );
           }
 
-const testData=()=>{
-
-  const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'My First dataset',
-      fill: true,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 3,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      height: 300,
-      data: [65, 59, 80, 81, 56, 55, 300]
-    }
-  ]
-};
-
-
-return (
-     <div>
-       <Line  data={data}
-              width={500}
-              height={500}
-              options={{ maintainAspectRatio: false }}
-               />
-     </div>
-   );
-}
+// const testData=()=>{
+//
+//   const data = {
+//   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//   datasets: [
+//     {
+//       label: 'My First dataset',
+//       fill: true,
+//       lineTension: 0.1,
+//       backgroundColor: 'rgba(75,192,192,0.4)',
+//       borderColor: 'rgba(75,192,192,1)',
+//       borderCapStyle: 'butt',
+//       borderDash: [],
+//       borderDashOffset: 0.0,
+//       borderJoinStyle: 'miter',
+//       pointBorderColor: 'rgba(75,192,192,1)',
+//       pointBackgroundColor: '#fff',
+//       pointBorderWidth: 3,
+//       pointHoverRadius: 5,
+//       pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+//       pointHoverBorderColor: 'rgba(220,220,220,1)',
+//       pointHoverBorderWidth: 2,
+//       pointRadius: 1,
+//       pointHitRadius: 10,
+//       height: 300,
+//       data: [65, 59, 80, 81, 56, 55, 300]
+//     }
+//   ]
+// };
+//
+//
+// return (
+//      <div>
+//        <Line  data={data}
+//               width={500}
+//               height={500}
+//               options={{ maintainAspectRatio: false }}
+//                />
+//      </div>
+//    );
+// }
 
 const showStatus = () =>{
   if(this.props.historiCovidData.length === 0 ){
@@ -146,7 +145,7 @@ const showStatus = () =>{
 
     return(
       <div>
-        <div className="ui raised segment" style={{height: '300px'}}>
+        <div className="ui raised segment" style={{height: '300px', backgroundColor: 'rgba(247, 249, 251)'}}>
             <h3> Trending Graph </h3>
             {showStatus()}
         </div>

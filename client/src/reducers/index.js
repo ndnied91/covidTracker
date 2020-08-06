@@ -14,21 +14,19 @@ import covidDataReducer from './covidDataReducer'
 import covidDataHistoricReducer from './covidDataHistoricReducer'
 import showOrHideCovidDensityReducer from './showOrHideCovidDensityReducer'
 import casesOrDeathsReducer from './casesOrDeathsReducer'
+import populationStatsReducer from './populationStatsReducer'
 
 
 export default combineReducers({
   option: optionReducer,
   income_level : incomeReducer,
   population_rate : populationReducer,
-  // stat_view: statViewReducer,
-  // show_address : showAddressReducer,
   updateLocation : updateLocationReducer,
-  // zoomLevel:zoomLevelReducer,
   time_updated: timeUpdatedReducer,
   selected_County : selectedCountyReducer,
   covidData : covidDataReducer,
   covid_densityDots : showOrHideCovidDensityReducer,
   cases_or_deaths : casesOrDeathsReducer,
-  historicCovidData : covidDataHistoricReducer
-
+  historicCovidData : covidDataHistoricReducer,
+  populationStat : populationStatsReducer
 })

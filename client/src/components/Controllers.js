@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity } from '../actions'
+import '../srcStyles.css'
+
 
 class Controller extends React.Component{
 
@@ -45,11 +47,26 @@ resetOptions(){
 
 render(){
       return(
-            <div className="ui buttons">
-              <button className="ui yellow button" onClick={ () => this.showCovidData()}>Covid Data</button>
-              <button className="ui negative button" onClick={ () => this.setOption('income')}>Income</button>
-              <button className="ui primary button"  onClick={ () => this.setOption('population')}> Population </button>
-              <button className="ui green button"  onClick={ () => this.resetOptions()}> Reset </button>
+            <div className="ui grid stackable">
+
+              <div className="four wide column" >
+                <button className="covidStyling ui fluid button"  onClick={ () => this.showCovidData()}>Covid Data</button>
+               </div>
+
+               <div className="four wide column" >
+                 <button className="incomeStyling ui fluid button" onClick={ () => this.setOption('income')}>Income</button>
+                </div>
+
+                <div className="four wide column" >
+                  <button className="populationStyling ui fluid button" onClick={ () => this.setOption('population')}> Population </button>
+                 </div>
+
+
+                 <div className="four wide column" >
+                   <button className="ui negative basic fluid button"   onClick={ () => this.resetOptions()}> Reset </button>
+                  </div>
+
+
             </div>
 
       )

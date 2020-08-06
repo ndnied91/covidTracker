@@ -8,10 +8,9 @@ class IncomeLegend extends React.Component {
 
 
   componentDidMount() {
-    // time to make a legend here
-    // start by storing all color values in an array
-    let colorLegend = ["#ffedea", "#ffcec5", "#ffad9f", "#ff8a75",
-                       "#ff5533", "#e2492d", "#be3d26", "#9a311f"];
+
+let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
+                        "#7DAB9A", "#5B998C", "#388783", "#2F686E", "#1A2F3C"]
 
     // get the svg that just mounted - this is componentDidMount()
     // so this function gets fired just after render()

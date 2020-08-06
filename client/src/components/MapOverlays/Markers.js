@@ -31,7 +31,7 @@ const renderMarkers=()=> {
               key={ i }
               coordinates= {[ location.coords.longitude , location.coords.latitude]}
               >
-            { props.covidFilter === 'cases' ?   <circle r={(location.cases/10000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' /> :
+            { props.covidFilter === 'cases' ?   <circle r={(location.cases/10000)} fill="rgba(179, 72, 80, 0.47)" pointerEvents= 'none' /> :
                                                 <circle r={(location.confirmed_deaths/1000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />  }
 
           </Marker>
