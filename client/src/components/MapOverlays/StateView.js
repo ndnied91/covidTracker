@@ -36,11 +36,10 @@ const StateView = (props) => {
                                 strokeWidth="0.1"
                                 geography={geo}
                                 fill="none"
-
                                 style={{
                                   default: { outline: "none" },
                                   hover: { fill: "none", outline: "none" },
-                                  pressed: { fill: "none", outline: "none" },
+
                                 }}
 
                               />

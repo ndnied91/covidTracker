@@ -14,7 +14,6 @@ const getnyccovidData = (id) =>{
       if (newyork.includes(id)) {
            return this.props.covidData.map((county)=>{
               if(county.county === 'New York City' ){
-                console.log('here')
                   return(
                       <div key={county.fips}>
 
@@ -43,7 +42,7 @@ const getnyccovidData = (id) =>{
                    console.log(county)
                       return(
                           <div key={county.fips}>
-                        
+
                             <h3> {county.county} , {county.state} </h3>
                             <div> Current Cases {county.cases} </div>
                             <div> Current Probable Cases {county.probable_cases} </div>

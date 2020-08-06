@@ -66,6 +66,7 @@ const CountyView =(props)=>{
 
   const [income, setIncome] = useState([]);
   const [pop, setPop] = useState([]);
+  // const [clickedCounty, setclickedCounty] = usetState([])
 
 //beginning of onClick call
 
@@ -74,6 +75,14 @@ const CountyView =(props)=>{
         let county = e.properties.name
         let id = e.id
             props.selectedCounty( {county , state, id})
+
+            // e.style ={ backgroundColor : 'blue'}
+            console.log(e)
+
+    }
+
+    const handleColor=(e)=>{
+      console.log(e)
     }
 
 
@@ -242,25 +251,14 @@ const renderFilterData=()=>{
                     strokeLinejoin= "round"
                     key={geo.rsmKey}
                     geography={geo}
-                    disableOptimization ={true}
 
                     style={{
                       default: { outline : "none" },
-                      pressed: {
-                            fill: "#FF5722",
-                            stroke: "#FFFFFF",
-                            strokeWidth: 0.75,
-                            outline: "none",
-                          },
-                      hover: { fill: "rgba(166, 166, 166, 0.75)", outline: "none" }
+                      hover: { fill: "rgba(166, 166, 166, 0.75)", outline: "none" },
+                      pressed : cellStyle
                     }}
 
 
-
-
-
-
-                    //
                     fill =  {(function() {
                        switch (props.selection) {
                          case 'income':
@@ -276,6 +274,7 @@ const renderFilterData=()=>{
 
 
                     onClick = { ()=> onClick(geo) }
+                    // onClick = { (e)=> handleColor(e) }
                     onMouseOver = { ()=> onHover(geo)}
 
                   />

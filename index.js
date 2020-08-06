@@ -62,7 +62,7 @@ schedule.scheduleJob('32 * * * *', function(){
 
 
  //
- schedule.scheduleJob('30 * * * *', function(){
+ schedule.scheduleJob('5 * * * *', function(){
    //updates everyday at 10am
    // schedule.scheduleJob(rule , function(){
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
