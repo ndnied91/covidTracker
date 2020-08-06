@@ -15,10 +15,11 @@ class App extends React.Component{
       <div className="ui title " style={{margin: '20px 20px 40px 40px'}}>
               <div className="ui huge center aligned header" style={{fontSize:'50px', paddingTop: '20px'}}  > COVID-19 Tracker </div>
 
-                <div className="ui grid" style={{width: '100%'}}>
+                <div className="ui grid stackable" style={{width: '100%'}}>
 
                        <div className="left floated twelve wide column" style={{paddingTop: '60px'}}>
                            <div> <Menu/> </div>
+
 
                             <div className="ui center aligned segment" style={{height: '655px', padding: 0 , backgroundColor : "#C0E5F6" }}>
 
@@ -41,3 +42,6 @@ class App extends React.Component{
 }
 
 export default App
+
+
+// <div className="ui center aligned segment" style={{height: '655px', padding: 0 , backgroundColor : "#C0E5F6" }}>
