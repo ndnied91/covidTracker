@@ -32,3 +32,21 @@
   background-color: #687864 !important;
   color: white !important;
 }
+
+
+
+
+
+  /* @media (max-width: 1200px) {
+  .fontChange {
+    background-color: red !important
+  }
+} */
+
+
+@media only screen and (max-width: 975px) {
+  /* For mobile phones: */
+  .fontChange {
+    font-size: 12px !important;
+  }
+}

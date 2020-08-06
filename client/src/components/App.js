@@ -13,7 +13,7 @@ class App extends React.Component{
     return(
 
       <div className="ui title " style={{margin: '20px 20px 40px 40px'}}>
-              <div className="ui huge center aligned header" style={{fontSize:'50px', paddingTop: '20px'}}  > COVID-19 Tracker </div>
+              <div className="ui huge center aligned header stackable" style={{fontSize:'50px', paddingTop: '20px'}}  > COVID-19 Tracker </div>
 
                 <div className="ui grid stackable" style={{width: '100%'}}>
 

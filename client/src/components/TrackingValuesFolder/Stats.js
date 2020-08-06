@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getPopulationForStats} from '../../actions'
 
+import '../../srcStyles.css'
+
 class Stats extends React.Component{
 
   componentDidMount(){
@@ -49,7 +51,7 @@ const getnyccovidData = (id) =>{
                  if(county.fips === id ){
                    // console.log(county)
                       return(
-                        <div className="column">
+
                           <div key={county.fips}>
 
                             <h3 style={{marginBottom: '5px'}}> {county.county} , {county.state} </h3>
@@ -58,7 +60,7 @@ const getnyccovidData = (id) =>{
                             <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
                             <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
                             <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
-                       </div>
+
                        </div>
                       )
                   }
@@ -85,7 +87,7 @@ const getPopulation = (id)=>{
           if(this.props.selected){
             console.log(this.props.selected.id)
             return(
-              <div className="">
+              <div >
               <div className="renderContent">
                 {getCountyData(this.props.selected.id)}
                 {getnyccovidData(this.props.selected.id)}
@@ -104,7 +106,7 @@ const getPopulation = (id)=>{
 
 
     return(
-      <div className="ui raised segment" style={{height: '210px' , backgroundColor: 'rgba(247, 249, 251)'}}>
+      <div className="ui raised segment fontChange" style={{height: '210px' , backgroundColor: 'rgba(247, 249, 251)' , overflow: 'auto'}}>
 
               <div >
                     <h2 style={{textAlign: 'center' , marginBottom: '5px'}}> Stats </h2>
