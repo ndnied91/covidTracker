@@ -58,12 +58,12 @@ render(){
                 </div>
 
                 <div className="four wide column" >
-                  <button className="populationStyling ui fluid button" onClick={ () => this.setOption('population')}> Population </button>
+                  <button className="populationStyling ui fluid button" onClick={ () => this.setOption('population')}> Population  </button>
                  </div>
 
 
                  <div className="four wide column" >
-                   <button className="ui negative basic fluid button"   onClick={ () => this.resetOptions()}> Reset </button>
+                   <button className=" ui negative basic fluid button"  onClick={ () => this.resetOptions()}> Reset  </button>
                   </div>
 
 

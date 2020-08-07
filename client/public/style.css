@@ -7,3 +7,17 @@
 
 /* ECECEC
 F7F9FB*/
+
+
+.outline{
+ margin: 20px 20px 40px 40px !important;
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+  /* For mobile phones: */
+  .outline{
+     margin: 2px 2px 4px 4px !important;
+  }
+}

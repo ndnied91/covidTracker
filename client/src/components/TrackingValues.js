@@ -9,7 +9,7 @@ class TrackingValues extends React.Component{
 
   render(){
     return(
-      <div className="ui raised segment menuColor" >
+      <div className="ui raised segment menuColor"  >
           <Filter />
           <Stats/>
           <CurveGraph/>
