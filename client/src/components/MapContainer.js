@@ -1,7 +1,7 @@
 import React from "react";
 
 import {connect} from 'react-redux'
-import {updateLocation, fetchCovidData  } from '../actions'
+import { fetchCovidData  } from '../actions'
 
 import { ComposableMap, ZoomableGroup  } from "react-simple-maps";
 import CountyView from './MapOverlays/CountyView'
@@ -64,4 +64,4 @@ const mapStateToProps =(state)=>{
             }
 }
 
-export default connect(mapStateToProps , {updateLocation  , fetchCovidData })(MapContainer)
+export default connect(mapStateToProps , {  fetchCovidData })(MapContainer)
