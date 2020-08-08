@@ -7,7 +7,7 @@ const HistoricCounty = mongoose.model('counties_historic')
 //
 var d = new Date();
 console.log('Today is: ' + d.toLocaleString() )
-d.setDate(d.getDate() - 4);
+d.setDate(d.getDate() - 6);
 
 
 let dd = d.getDate()
