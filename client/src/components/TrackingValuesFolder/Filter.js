@@ -106,16 +106,16 @@ renderPopulation(){
          return <div className="ui floating message centeredText"> Less then 100k </div>
        }
        else if (this.props.population_rate === '100-200'){
-         return <div className="ui floating message centeredText"> 10-49.9 </div>
+         return <div className="ui floating message centeredText"> 100k-200k </div>
        }
        else if (this.props.population_rate === '200-300'){
-         return <div className="ui floating message centeredText"> 200-300 </div>
+         return <div className="ui floating message centeredText"> 200k-300k </div>
        }
        else if (this.props.population_rate === '300-500'){
-         return <div className="ui floating message centeredText" > 300-500 </div>
+         return <div className="ui floating message centeredText" > 300k-500k </div>
        }
        else if (this.props.population_rate === '500-1m'){
-         return <div className="ui floating message centeredText"> 500-1m </div>
+         return <div className="ui floating message centeredText"> 500k-1m </div>
        }
        else if (this.props.population_rate === '1m-15'){
          return <div className="ui floating message centeredText" > 1million+ </div>

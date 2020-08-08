@@ -44,7 +44,7 @@ resetOptions(){
     this.props.getOption(null)
     this.props.showOrHideCovidDensity('off')
     this.props.selectedCounty(null)
-    this.props.updateLocation(null)
+    this.props.updateLocation(undefined)
 }
 
 render(){

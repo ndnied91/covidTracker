@@ -17,7 +17,7 @@ class App extends React.Component{
 
 <div className="outline">
       <div className="ui title" >
-              <div className="ui huge center aligned header stackable" style={{fontSize:'50px', paddingTop: '20px'}}  > COVID-19 Tracker </div>
+              <div className="ui huge center aligned header stackable" style={{fontSize:'50px', paddingTop: '10px', marginBottom: 0}}  > COVID-19 Tracker </div>
 
                 <div className="ui grid stackable" style={{width: '100%' }}>
 
