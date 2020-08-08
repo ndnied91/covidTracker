@@ -51,22 +51,28 @@ const getnyccovidData = (id) =>{
                  if(county.fips === id ){
                    // console.log(county)
                       return(
-
-                          <div key={county.fips}>
-
-                            <h3 style={{marginBottom: '5px'}}> {county.county} , {county.state} </h3>
+                        <div key={county.fips} >
+                          <div className="content">
+                            <div className="header"> {county.county} , {county.state} </div>
+                            <div className="meta"> {getPopulation(id)} </div>
+                            <div className="description">
                             <div> Current Cases {county.cases} </div>
-                            <div> Current Probable Cases {county.probable_cases} </div>
-                            <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
-                            <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
-                            <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
+                              <div> Current Probable Cases {county.probable_cases} </div>
+                              <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
+                              <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
+                              <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
+                            </div>
+                          </div>
+                        </div>
 
-                       </div>
+
+
                       )
                   }
                 })
                return ''
     }
+
 
 
 
@@ -83,16 +89,12 @@ const getPopulation = (id)=>{
 
 
     const renderContent=()=>{
-
           if(this.props.selected){
-            console.log(this.props.selected.id)
+            // console.log(this.props.selected.id)
             return(
-              <div >
-              <div className="renderContent">
+              <div>
                 {getCountyData(this.props.selected.id)}
                 {getnyccovidData(this.props.selected.id)}
-                {getPopulation(this.props.selected.id)}
-              </div>
               </div>
             )
           }
@@ -108,11 +110,11 @@ const getPopulation = (id)=>{
     return(
       <div className="ui raised segment fontChange" style={{height: '210px' , backgroundColor: 'rgba(247, 249, 251)' , overflow: 'auto'}}>
 
-              <div >
-                    <h2 style={{textAlign: 'center' , marginBottom: '5px'}}> Stats </h2>
+
+                    <h2 style={{textAlign: 'center' , marginBottom: '5px'}} > Stats </h2>
                     <div className="ui left floated">  {renderContent()}
                     </div>
-              </div>
+
 
 
 
