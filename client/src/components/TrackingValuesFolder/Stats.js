@@ -26,12 +26,14 @@ const getnyccovidData = (id) =>{
               if(county.county === 'New York City' ){
                   return(
                       <div key={county.fips}>
-                        <h3> {county.county} , {county.state} </h3>
-                        <div> Current Cases {county.cases} </div>
-                        <div> Current Probable Cases {county.probable_cases} </div>
-                        <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
-                        <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
-                        <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
+                        <div className="statTitle"> {county.county} , {county.state} </div>
+                        <div className="meta"> {getPopulation(id)} </div>
+
+                        <div> Current Cases : {county.cases} </div>
+                        <div> Current Probable Cases : {county.probable_cases} </div>
+                        <div> Current Confirmed Deaths : {Number(county.confirmed_deaths) } </div>
+                        <div> Current Probable Deaths : {Number(county.probable_deaths) } </div>
+                        <div> Fatality Rate : {(county.confirmed_deaths / county.cases) }   </div>
                    </div>
                   )
               }
@@ -52,17 +54,17 @@ const getnyccovidData = (id) =>{
                    // console.log(county)
                       return(
                         <div key={county.fips} >
-                          <div className="content">
-                            <div className="header"> {county.county} , {county.state} </div>
+
+
+                            <div className="statTitle"> {county.county} , {county.state} </div>
                             <div className="meta"> {getPopulation(id)} </div>
-                            <div className="description">
-                            <div> Current Cases {county.cases} </div>
-                              <div> Current Probable Cases {county.probable_cases} </div>
-                              <div> Current Confirmed Deaths {Number(county.confirmed_deaths) } </div>
-                              <div> Current Probable Deaths {Number(county.probable_deaths) } </div>
-                              <div> Fatality Rate {(county.confirmed_deaths / county.cases) }   </div>
-                            </div>
-                          </div>
+
+                            <div> Current Cases : {county.cases} </div>
+                              <div> Current Probable Cases : {county.probable_cases} </div>
+                              <div> Current Confirmed Deaths : {Number(county.confirmed_deaths) } </div>
+                              <div> Current Probable Deaths : {Number(county.probable_deaths) } </div>
+                              <div> Fatality Rate : {(county.confirmed_deaths / county.cases) }   </div>
+
                         </div>
 
 
@@ -109,11 +111,10 @@ const getPopulation = (id)=>{
 
     return(
       <div className="ui raised segment fontChange" style={{height: '210px' , backgroundColor: 'rgba(247, 249, 251)' , overflow: 'auto'}}>
-
-
                     <h2 style={{textAlign: 'center' , marginBottom: '5px'}} > Stats </h2>
                     <div className="ui left floated">  {renderContent()}
                     </div>
+
 
 
 

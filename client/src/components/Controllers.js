@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity, selectedCounty , updateLocation } from '../actions'
+import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity, selectedCounty , updateLocation , selectedFilterCovid} from '../actions'
 import '../srcStyles.css'
 
 
@@ -45,6 +45,7 @@ resetOptions(){
     this.props.showOrHideCovidDensity('off')
     this.props.selectedCounty(null)
     this.props.updateLocation(undefined)
+    this.props.selectedFilterCovid('cases')
 }
 
 render(){
@@ -81,4 +82,4 @@ const mapStateToProps=(state)=>{
             covid_densityDots : state.covid_densityDots.covid_dots }
 }
 
-export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity, selectedCounty  , updateLocation})(Controller)
+export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity, selectedCounty  , updateLocation, selectedFilterCovid})(Controller)

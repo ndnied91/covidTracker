@@ -12,6 +12,8 @@ const app = express()
 const keys = require('./config/keys')
 require('./MongoModels/County.js')
 require('./MongoModels/HistoricCovid.js')
+require('./MongoModels/NycBoros.js')
+
 
 mongoose.connect(keys.mongoURI)
 // console.log(`THIS IS THE MONGOOSE KEY${keys.mongoURI}`)
@@ -39,14 +41,16 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 
   // const covidData = require('./covidData.js');
 
+// const nycStats = require('./nycStats.js');
 
 //heroku is in Coordianted Universal Time
 
 
-schedule.scheduleJob('36 * * * *', function(){
+schedule.scheduleJob('00 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
         console.log(`starting covid data gathering at ${new Date()}`);
         const covidData = require('./covidData.js');
+        const nycStats = require('./nycStats.js');
 });
 
 // const covidData = require('./covidData.js');
@@ -63,7 +67,7 @@ schedule.scheduleJob('36 * * * *', function(){
 
 
  //
- schedule.scheduleJob('13 * * * *', function(){
+ schedule.scheduleJob('57 * * * *', function(){
    //updates everyday at 10am
    // schedule.scheduleJob(rule , function(){
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
