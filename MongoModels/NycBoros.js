@@ -7,7 +7,7 @@ const boroSchema = new Schema({
   state : String,
   fips : String,
   cases : String,
-  deaths: String,
+  confirmed_deaths: String,
   coords : {latitude :  Number  ,longitude : Number }
 })
 

@@ -22,20 +22,41 @@ props.covidData.forEach((item, i) => {
       }
 });
 
+//NEXT STEP
+//ADD NYC DATA HERE
+cities.push(...props.nycCovidData)
+//spread operator
 
+// const renderMarkers=()=> {
+//       return cities.map((location, i) => {
+//         return (
+//           <Marker
+//               key={ i }
+//               coordinates= {[ location.coords.longitude , location.coords.latitude]}
+//               >
+//             { props.covidFilter === 'cases' ?   <circle r={(location.cases/10000)} fill="rgba(179, 72, 80, 0.47)" pointerEvents= 'none' /> :
+//                                                 <circle r={(location.confirmed_deaths/1000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />  }
+//
+//           </Marker>
+//         )
+//   })
+//
+// }
 
 const renderMarkers=()=> {
       return cities.map((location, i) => {
-        return (
-          <Marker
-              key={ i }
-              coordinates= {[ location.coords.longitude , location.coords.latitude]}
-              >
-            { props.covidFilter === 'cases' ?   <circle r={(location.cases/10000)} fill="rgba(179, 72, 80, 0.47)" pointerEvents= 'none' /> :
-                                                <circle r={(location.confirmed_deaths/1000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />  }
+        if(location.county !== 'New York City'){
+              return (
+                <Marker
+                    key={ i }
+                    coordinates= {[ location.coords.longitude , location.coords.latitude]}
+                    >
+                  { props.covidFilter === 'cases' ?   <circle r={(location.cases/10000)} fill="rgba(179, 72, 80, 0.47)" pointerEvents= 'none' /> :
+                                                      <circle r={(location.confirmed_deaths/1000)} fill="rgba(184, 0, 0, 0.47)" pointerEvents= 'none' />  }
 
-          </Marker>
-        )
+                </Marker>
+              )
+        }
   })
 
 }
@@ -46,8 +67,11 @@ const renderMarkers=()=> {
 
 
 const mapStateToProps = (state)=>{
+  // console.log(state)
   return { covidData : state.covidData ,
-            covidFilter : state.cases_or_deaths.selection}
+            covidFilter : state.cases_or_deaths.selection,
+            nycCovidData: state.nycCovidData
+          }
 }
 
 export default connect(mapStateToProps)(Markers)

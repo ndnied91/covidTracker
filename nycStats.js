@@ -62,7 +62,7 @@ const getnewyorkcitycovidData = async() => {
                                   state: 'New York',
                                   fips: getNYCFips('Bronx'),
                                   cases:  eachCounty.CASE_COUNT,
-                                  deaths: eachCounty.DEATH_COUNTY,
+                                  confirmed_deaths: eachCounty.DEATH_COUNT,
                                   coords: getNYCCoords('Bronx')
                                 })
                                   boro.save(()=>{console.log(`updating datbase: Bronx`)})
@@ -76,7 +76,7 @@ const getnewyorkcitycovidData = async() => {
                                     state: 'New York',
                                     fips: getNYCFips('Manhattan'),
                                     cases:  eachCounty.CASE_COUNT,
-                                    deaths: eachCounty.DEATH_COUNTY,
+                                    confirmed_deaths: eachCounty.DEATH_COUNT,
                                     coords: getNYCCoords('Manhattan')
                                   })
                                     boro.save(()=>{console.log(`updating datbase: Manhattan`)})
@@ -90,7 +90,7 @@ const getnewyorkcitycovidData = async() => {
                                       state: 'New York',
                                       fips: getNYCFips('Queens'),
                                       cases:  eachCounty.CASE_COUNT,
-                                      deaths: eachCounty.DEATH_COUNTY,
+                                      confirmed_deaths: eachCounty.DEATH_COUNT,
                                       coords: getNYCCoords('Queens')
                                     })
                                       boro.save(()=>{console.log(`updating datbase:  Queens`)})
@@ -104,7 +104,7 @@ const getnewyorkcitycovidData = async() => {
                                         state: 'New York',
                                         fips: getNYCFips('Brooklyn'),
                                         cases:  eachCounty.CASE_COUNT,
-                                        deaths: eachCounty.DEATH_COUNTY,
+                                        confirmed_deaths: eachCounty.DEATH_COUNT,
                                         coords: getNYCCoords('Brooklyn')
                                       })
                                         boro.save(()=>{console.log(`updating datbase:  Brooklyn`)})
@@ -118,7 +118,7 @@ const getnewyorkcitycovidData = async() => {
                                           state: 'New York',
                                           fips: getNYCFips('StatenIsland'),
                                           cases:  eachCounty.CASE_COUNT,
-                                          deaths: eachCounty.DEATH_COUNTY,
+                                          confirmed_deaths: eachCounty.DEATH_COUNT,
                                           coords: getNYCCoords('StatenIsland')
                                         })
                                           boro.save(()=>{console.log(`updating datbase: Staten Island`)})

@@ -151,9 +151,22 @@ export const fetchHistoricCovidData = () => async dispatch => {
 
 
 
+export const fetchNYCCovidData = () => async dispatch => {
+  const res = await axios.get('/api/countyData/nyc')
+    dispatch({ type: 'FETCH_NYC_DATA' , payload: res.data})
+}
+
+
+
+
+
+
+
+
+
+
 
 export const getPopulationForStats = ()=> async dispatch =>{
   const res = await csv("/FULLY_VERIFIED_POP.csv")
-
   dispatch({ type: 'GET_POPULATION_STATS' , payload: res})
 }

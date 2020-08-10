@@ -15,6 +15,7 @@ import covidDataHistoricReducer from './covidDataHistoricReducer'
 import showOrHideCovidDensityReducer from './showOrHideCovidDensityReducer'
 import casesOrDeathsReducer from './casesOrDeathsReducer'
 import populationStatsReducer from './populationStatsReducer'
+import nyccoviddataReducer from './nyccoviddataReducer'
 
 
 export default combineReducers({
@@ -28,5 +29,7 @@ export default combineReducers({
   covid_densityDots : showOrHideCovidDensityReducer,
   cases_or_deaths : casesOrDeathsReducer,
   historicCovidData : covidDataHistoricReducer,
-  populationStat : populationStatsReducer
+  populationStat : populationStatsReducer,
+  nycCovidData: nyccoviddataReducer
+
 })

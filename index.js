@@ -20,6 +20,7 @@ mongoose.connect(keys.mongoURI)
 
 const County = mongoose.model('counties')
 const HistoricCounty = mongoose.model('counties_historic')
+const Boro = mongoose.model('boros')
 
 var schedule = require('node-schedule');
 
@@ -46,7 +47,9 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 //heroku is in Coordianted Universal Time
 
 
-schedule.scheduleJob('00 * * * *', function(){
+  const nycStats = require('./nycStats.js');
+
+schedule.scheduleJob('04 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
         console.log(`starting covid data gathering at ${new Date()}`);
         const covidData = require('./covidData.js');
@@ -89,6 +92,16 @@ app.get('/api/historicCountyData' ,async (req,res)=>{
   res.send(historicCounty)
       //will be updated to pull in HISTORICAL county data
 })
+
+
+app.get('/api/countyData/nyc' ,async (req,res)=>{
+  const nycCovidData = await Boro.find()
+  console.log(nycCovidData)
+  res.send(nycCovidData)
+      //will be updated to pull in new york city county data
+})
+
+
 
 
       // this makes sure express behaves correctly
