@@ -25,7 +25,7 @@ class App extends React.Component{
                            <div> <Menu/> </div>
 
 
-                            <div className="ui center aligned segment" style={{height: '655px', padding: 0 , backgroundColor : "#C0E5F6" }}>
+                            <div className="ui center aligned segment" style={{height: '675px', padding: 0 , backgroundColor : "#C0E5F6" }}>
 
                             <MapContainer/>
 

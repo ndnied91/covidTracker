@@ -8,9 +8,14 @@ const ToolTip = (props)=>{
             if(props.county !== undefined){
                     return props.county
                 }
-                else return  <div style={{ paddingTop: '2px' , fontSize: '16px' }} > Please hover a county </div>
+                else
+                    return  <div> Please hover a county </div>
       }
-        return  <div style={{ paddingTop: '2px', fontSize: '16px',  backgroundColor : "#C0E5F6"}}> {handleLocation()} </div>
+
+
+        return  <div style={{ paddingTop: '10px', paddingBottom: '10px', fontSize: '20px',  backgroundColor : "#C0E5F6" , fontWeight: '700' }}>
+                        {handleLocation()}
+                        </div>
 
 }
 

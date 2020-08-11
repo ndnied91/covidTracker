@@ -103,9 +103,7 @@ const showStatus = () =>{
     else if(this.props.historiCovidData.length>0 && this.props.selected_County === null){
       return(
          <div className="centeredContent" >
-
                Please select a county
-        
           </div>
       )
     }

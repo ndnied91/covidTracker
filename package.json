@@ -7,8 +7,7 @@
     "start": "node index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run start\"  \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webpacker": "node --max_old_space_size=4096 node_modules/.bin/webpack-dev-server --progress --color --config config/webpack/development.js"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",

@@ -40,14 +40,13 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 
 
-  // const covidData = require('./covidData.js');
-
+// const covidData = require('./covidData.js');
 // const nycStats = require('./nycStats.js');
 
 //heroku is in Coordianted Universal Time
 
 
-  const nycStats = require('./nycStats.js');
+
 
 schedule.scheduleJob('04 * * * *', function(){
   // schedule.scheduleJob(rule , function(){

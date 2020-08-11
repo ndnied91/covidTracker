@@ -45,21 +45,21 @@ renderOption(){
                  <div className="ui two column grid">
                    <div className="row" style={{marginTop : '-10px'}}>
                         <div className="column">
-                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('100')}>Less then 100k </button>
+                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('50')}>Less then 50k </button>
                         </div>
 
                         <div className="column">
-                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('100-200')}> 100k-200k </button></div>
+                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('50-100')}> 50k-100k </button></div>
                         </div>
                    </div>
 
                    <div className="ui two column grid">
                      <div className="row" style={{marginTop : '-20px'}}>
                           <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('200-300')}> 200k-300k </button>
+                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('100-200')}> 100k-200k </button>
                           </div>
                           <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('300-500')}> 300k-500k </button>
+                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('200-500')}> 200k-500k </button>
                           </div>
                      </div>
                   </div>
@@ -102,17 +102,17 @@ renderIncome(){
 
 renderPopulation(){
       if (this.props.population_rate){
-       if (this.props.population_rate === '100'){
-         return <div className="ui floating message centeredText"> Less then 100k </div>
+       if (this.props.population_rate === '50'){
+         return <div className="ui floating message centeredText"> Less then 50k </div>
+       }
+       else if (this.props.population_rate === '50-100'){
+         return <div className="ui floating message centeredText"> 50k-100k </div>
        }
        else if (this.props.population_rate === '100-200'){
          return <div className="ui floating message centeredText"> 100k-200k </div>
        }
-       else if (this.props.population_rate === '200-300'){
-         return <div className="ui floating message centeredText"> 200k-300k </div>
-       }
-       else if (this.props.population_rate === '300-500'){
-         return <div className="ui floating message centeredText" > 300k-500k </div>
+       else if (this.props.population_rate === '200-500'){
+         return <div className="ui floating message centeredText" > 200k-500k </div>
        }
        else if (this.props.population_rate === '500-1m'){
          return <div className="ui floating message centeredText"> 500k-1m </div>

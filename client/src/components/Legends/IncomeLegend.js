@@ -36,6 +36,12 @@ let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
         .attr("y", 20)
         .text("Income")
 
+        svgLegend.append("text")
+            .attr("font-size", "9px")
+            .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
+            .attr("y", 70)
+            .text("Income Scale")
+
     // add numbers as labels
     let labelsLegend = ["0-1","1-3","3-5","5-7","7-10","10-12","12-15",">15"];
 

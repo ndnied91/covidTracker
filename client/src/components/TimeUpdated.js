@@ -14,7 +14,7 @@ class TimeUpdated extends React.Component{
       return(
 
         <div
-          style={{ fontSize: '18px' , margin: 'auto' , height: '50%' }}> {this.props.time ? `Covid Data last updated ${this.props.time}` : '' } </div>
+          style={{ fontSize: '18px' , margin: 'auto' , height: '50%' , fontWeight: '700'}}> {this.props.time ? `Covid Data last updated ${this.props.time}` : '' } </div>
 
 
       )

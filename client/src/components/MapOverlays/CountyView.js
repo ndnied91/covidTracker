@@ -54,30 +54,46 @@ const fillColor = '#f2f3f4'
 
 
   const popColorScale = scaleQuantize()
-    .domain([0, 3500000])
+    .domain([0, 3000000])
      .range([
         '#deebf7',
         '#c4dfed',
-        '#c1daf0',
-        '#b1d4e7',
+        // '#c1daf0',
+        // '#b1d4e7',
         '#9ecae1',
-        '#87bede',
+        // '#87bede',
+        // '#73b3d9',
         '#73b3d9',
-        '#73b3d9',
-        '#6baed6',
-        '#62a4d0',
+        // '#6baed6',
+        // '#62a4d0',
         '#4e99ca',
         '#4292c6',
         '#2885d7',
         '#2478c2',
-        '#2171b5',
-        '#0a66c2',
+        // '#2171b5',
+        // '#0a66c2',
         '#08519c',
         '#0c4aa6',
         '#093577',
         '#08306b',
         '#052047'
     ]);
+
+
+    // const popColorScale = scaleQuantize()
+    //   .domain([0, 1000000])
+    //    .range([
+    //      "#e7f5fe",
+    //      "#cfebfc",
+    //     "#B8E1FB",
+    //     "#8ED0F2",
+    //     "#57B2E3",
+    //     "#227BB1",
+    //     "#295089",
+    //     "#203F6C",
+    //     "#182D57",
+    //     "#162950"
+    //   ]);
 
 
 
@@ -200,7 +216,7 @@ const renderCovidMarkers = () =>{
                          //     }
 
                          if(props.population_rate === '1m-15'){
-                          cur && cur.population >= 1500000 ? fullArr.push(filter) :   fullArr.push(fillColor)
+                          cur && cur.population >= 1000000 ? fullArr.push(filter) :   fullArr.push(fillColor)
                             return fullArr
                              }
 
@@ -212,16 +228,10 @@ const renderCovidMarkers = () =>{
 
 
 
-                          if(props.population_rate === '300-500'){
-                          (cur && cur.population < 500000 && cur.population >= 300000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                          if(props.population_rate === '200-500'){
+                          (cur && cur.population < 500000 && cur.population >= 200000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
                              return fullArr
                               }
-
-
-                            if(props.population_rate === '200-300'){
-                            (cur && cur.population < 300000 && cur.population >= 200000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                               return fullArr
-                                }
 
 
                             if(props.population_rate === '100-200'){
@@ -230,8 +240,14 @@ const renderCovidMarkers = () =>{
                                 }
 
 
-                            if(props.population_rate === '100'){
-                              cur && cur.population < 100000 ? fullArr.push(filter) :   fullArr.push(fillColor)
+                            if(props.population_rate === '50-100'){
+                            (cur && cur.population < 100000 && cur.population >= 50000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                               return fullArr
+                                }
+
+
+                            if(props.population_rate === '50'){
+                              cur && cur.population < 50000 ? fullArr.push(filter) :   fullArr.push(fillColor)
                                return fullArr
                                 }
 

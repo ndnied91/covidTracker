@@ -9,8 +9,8 @@ class PopulationLegend extends React.Component {
 
   componentDidMount() {
 
-    let colorLegend = ["#deebf7","#c4dfed", "#9ecae1", "#87bede",
-                       "#6baed6", "#62a4d0", "#0a66c2", "#08519c" ];
+    let colorLegend = ["#deebf7" , "#c4dfed", "#87bede",
+                       "#6baed6", "#62a4d0", "#0a66c2", "#08519c" ,'#052047' ];
     // get the svg that just mounted - this is componentDidMount()
     // so this function gets fired just after render()
     let svgLegend = d3.select('#legend');
@@ -22,9 +22,9 @@ class PopulationLegend extends React.Component {
         .enter()
         .append("rect")
         .attr("fill", function(d, i){ return colorLegend[i]; })
-        .attr("x", function(d, i){ return (i*30); })
+        .attr("x", function(d, i){ return (i*40); })
         .attr("y", 30)
-        .attr("width", 30)
+        .attr("width", 40)
         .attr("height", 20)
         .attr('z-index', 1)
 
@@ -33,10 +33,16 @@ class PopulationLegend extends React.Component {
         .attr("font-size", "12px")
         .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
         .attr("y", 20)
-        .text("Population")
+        .text("Population Scale")
+
+        svgLegend.append("text")
+            .attr("font-size", "9px")
+            .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
+            .attr("y", 80)
+            .text("Depicts county population size")
 
     // add numbers as labels
-    let labelsLegend = ["0-1","1-3","3-5","5-7","7-10","10-12","12-15",">15"];
+    let labelsLegend = [">200","2-500","5-700","7-900","900-1","1-1.5m","1.5-2m", "3m+"];
 
     svgLegend.append("g")
         .selectAll("text")
@@ -46,7 +52,7 @@ class PopulationLegend extends React.Component {
         .attr("font-size", "10px")
         // .attr("height" , 20)
         .attr("font-family", "HelveticaNeue-Light, Helvetica, sans-serif")
-        .attr("x", function(d, i){ return (i*30); })
+        .attr("x", function(d, i){ return (i*40); })
         .attr("y", 60)
         .attr('z-index', 1)
         .text(function(d){ return d; })
@@ -54,7 +60,7 @@ class PopulationLegend extends React.Component {
 
   render() {
     return(
-          <div style={{height: '85px' ,width: '100%', padding: '0' ,marginTop: '-5px', backgroundColor: 'rgb(192, 229, 246)', }}>
+          <div style={{height: '85px' ,width: '100%', padding: '0' ,marginTop: '-5px', paddingRight: '5px', backgroundColor: 'rgb(192, 229, 246)', }}>
              <svg id='legend'style={{float: "right"}} ></svg>
            </div>
     )
