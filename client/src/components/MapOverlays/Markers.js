@@ -57,6 +57,7 @@ const renderMarkers=()=> {
                 </Marker>
               )
         }
+      else return null
   })
 
 }

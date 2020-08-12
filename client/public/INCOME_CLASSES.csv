@@ -39,7 +39,7 @@ id,name,income
 01075,"Lamar County, Alabama",40936.00
 01077,"Lauderdale County, Alabama",48707.00
 01079,"Lawrence County, Alabama",43909.00
-1081,"Lee County, Alabama",48937.00
+01081,"Lee County, Alabama",48937.00
 01083,"Limestone County, Alabama",64863.00
 01085,"Lowndes County, Alabama",33973.00
 01087,"Macon County, Alabama",32495.00
@@ -87,13 +87,13 @@ id,name,income
 02185,"North Slope Borough, Alaska",89276.00
 02188,"Northwest Arctic Borough, Alaska",59337.00
 02195,"Petersburg Borough, Alaska",66907.00
-02201,"Prince of Wales-Hyder Census Area, Alaska",54191.00
+02198,"Prince of Wales-Hyder Census Area, Alaska",54191.00
 02220,"Sitka City and Borough, Alaska",71825.00
 02232,"Skagway Municipality, Alaska",74635.00
 02240,"Southeast Fairbanks Census Area, Alaska",63527.00
 02261,"Valdez-Cordova Census Area, Alaska",68528.00
 02270,"Wade Hampton , Alaska",57583.00
-02280,"Wrangell City and Borough, Alaska",59523.00
+02275,"Wrangell City and Borough, Alaska",59523.00
 02282,"Yakutat City and Borough, Alaska",38912.00
 02290,"Yukon-Koyukuk Census Area, Alaska",33652.00
 04001,"Apache County, Arizona",49164.00
@@ -2411,12 +2411,12 @@ id,name,income
 46097,"Miner County, South Dakota",50123.00
 46099,"Minnehaha County, South Dakota",60033.00
 46101,"Moody County, South Dakota",57392.00
-46103,"Oglala Lakota County, South Dakota",56499.00
-46105,"Pennington County, South Dakota",58738.00
-46107,"Perkins County, South Dakota",55626.00
-46109,"Potter County, South Dakota",54722.00
-46111,"Roberts County, South Dakota",44709.00
-46113,"Sanborn County, South Dakota",54874.00
+46102,"Oglala Lakota County, South Dakota",56499.00
+46103,"Pennington County, South Dakota",58738.00
+46105,"Perkins County, South Dakota",55626.00
+46107,"Potter County, South Dakota",54722.00
+46109,"Roberts County, South Dakota",44709.00
+46111,"Sanborn County, South Dakota",54874.00
 46115,"Spink County, South Dakota",50590.00
 46117,"Stanley County, South Dakota",69991.00
 46119,"Sully County, South Dakota",59457.00

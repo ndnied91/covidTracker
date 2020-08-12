@@ -38,7 +38,7 @@ class PopulationLegend extends React.Component {
         svgLegend.append("text")
             .attr("font-size", "9px")
             .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
-            .attr("y", 80)
+            .attr("y", 75)
             .text("Depicts county population size")
 
     // add numbers as labels

@@ -40,6 +40,7 @@ class Stats extends React.Component{
                                       </div>
                                     )
                                   }
+                                  else return null
                                 })}
 
 
@@ -76,12 +77,10 @@ class Stats extends React.Component{
 
                         </div>
 
-
-
                       )
                   }
+                   return null
                 })
-               return ''
     }
 
 
@@ -95,6 +94,7 @@ const getPopulation = (id)=>{
     if(county.id === id){
       return <div key={county.id}> County Population:  {county.population}  </div>
     }
+    else return null
   })
 }
 

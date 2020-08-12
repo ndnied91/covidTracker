@@ -46,9 +46,9 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 //heroku is in Coordianted Universal Time
 
 
+  const nycStats = require('./nycStats.js');
 
-
-schedule.scheduleJob('04 * * * *', function(){
+schedule.scheduleJob('30 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
         console.log(`starting covid data gathering at ${new Date()}`);
         const covidData = require('./covidData.js');
@@ -69,7 +69,7 @@ schedule.scheduleJob('04 * * * *', function(){
 
 
  //
- schedule.scheduleJob('07 * * * *', function(){
+ schedule.scheduleJob('02 * * * *', function(){
    //updates everyday at 10am
    // schedule.scheduleJob(rule , function(){
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
@@ -95,7 +95,7 @@ app.get('/api/historicCountyData' ,async (req,res)=>{
 
 app.get('/api/countyData/nyc' ,async (req,res)=>{
   const nycCovidData = await Boro.find()
-  console.log(nycCovidData)
+  // console.log(nycCovidData)
   res.send(nycCovidData)
       //will be updated to pull in new york city county data
 })

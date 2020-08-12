@@ -9,8 +9,8 @@ class IncomeLegend extends React.Component {
 
   componentDidMount() {
 
-let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
-                        "#7DAB9A", "#5B998C", "#388783", "#2F686E", "#1A2F3C"]
+let colorLegend = [  "#DEE8E0", "#BFD3C5", "#9EBFAD",
+                        "#7DAB9A", "#5B998C","#388783", "#2F686E", "#1A2F3C"]
 
     // get the svg that just mounted - this is componentDidMount()
     // so this function gets fired just after render()
@@ -23,9 +23,9 @@ let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
         .enter()
         .append("rect")
         .attr("fill", function(d, i){ return colorLegend[i]; })
-        .attr("x", function(d, i){ return (i*30); })
+        .attr("x", function(d, i){ return (i*40); })
         .attr("y", 30)
-        .attr("width", 30)
+        .attr("width", 40)
         .attr("height", 20)
         .attr('z-index', 1)
 
@@ -34,16 +34,16 @@ let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
         .attr("font-size", "12px")
         .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
         .attr("y", 20)
-        .text("Income")
+        .text("Medium Income Scale")
 
         svgLegend.append("text")
             .attr("font-size", "9px")
             .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
-            .attr("y", 70)
-            .text("Income Scale")
+            .attr("y", 75)
+            .text("Depicts approximate medium income per county")
 
     // add numbers as labels
-    let labelsLegend = ["0-1","1-3","3-5","5-7","7-10","10-12","12-15",">15"];
+    let labelsLegend = ["30","40","50","60","80-100","120","130","140+"];
 
     svgLegend.append("g")
         .selectAll("text")
@@ -53,7 +53,7 @@ let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
         .attr("font-size", "10px")
         // .attr("height" , 20)
         .attr("font-family", "HelveticaNeue-Light, Helvetica, sans-serif")
-        .attr("x", function(d, i){ return (i*30); })
+        .attr("x", function(d, i){ return (i*40); })
         .attr("y", 60)
         .attr('z-index', 1)
         .text(function(d){ return d; })
@@ -61,7 +61,7 @@ let colorLegend = [ "#FDFEFD", "#DEE8E0", "#BFD3C5", "#9EBFAD",
 
   render() {
     return(
-          <div style={{height: '85px' ,width: '100%', padding: '0' ,marginTop: '-5px', backgroundColor: 'rgb(192, 229, 246)', }}>
+          <div style={{height: '85px' ,width: '100%', padding: '0' ,marginTop: '-5px', paddingRight: '5px', backgroundColor: 'rgb(192, 229, 246)', }}>
              <svg id='legend'style={{float: "right"}} ></svg>
            </div>
     )

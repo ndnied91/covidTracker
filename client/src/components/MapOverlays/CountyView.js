@@ -109,7 +109,6 @@ const CountyView =(props)=>{
         let county = e.properties.name
         let id = e.id
             props.selectedCounty( {county , state, id})
-
             // console.log(e)
 
     }
@@ -168,19 +167,36 @@ const renderCovidMarkers = () =>{
 
                     if(props.selection === 'income' && props.income_level === null) return filter
 
-                      if( props.income_level === 'high'){
+                      if( props.income_level === '100'){
                             cur && cur.income >= 100000 ? fullArr.push(filter) :   fullArr.push(fillColor)
                             //this checks if the income is above 0.7, adds to return array, if not adds the default color
                             return fullArr
                           }
 
-                        if(props.income_level === 'medium'){
-                           (cur && cur.income <99999 && cur.income >30000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+
+                          if(props.income_level === '80-100'){
+                             (cur && cur.income <100000 && cur.income >=80000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                             return fullArr
+                          }
+
+
+                        if(props.income_level === '60-80'){
+                           (cur && cur.income <80000 && cur.income >=60000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
                            return fullArr
                         }
 
-                        if(props.income_level === 'low'){
-                           cur && cur.income < 30000 ? fullArr.push(filter) :   fullArr.push(fillColor)
+                        if(props.income_level === '50-60'){
+                           (cur && cur.income <60000 && cur.income >=50000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                           return fullArr
+                        }
+
+                        if(props.income_level === '40-50'){
+                           (cur && cur.income <50000 && cur.income >=40000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                           return fullArr
+                        }
+
+                        if(props.income_level === '40'){
+                           cur && cur.income < 40000 ? fullArr.push(filter) :   fullArr.push(fillColor)
                            return fullArr
                             }
 

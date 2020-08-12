@@ -8,39 +8,77 @@ import '../../srcStyles.css'
 class Filter extends React.Component{
 
 
+//ORGINGAL SETUP
+// renderOption(){
+//     if(  this.props.option === 'income'){
+//       return(
+//         <div className="">
+//             <h2 style={{textAlign: 'center'}}> Select a Income Class to filter on map </h2>
+//
+//             <div className="padded">
+//               <button className="incomeStyling ui fluid button"  onClick={ () => this.props.getIncomeLevel('high')}>Upper Class</button>
+//             </div>
+//
+//             <div className="padded">
+//               <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('medium')}>Middle Class</button>
+//             </div>
+//
+//             <div className="padded">
+//               <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('low')} >Lower Class</button>
+//             </div>
+//          </div>
+//       )
+//     }
 
 renderOption(){
     if(  this.props.option === 'income'){
       return(
-        <div className="">
-            <h2 style={{textAlign: 'center'}}> Select a Income Class to filter on map </h2>
+        <div>
+          <h2 style={{paddingBottom : '15px', textAlign: 'center'}}> Income Filter </h2>
 
-            <div className="padded">
-              <button className="incomeStyling ui fluid button"  onClick={ () => this.props.getIncomeLevel('high')}>Upper Class</button>
+          <div className="ui two column grid">
+            <div className="row" style={{marginTop : '-10px'}}>
+                 <div className="column">
+                   <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('40')}> Below 40k </button>
+                 </div>
+
+                 <div className="column">
+                   <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('40-50')}> 40k-50k </button></div>
+                 </div>
             </div>
 
-            <div className="padded">
-              <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('medium')}>Middle Class</button>
-            </div>
+            <div className="ui two column grid">
+              <div className="row" style={{marginTop : '-20px'}}>
+                   <div className="column">
+                     <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('50-60')}>50k-60k </button>
+                   </div>
 
-            <div className="padded">
-              <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('low')} >Lower Class</button>
-            </div>
+                   <div className="column">
+                     <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('60-80')}> 60k-80k </button></div>
+                   </div>
+              </div>
 
+              <div className="ui two column grid">
+                <div className="row" style={{marginTop : '-20px'}}>
+                     <div className="column">
+                       <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('80-100')}>80-100k </button>
+                     </div>
 
-
-
-
+                     <div className="column">
+                       <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('100')}> 100k </button></div>
+                     </div>
+                </div>
 
          </div>
       )
     }
 
+
     else if(this.props.option === 'population'){
         return(
           // <div className="ui grid centered" style={{padding: '5px'}}>
           <div>
-            <h2 style={{paddingBottom : '15px' , textAlign: 'center'}}> Please select range of Population </h2>
+            <h2 style={{paddingBottom : '15px' , textAlign: 'center'}}> Population Filter </h2>
 
                  <div className="ui two column grid">
                    <div className="row" style={{marginTop : '-10px'}}>
@@ -88,15 +126,27 @@ renderOption(){
 
 renderIncome(){
         if (this.props.income_level ){
-         if (this.props.income_level === 'high'){
-           return <div className="ui floating message centeredText" > Upper Class </div>
-         }
-         else if (this.props.income_level === 'medium'){
-           return <div className="ui floating message centeredText"> Middle Class </div>
-         }
-         else
-           return <div className="ui floating message centeredText"> Lower Class </div>
-      }
+             if (this.props.income_level === '100'){
+               return <div className="ui floating message centeredText" > 100 </div>
+             }
+             if (this.props.income_level === '80-100'){
+               return <div className="ui floating message centeredText" > 80-100 </div>
+             }
+             if (this.props.income_level === '60-80'){
+               return <div className="ui floating message centeredText" > 60-80 </div>
+             }
+             if (this.props.income_level === '50-60'){
+               return <div className="ui floating message centeredText" > 50-60 </div>
+             }
+             if (this.props.income_level === '40-50'){
+               return <div className="ui floating message centeredText" > 40-50 </div>
+             }
+             else if (this.props.income_level === '40'){
+               return <div className="ui floating message centeredText"> 40 </div>
+             }
+             else
+               return null
+          }
 }
 
 

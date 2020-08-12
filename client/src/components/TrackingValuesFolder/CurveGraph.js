@@ -33,7 +33,6 @@ class CurveGraph extends React.Component{
                         graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
                       }
 
-
                 });
             }
     }
