@@ -121,9 +121,9 @@ renderOption(){
       return(
           <div style={{textAlign: 'center' }}>
 
-          <h4 style={{ paddingTop: '10%'}}>Please select Income or Population</h4>
-          <br/>
-          Covid Data can be toggled on and off and can used as an overlay on Income or Population
+              <h4 style={{ paddingTop: '10%'}}>Please select Income or Population</h4>
+              <br/>
+              Covid Data can be toggled on and off and can used as an overlay on Income or Population
            </div>
       )
 }
@@ -198,7 +198,7 @@ renderCovidOptions(){
               </div>
          </div>
          </div>
-         <p style={{ paddingTop : '1px' , paddingBottom: '5px'}} > *Filters Cases by Default </p>
+         <p style={{ paddingTop : '1px' , paddingBottom: '5px'}} > Displays Cases by Default </p>
   </div>
 
     )

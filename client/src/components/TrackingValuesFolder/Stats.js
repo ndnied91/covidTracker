@@ -109,6 +109,14 @@ const getPopulation = (id)=>{
               </div>
             )
           }
+          else{
+            return(
+              <div style={{paddingTop: '15%', textAlign:'center' , fontSize: '16px'}} >
+                    Please click on a county
+               </div>
+
+              )
+          }
     }
 
 
