@@ -119,7 +119,12 @@ renderOption(){
         )
       }
       return(
-          <h2 style={{textAlign: 'center'}}> Please select an option to filter </h2>
+          <div style={{textAlign: 'center' }}>
+
+          <h4 style={{ paddingTop: '10%'}}>Please select Income or Population</h4>
+          <br/>
+          Covid Data can be toggled on and off and can used as an overlay on Income or Population
+           </div>
       )
 }
 
