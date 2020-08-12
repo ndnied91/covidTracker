@@ -35,7 +35,7 @@ const fillColor = '#f2f3f4'
 
 
    const incomeScale = scaleQuantize()
-    .domain([0, 1])
+    .domain([0, 200000])
     .range([
       "#FDFEFD",
       "#DEE8E0",
@@ -125,7 +125,8 @@ const onHover =(e )=>{
 
 useEffect(() => {
   // https://www.bls.gov/lau/
-  csv("/income_normalized.csv").then(counties => {
+  // csv("/income_normalized.csv").then(counties => {
+  csv("/INCOME_CLASSES.csv").then(counties => {
     setIncome(counties);
   });
 }, []);
@@ -168,18 +169,18 @@ const renderCovidMarkers = () =>{
                     if(props.selection === 'income' && props.income_level === null) return filter
 
                       if( props.income_level === 'high'){
-                            cur && cur.income >= 0.7 ? fullArr.push(filter) :   fullArr.push(fillColor)
+                            cur && cur.income >= 100000 ? fullArr.push(filter) :   fullArr.push(fillColor)
                             //this checks if the income is above 0.7, adds to return array, if not adds the default color
                             return fullArr
                           }
 
                         if(props.income_level === 'medium'){
-                           (cur && cur.income < 0.7 && cur.income >= 0.4)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                           (cur && cur.income <99999 && cur.income >30000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
                            return fullArr
                         }
 
                         if(props.income_level === 'low'){
-                           cur && cur.income < 0.4 ? fullArr.push(filter) :   fullArr.push(fillColor)
+                           cur && cur.income < 30000 ? fullArr.push(filter) :   fullArr.push(fillColor)
                            return fullArr
                             }
 
