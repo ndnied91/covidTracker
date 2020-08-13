@@ -6,6 +6,10 @@ import {fetchHistoricCovidData} from '../../actions'
 import '../../srcStyles.css'
 
 class CurveGraph extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {  chart_selected: 'new',  style_new: 'ui toggle button active' , style_all: 'ui button'};
+  }
 
   componentDidMount(){
     this.props.fetchHistoricCovidData()
@@ -13,10 +17,9 @@ class CurveGraph extends React.Component{
 
 
   render(){
+    let graphData =[]
 
-  let graphData =[]
-
-  const newyork = [ 'Kings', 'Queens', 'Richmond', 'New York' , 'Bronx' ]
+    const newyork = [ 'Kings', 'Queens', 'Richmond', 'New York' , 'Bronx' ]
     const getDate = async ()=>{
           if(this.props.historiCovidData !== undefined && this.props.selected_County){
                  return this.props.historiCovidData.map((item, i) => {
@@ -44,6 +47,7 @@ class CurveGraph extends React.Component{
 
             const labels = []
             const cases = []
+            const growthGraph = [] // just for new cases
 
               graphData.forEach((item, i) => {
                 labels.push(item.date)
@@ -52,7 +56,16 @@ class CurveGraph extends React.Component{
 
 
 
-            const data = {
+              for (let i=0 ; i<cases.length; i++){
+                  growthGraph.push(cases[i] - cases[i-1])
+              }
+                growthGraph[0] = 0
+
+
+
+
+
+            const all_cases = {
                   labels: labels,
                   datasets: [
                     {
@@ -64,12 +77,12 @@ class CurveGraph extends React.Component{
                       borderDash: [],
                       borderDashOffset: 0.0,
                       borderJoinStyle: 'miter',
-                      pointBorderColor: 'rgba(75,192,192,1)',
+                      pointBorderColor: 'rgba(179,72,80,0.4)',
                       pointBackgroundColor: '#fff',
                       pointBorderWidth: 1,
-                      pointHoverRadius: 5,
-                      pointHoverBackgroundColor: '#B23850',
-                      pointHoverBorderColor: '#B23850',
+                      pointHoverRadius: 3,
+                      pointHoverBackgroundColor: 'rgba(179,72,80,0.4)',
+                      pointHoverBorderColor: 'rgba(179,72,80,1)',
                       pointHoverBorderWidth: 2,
                       pointRadius: 1,
                       pointHitRadius: 10,
@@ -78,15 +91,78 @@ class CurveGraph extends React.Component{
                   ]
                 };
 
+
+                const new_cases = {
+                      labels: labels,
+                      datasets: [
+                              {
+                                label: 'New Cases',
+                                lineTension: 0.1,
+                                backgroundColor: 'rgba(179,72,80,0.4)',
+                                borderColor: 'rgba(179,72,80,1)',
+                                borderCapStyle: 'butt',
+                                borderDash: [],
+                                borderDashOffset: 0.0,
+                                borderJoinStyle: 'miter',
+                                pointBorderColor: 'rgba(179,72,80,0.4)',
+                                pointBackgroundColor: '#fff',
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 3,
+                                pointHoverBackgroundColor: 'rgba(179,72,80,0.4)',
+                                pointHoverBorderColor: 'rgba(179,72,80,1)',
+                                pointHoverBorderWidth: 2,
+                                pointRadius: 1,
+                                pointHitRadius: 10,
+                                data: growthGraph
+                              }
+                      ]
+                    };
+
+          const legend = { display: false };
+
+
+
+
+
+const changeNew= ()=>{ this.setState({ chart_selected: 'new' , style_new: 'ui toggle button active', style_all: 'ui button'}) }
+const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui toggle button active', style_new: 'ui button'}) }
+
+
                       return (
-                           <div>
-                             <Line data={data}
-                                  height={250}
-                                  options={{ maintainAspectRatio: false }}
-                             />
-                           </div>
+                        <div >
+                                 <div>
+                                       <Line
+                                         legend={legend}
+                                          data={this.state.chart_selected === 'all' ? all_cases : new_cases}
+                                          height={200}
+                                          options={{ maintainAspectRatio: true }}
+                                       />
+
+                                 </div>
+
+                                   <div className="ui two column grid" >
+                                     <div className="row">
+                                           <div className="column">
+                                              <button className={this.state.style_new + ' ui fluid button'}  onClick={ changeNew }> New Cases </button>
+                                           </div>
+
+                                         <div className="column">
+                                           <button className={this.state.style_all + ' ui fluid button'} onClick= {changeAll} >All Cases</button>
+                                         </div>
+                                     </div>
+                                   </div>
+
+
+
+
+                        </div>
+
+
                          );
           }
+
+
+     //  This still needs to be fixed
 
 
 const showStatus = () =>{
@@ -114,10 +190,11 @@ const showStatus = () =>{
 
     return(
       <div>
-        <div className="ui raised segment" style={{height: '300px', backgroundColor: 'rgba(247, 249, 251)'}}>
+        <div className="ui raised segment" style={{height: '350px', backgroundColor: 'rgba(247, 249, 251)'}}>
             <h3 style={{textAlign: 'center'}}> Trending Graph </h3>
             {showStatus()}
         </div>
+
 
 
       </div>

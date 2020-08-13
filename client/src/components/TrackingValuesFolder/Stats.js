@@ -73,7 +73,7 @@ class Stats extends React.Component{
                               <div> Current Probable Cases : {county.probable_cases} </div>
                               <div> Current Confirmed Deaths : {Number(county.confirmed_deaths) } </div>
                               <div> Current Probable Deaths : {Number(county.probable_deaths) } </div>
-                              <div> Fatality Rate : {(county.confirmed_deaths / county.cases) }   </div>
+
 
                         </div>
 
@@ -84,7 +84,7 @@ class Stats extends React.Component{
     }
 
 
-
+  // <div> Fatality Rate : {(county.confirmed_deaths / county.cases) }   </div>
 
 
 
@@ -111,7 +111,7 @@ const getPopulation = (id)=>{
           }
           else{
             return(
-              <div style={{paddingTop: '15%', textAlign:'center' , fontSize: '16px'}} >
+              <div style={{paddingTop: '10%', textAlign:'center' , fontSize: '16px'}} >
                     Please click on a county
                </div>
 
@@ -126,7 +126,7 @@ const heightChange=()=>{
   if(this.props.selected && newyork.includes(this.props.selected.id))
       return '240px'
   else
-    return '210px'
+    return '180px'
 }
 
 

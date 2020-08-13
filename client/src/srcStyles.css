@@ -73,3 +73,19 @@
   color : 	#A8A8A8;
   font-weight: 700
 }
+
+
+
+
+
+
+
+.blackButton{
+  background-color: red;
+}
+
+
+
+.disabled{
+  background-color: blue;
+}
