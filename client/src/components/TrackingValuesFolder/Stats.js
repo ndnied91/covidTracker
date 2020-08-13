@@ -132,7 +132,7 @@ const heightChange=()=>{
 
     return(
       <div className="ui raised segment fontChange" style={{height: heightChange() , backgroundColor: 'rgba(247, 249, 251)' , overflow: 'auto'}}>
-                    <h2 style={{textAlign: 'center' , marginBottom: '5px'}} > Stats </h2>
+                    <h2 style={{textAlign: 'center' , marginBottom: '5px'}} > County Stats </h2>
                     <div className="ui left floated">  {renderContent()}
                     </div>
 
