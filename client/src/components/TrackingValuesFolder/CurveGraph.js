@@ -8,7 +8,7 @@ import '../../srcStyles.css'
 class CurveGraph extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {  chart_selected: 'new',  style_new: 'ui toggle button active' , style_all: 'ui button'};
+    this.state = {  chart_selected: 'new',  style_new: 'ui red button' , style_all: 'ui button'};
   }
 
   componentDidMount(){
@@ -124,8 +124,8 @@ class CurveGraph extends React.Component{
 
 
 
-const changeNew= ()=>{ this.setState({ chart_selected: 'new' , style_new: 'ui toggle button active', style_all: 'ui button'}) }
-const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui toggle button active', style_new: 'ui button'}) }
+const changeNew= ()=>{ this.setState({ chart_selected: 'new' , style_new: 'ui red button ', style_all: 'ui button'}) }
+const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui red button ', style_new: 'ui button'}) }
 
 
                       return (
@@ -143,11 +143,11 @@ const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui t
                                    <div className="ui two column grid" >
                                      <div className="row">
                                            <div className="column">
-                                              <button className={this.state.style_new + ' ui fluid button'}  onClick={ changeNew }> New Cases </button>
+                                              <button className={this.state.style_new + ' ui tiny fluid button'}  onClick={ changeNew }> New Cases </button>
                                            </div>
 
                                          <div className="column">
-                                           <button className={this.state.style_all + ' ui fluid button'} onClick= {changeAll} >All Cases</button>
+                                           <button className={this.state.style_all + ' ui tiny fluid button'} onClick= {changeAll} >All Cases</button>
                                          </div>
                                      </div>
                                    </div>

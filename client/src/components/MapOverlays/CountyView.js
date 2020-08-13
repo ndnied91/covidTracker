@@ -11,7 +11,8 @@ import { csv } from "d3-fetch";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 // const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/counties-albers-10m.json'
 
-const fillColor = '#f2f3f4'
+// const fillColor = '#f2f3f4'
+const fillColor = '#F5F5F5'
 
 
 

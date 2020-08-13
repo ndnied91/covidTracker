@@ -32,8 +32,8 @@ const StateView = (props) => {
                             {geographies.map(geo => (
                               <Geography
                                 key={geo.rsmKey}
-                                stroke="black"
-                                strokeWidth="0.1"
+                                stroke="grey"
+                                strokeWidth=".1"
                                 geography={geo}
                                 fill="none"
                                 style={{
