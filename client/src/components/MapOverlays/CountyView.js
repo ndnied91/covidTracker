@@ -11,26 +11,9 @@ import { csv } from "d3-fetch";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 // const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3.0.0/counties-albers-10m.json'
 
-// const fillColor = '#f2f3f4'
 const fillColor = '#F5F5F5'
 
 
-
-
-// const incomeScale = scaleQuantize()
-//   .domain([0, 1])
-//   .range([
-//     "#ffedea",
-//     "#ffcec5",
-//     "#ffad9f",
-//     "#ff8a75",
-//     "#ff5533",
-//     "#e2492d",
-//     "#be3d26",
-//     "#9a311f",
-//     "#782618"
-//   ]);
-//
 
 
 
@@ -59,44 +42,18 @@ const fillColor = '#F5F5F5'
      .range([
         '#deebf7',
         '#c4dfed',
-        // '#c1daf0',
-        // '#b1d4e7',
         '#9ecae1',
-        // '#87bede',
-        // '#73b3d9',
         '#73b3d9',
-        // '#6baed6',
-        // '#62a4d0',
         '#4e99ca',
         '#4292c6',
         '#2885d7',
         '#2478c2',
-        // '#2171b5',
-        // '#0a66c2',
         '#08519c',
         '#0c4aa6',
         '#093577',
         '#08306b',
         '#052047'
     ]);
-
-
-    // const popColorScale = scaleQuantize()
-    //   .domain([0, 1000000])
-    //    .range([
-    //      "#e7f5fe",
-    //      "#cfebfc",
-    //     "#B8E1FB",
-    //     "#8ED0F2",
-    //     "#57B2E3",
-    //     "#227BB1",
-    //     "#295089",
-    //     "#203F6C",
-    //     "#182D57",
-    //     "#162950"
-    //   ]);
-
-
 
 
 
@@ -216,22 +173,6 @@ const renderCovidMarkers = () =>{
 
                         if(props.selection === 'population' && props.population_rate === null) return filter
 
-                         // if( props.population_rate === '3m'){
-                         //       cur && cur.population >= 3000000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                         //       //this checks if the population is above 3500000, adds to return array, if not adds the default color
-                         //       return fullArr
-                         //     }
-                         //
-                         // if(props.population_rate === '2m-3'){
-                         // (cur && cur.population < 3000000 && cur.population >= 2000000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                         //    return fullArr
-                         //     }
-                         //
-                         //
-                         // if(props.population_rate === '1.5m-2'){
-                         // (cur && cur.population < 2000000 && cur.population >= 1500000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                         //    return fullArr
-                         //     }
 
                          if(props.population_rate === '1m-15'){
                           cur && cur.population >= 1000000 ? fullArr.push(filter) :   fullArr.push(fillColor)

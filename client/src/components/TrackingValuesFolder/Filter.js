@@ -12,7 +12,7 @@ renderOption(){
     if(  this.props.option === 'income'){
       return(
         <div>
-          <h2 style={{paddingBottom : '15px', textAlign: 'center'}}> Income Filter </h2>
+          <h2 style={{paddingBottom : '10px', textAlign: 'center'}}> Income Filter </h2>
 
           <div className="ui two column grid">
             <div className="row" style={{marginTop : '-10px'}}>
@@ -56,7 +56,7 @@ renderOption(){
         return(
           // <div className="ui grid centered" style={{padding: '5px'}}>
           <div>
-            <h2 style={{paddingBottom : '15px' , textAlign: 'center'}}> Population Filter </h2>
+            <h2 style={{paddingBottom : '10px' , textAlign: 'center'}}> Population Filter </h2>
 
                  <div className="ui two column grid">
                    <div className="row" style={{marginTop : '-10px'}}>
@@ -110,22 +110,22 @@ renderOption(){
 renderIncome(){
         if (this.props.income_level ){
              if (this.props.income_level === '100'){
-               return <div className="ui floating message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Income Level : </span> Greather than 100k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Income Level : </span> Greather than 100k </div>
              }
              if (this.props.income_level === '80-100'){
-               return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 80 and 100k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 80 and 100k </div>
              }
              if (this.props.income_level === '60-80'){
-               return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 60 and 80k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 60 and 80k </div>
              }
              if (this.props.income_level === '50-60'){
-               return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 50 and 60k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 50 and 60k </div>
              }
              if (this.props.income_level === '40-50'){
-               return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 40 and 50k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 40 and 50k </div>
              }
              else if (this.props.income_level === '40'){
-               return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Less than 40k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Less than 40k </div>
              }
              else
                return null
@@ -136,22 +136,22 @@ renderIncome(){
 renderPopulation(){
       if (this.props.population_rate){
        if (this.props.population_rate === '50'){
-         return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Less than 50k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Less than 50k </div>
        }
        else if (this.props.population_rate === '50-100'){
-         return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 50 and 100k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 50 and 100k </div>
        }
        else if (this.props.population_rate === '100-200'){
-         return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 100 and 200k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 100 and 200k </div>
        }
        else if (this.props.population_rate === '200-500'){
-         return <div className="ui floating message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Population Level : </span> Between 200 and 500k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Population Level : </span> Between 200 and 500k </div>
        }
        else if (this.props.population_rate === '500-1m'){
-         return <div className="ui floating message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 500k and 1m </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 500k and 1m </div>
        }
        else if (this.props.population_rate === '1m-15'){
-         return <div className="ui floating message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Population Level : </span> Greater than 1million </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Population Level : </span> Greater than 1million </div>
        }
        else
          return <div> </div>

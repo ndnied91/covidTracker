@@ -13,6 +13,7 @@ const keys = require('./config/keys')
 require('./MongoModels/County.js')
 require('./MongoModels/HistoricCovid.js')
 require('./MongoModels/NycBoros.js')
+require('./MongoModels/Country.js')
 
 
 mongoose.connect(keys.mongoURI)
@@ -21,6 +22,7 @@ mongoose.connect(keys.mongoURI)
 const County = mongoose.model('counties')
 const HistoricCounty = mongoose.model('counties_historic')
 const Boro = mongoose.model('boros')
+const America = mongoose.model('country')
 
 var schedule = require('node-schedule');
 
@@ -41,7 +43,7 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 
 // const covidData = require('./covidData.js');
-// const nycStats = require('./nycStats.js');
+const nycStats = require('./nycStats.js');
 
 //heroku is in Coordianted Universal Time
 
@@ -59,6 +61,7 @@ schedule.scheduleJob('30 * * * *', function(){
 
 //HISTORIC DATA
 
+const usData = require('./usData.js')
 
     //THIS IS A PROBLEM APPERENTLY
 // const historicCovidData = require('./covidHistoricData.js');
@@ -100,6 +103,13 @@ app.get('/api/countyData/nyc' ,async (req,res)=>{
       //will be updated to pull in new york city county data
 })
 
+
+app.get('/api/usdata' ,async (req,res)=>{
+  const usCovidData = await America.find()
+  // console.log(usCovidData)
+  res.send(usCovidData)
+      //will be updated to pull in all united states data
+})
 
 
 

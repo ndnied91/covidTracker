@@ -4,6 +4,9 @@ import MapContainer from './MapContainer'
 import Menu from './Menu'
 import TrackingValues from './TrackingValues'
 
+import TopTenCounties from './TopTen/TopTenCounties'
+import UnitedStatesCovid from './UnitedStatesCovid'
+
 
 import '../srcStyles.css'
 
@@ -34,7 +37,14 @@ class App extends React.Component{
                             <MapContainer/>
                             </div>
 
+
+
                       </div>
+
+                      <div className="ui grid stackable">
+                      <UnitedStatesCovid/>
+                        <TopTenCounties/>
+                       </div>
 
 
 
