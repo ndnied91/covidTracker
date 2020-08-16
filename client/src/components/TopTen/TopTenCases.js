@@ -5,16 +5,23 @@ class TopTenCases extends React.Component{
 
       render(){
 
-        const countiesCases = this.props.covidData
-              countiesCases.push(...this.props.nycData)
+// let countiesCases = []
+// let toptenCases= []
 
-        const toptenCases = countiesCases.sort((a,b) => ( Number(a.cases) < Number(b.cases)) ? 1 : ((Number(b.cases) < Number(a.cases)) ? -1 : 0)).slice(0, 11)
-          //takes array, filteres it and gets the last 11 elements
+
+           const countiesCases = this.props.covidData
+               countiesCases.push(...this.props.nycData)
+
+          const toptenCases = countiesCases.sort((a,b) => ( Number(a.cases) < Number(b.cases)) ? 1 : ((Number(b.cases) < Number(a.cases)) ? -1 : 0)).slice(0, 11)
+            //takes array, filteres it and gets the last 11 elements
+
+
 
 
         const topTenCases= ()=>{
           return toptenCases.map( (county, i)=>{
-              if( county.county !== 'New York City'){
+
+            if( county.county !== 'New York City'){
                 return(
                       <div key={i}>
                         <div> {i}. {county.county} , {county.state} : {county.cases} </div>
@@ -24,7 +31,10 @@ class TopTenCases extends React.Component{
           })//end of map
         }
 
-          return <div> {topTenCases()} </div>
+          return(
+            <div> {toptenCases.length >10  ?  topTenCases()   : ''}  </div>
+
+          )
       }
 }
 

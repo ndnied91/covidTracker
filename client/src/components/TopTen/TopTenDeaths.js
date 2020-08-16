@@ -29,7 +29,9 @@ class TopTenCases extends React.Component{
           })//end of map
         }
 
-          return <div> {topTenDeaths()} </div>
+          return(
+            <div> {toptenDeaths.length >10  ?  topTenDeaths()   : ''}  </div>
+        )
       }
 }
 

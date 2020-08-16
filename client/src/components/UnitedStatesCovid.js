@@ -31,7 +31,7 @@ const getData = async () =>{
 
 getData()
 
-console.log(graphData)
+// console.log(graphData)
 
 const renderContent = ()=>{
           let labels = []
@@ -40,7 +40,7 @@ const renderContent = ()=>{
 
           graphData.forEach((item, i) => {
             labels.push(item.date)
-            console.log(item.date)
+            // console.log(item.date)
             cases.push(item.cases)
             deaths.push(item.deaths)
           });
@@ -141,7 +141,7 @@ const renderContent = ()=>{
 
 
     return(
-      <div style={{paddingTop: '10px', float: 'left'}}>
+      <div style={{paddingTop: '10px', float: 'left' , width: '75%'}}>
       <h1> United States Covid Data </h1>
           {renderContent()}
       </div>

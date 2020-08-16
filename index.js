@@ -42,13 +42,11 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 
 
-// const covidData = require('./covidData.js');
-const nycStats = require('./nycStats.js');
+
+// const nycStats = require('./nycStats.js');
 
 //heroku is in Coordianted Universal Time
 
-
-  // const nycStats = require('./nycStats.js');
 
 schedule.scheduleJob('30 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
@@ -56,9 +54,6 @@ schedule.scheduleJob('30 * * * *', function(){
         const covidData = require('./covidData.js');
         const nycStats = require('./nycStats.js');
 });
-
-// const covidData = require('./covidData.js');
-
 //HISTORIC DATA
 
 const usData = require('./usData.js')
@@ -71,7 +66,6 @@ const usData = require('./usData.js')
 
 
 
- //
  schedule.scheduleJob('02 * * * *', function(){
    //updates everyday at 10am
    // schedule.scheduleJob(rule , function(){
