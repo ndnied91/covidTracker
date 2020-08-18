@@ -21,11 +21,9 @@ let graphData=[]
 
 
 const getData = async () =>{
-    await this.props.all_states.map((item, i) => {
-
+     await this.props.all_states.map((item, i) => {
         graphData.push( {date:item.date , cases: item.cases, deaths: item.deaths}  )
-        graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
-        //sort by date
+        return graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
       });
   }
 

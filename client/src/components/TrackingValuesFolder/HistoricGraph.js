@@ -2,43 +2,37 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Line} from 'react-chartjs-2'
 
-import {fetchHistoricCovidData} from '../../actions'
+import {fetchHistoricCovidData , fetchStateHistoricData} from '../../actions'
 import '../../srcStyles.css'
 
-class CurveGraph extends React.Component{
+class HistoricGraph extends React.Component{
   constructor(props) {
     super(props);
     this.state = {  chart_selected: 'new',  style_new: 'ui red button' , style_all: 'ui button'};
   }
 
   componentDidMount(){
-    this.props.fetchHistoricCovidData()
+    this.props.fetchStateHistoricData()
   }
 
 
   render(){
     let graphData =[]
 
-    const newyork = [ 'Kings', 'Queens', 'Richmond', 'New York' , 'Bronx' ]
     const getDate = async ()=>{
-          if(this.props.historiCovidData !== undefined && this.props.selected_County){
-                 return this.props.historiCovidData.map((item, i) => {
-                      if (newyork.includes(this.props.selected_County.county) && this.props.selected_County.state  ===  'New York' ){
-                       if(item.county === 'New York City' && item.state === 'New York'){
-                         graphData.push( {date:item.date , cases: item.cases}  )
-                         graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
-                       }
-                     }
+        this.props.historicalStateData.forEach((item, i) => {
+          if(item.state ===  this.props.selectedState){
+            graphData.push( {date:item.date , cases: item.cases} )
+            graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
+          }
+        });
 
-
-                     if(item.county === this.props.selected_County.county  && item.state === this.props.selected_County.state ){
-                        graphData.push( {date:item.date , cases: item.cases}  )
-                        graphData.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
-                      }
-
-                });
-            }
     }
+
+
+// console.log(graphData)
+
+
        getDate()
 
 
@@ -51,7 +45,9 @@ class CurveGraph extends React.Component{
 
               graphData.forEach((item, i) => {
                 labels.push(item.date)
+                // console.log(labels)
                 cases.push(item.cases)
+                // console.log(cases)
               });
 
 
@@ -166,7 +162,7 @@ const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui r
 
 
 const showStatus = () =>{
-  if(this.props.historiCovidData.length === 0 ){
+  if(this.props.historicalStateData.length === 0 ){
     return (
 
         <div className="ui active inverted dimmer">
@@ -175,11 +171,9 @@ const showStatus = () =>{
 
     )
   }
-    else if(this.props.historiCovidData.length>0 && this.props.selected_County === null){
+    else if(this.props.historicalStateData.length>0 && this.props.selectedState === null){
       return(
-         <div className="centeredContent" >
-               Please select a county
-          </div>
+         <div> Please select a state </div>
       )
     }
     else return renderContent()
@@ -190,13 +184,7 @@ const showStatus = () =>{
 
     return(
       <div>
-        <div className="ui raised segment" style={{height: '350px', backgroundColor: 'rgba(247, 249, 251)'}}>
-            <h3 style={{textAlign: 'center'}}> Trending Graph </h3>
-            {showStatus()}
-        </div>
-
-
-
+          {showStatus()}
       </div>
     )
   }
@@ -205,9 +193,10 @@ const showStatus = () =>{
 
 
 const mapStateToProps= (state)=>{
-  return { historiCovidData : state.historicCovidData ,
-            selected_County : state.selected_County.selected_county
+  return { historicalStateData : state.historicalStateData,
+            selectedState : state.selectedState.selected_state,
+            // viewMode: state.viewMode.selection
             }
 }
 
-export default connect( mapStateToProps ,  {fetchHistoricCovidData} )(CurveGraph)
+export default connect( mapStateToProps ,  {fetchHistoricCovidData , fetchStateHistoricData} )(HistoricGraph)

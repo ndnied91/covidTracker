@@ -5,6 +5,7 @@ import {updateLocation , selectedCounty} from '../../actions'
 import {connect} from 'react-redux'
 
 import Markers from './Markers'
+//covid dots
 
 import { scaleQuantize } from "d3-scale";
 import { csv } from "d3-fetch";
@@ -118,10 +119,15 @@ const renderCovidMarkers = () =>{
                 // console.log(geo)
                   // const cur = income.find(s => s.id === geo.id);
                   // const filter = incomeScale(cur ? cur.income : "blue")
+
             const handleIncomeData=()=>{
               let fullArr = []
               const cur = income.find(s => s.id === geo.id);
+              // console.log(geo)
+              // console.log(cur)
+
               const filter = incomeScale(cur ? cur.income : "blue")
+              // console.log(filter)
 
                     if(props.selection === 'income' && props.income_level === null) return filter
 

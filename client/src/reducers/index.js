@@ -17,7 +17,11 @@ import casesOrDeathsReducer from './casesOrDeathsReducer'
 import populationStatsReducer from './populationStatsReducer'
 import nyccoviddataReducer from './nyccoviddataReducer'
 import usDataReducer from './usDataReducer'
-
+import viewModeReducer from './viewModeReducer'
+import selectedStateReducer from './selectedStateReducer'
+import stateCovidReducer from './stateCovidReducer'
+import historicalStateDataReducer from './historicalStateDataReducer'
+import statePopulationReducer from './statePopulationReducer'
 
 export default combineReducers({
   option: optionReducer,
@@ -32,5 +36,10 @@ export default combineReducers({
   historicCovidData : covidDataHistoricReducer,
   populationStat : populationStatsReducer,
   nycCovidData: nyccoviddataReducer,
-  usCovidData : usDataReducer
+  usCovidData : usDataReducer,
+  viewMode: viewModeReducer,
+  selectedState : selectedStateReducer,
+  state_covid_data : stateCovidReducer,
+  historicalStateData: historicalStateDataReducer,
+  statePopulation : statePopulationReducer
 })

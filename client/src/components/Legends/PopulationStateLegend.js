@@ -4,14 +4,13 @@ import * as React from 'react';
 // d3 to your node_modules
 import * as d3 from 'd3';
 
-class IncomeLegend extends React.Component {
+class PopulationLegend extends React.Component {
 
 
   componentDidMount() {
 
-let colorLegend = [  "#DEE8E0", "#BFD3C5", "#9EBFAD",
-                        "#7DAB9A", "#5B998C","#388783", "#2F686E", "#1A2F3C"]
-
+    let colorLegend = ["#deebf7" , "#c4dfed", "#87bede",
+                       "#6baed6", "#62a4d0", "#0a66c2", "#08519c" ,'#052047' ];
     // get the svg that just mounted - this is componentDidMount()
     // so this function gets fired just after render()
     let svgLegend = d3.select('#legend');
@@ -34,16 +33,16 @@ let colorLegend = [  "#DEE8E0", "#BFD3C5", "#9EBFAD",
         .attr("font-size", "12px")
         .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
         .attr("y", 20)
-        .text("Medium Income Scale")
+        .text("Population Scale")
 
         svgLegend.append("text")
             .attr("font-size", "9px")
             .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
             .attr("y", 75)
-            .text("Depicts approximate medium income per county")
+            .text("Depicts state population size")
 
     // add numbers as labels
-    let labelsLegend = ["30","40","50","60","80-100","120","130","140+"];
+    let labelsLegend = [">1m","1-3m","3-5m","5-7m","7-10m","10-15m","15-30m", "30m+"];
 
     svgLegend.append("g")
         .selectAll("text")
@@ -68,4 +67,4 @@ let colorLegend = [  "#DEE8E0", "#BFD3C5", "#9EBFAD",
   }
 }
 
-export default IncomeLegend;
+export default PopulationLegend;

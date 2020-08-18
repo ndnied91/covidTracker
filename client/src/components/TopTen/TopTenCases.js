@@ -28,7 +28,9 @@ class TopTenCases extends React.Component{
                       </div>
                       )
               }
+              return null
           })//end of map
+
         }
 
           return(

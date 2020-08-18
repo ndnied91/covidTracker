@@ -116,6 +116,14 @@ export const selectedCounty = (county) =>{
 }
 
 
+export const selectedState = (state) =>{
+  return {
+    //THIS IS FOR SHOWING DATA WITIN THE STATS PANE
+    type: 'SELECTED_STATE',
+    payload: state
+  }
+}
+
 
 export const showOrHideCovidDensity = (dots) =>{
   return {
@@ -133,6 +141,14 @@ export const selectedFilterCovid = (option) =>{
   }
 }
 
+
+
+export const selectedViewMode = (option) =>{
+  return {
+    type: 'STATE_COUNTY_VIEW',
+    payload: option
+  }
+}
 
 
 
@@ -165,8 +181,33 @@ export const getPopulationForStats = ()=> async dispatch =>{
 }
 
 
+export const getStatePopulationForStats = ()=> async dispatch =>{
+  const res = await csv("/STATE_POPULATION_2018.csv")
+    dispatch({ type: 'STATE_POPULATION_RATE' , payload: res})
+  //gets population stats for "stats" state date
+}
+
+
+
 
 export const fetchUnitedStatesCovidData = () => async dispatch => {
   const res = await axios.get('/api/usdata')
     dispatch({ type: 'FETCH_US_DATA' , payload: res.data})
+}
+
+
+
+
+export const fetchStateData = () => async dispatch => {
+  const res = await axios.get('/api/stateData')
+    dispatch({ type: 'FETCH_STATE_DATA' , payload: res.data})
+    //gets state data
+}
+
+
+
+export const fetchStateHistoricData = () => async dispatch => {
+  const res = await axios.get('/api/historicStateData')
+    dispatch({ type: 'FETCH_HISTORIC_STATE_COVID_DATA' , payload: res.data})
+    //gets state data
 }

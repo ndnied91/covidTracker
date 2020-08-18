@@ -51,12 +51,11 @@ renderOption(){
       )
     }
 
-
-    else if(this.props.option === 'population'){
+    else if(this.props.option === 'population' && this.props.viewMode === 'county'){
         return(
           // <div className="ui grid centered" style={{padding: '5px'}}>
           <div>
-            <h2 style={{paddingBottom : '10px' , textAlign: 'center'}}> Population Filter </h2>
+            <h2 style={{paddingBottom : '10px' , textAlign: 'center'}}> Population County Filter </h2>
 
                  <div className="ui two column grid">
                    <div className="row" style={{marginTop : '-10px'}}>
@@ -96,6 +95,66 @@ renderOption(){
 
         )
       }
+
+
+
+
+
+      else if(this.props.option === 'population' && this.props.viewMode === 'state'){
+          return(
+            // <div className="ui grid centered" style={{padding: '5px'}}>
+            <div>
+              <h2 style={{paddingBottom : '10px' , textAlign: 'center'}}> Population State Filter </h2>
+
+                   <div className="ui two column grid">
+                     <div className="row" style={{marginTop : '-10px'}}>
+                          <div className="column">
+                            <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('less1m')}>Less then 1m </button>
+                          </div>
+
+                          <div className="column">
+                            <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('1-3m')}> 1-3million </button></div>
+                          </div>
+                     </div>
+
+                     <div className="ui two column grid">
+                       <div className="row" style={{marginTop : '-20px'}}>
+                            <div className="column">
+                                  <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('3-5m')}> 3-5 million </button>
+                            </div>
+                            <div className="column">
+                                  <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('5-7m')}> 5-7million </button>
+                            </div>
+                       </div>
+                    </div>
+
+                    <div className="ui two column grid">
+                      <div className="row" style={{marginTop : '-20px'}}>
+                           <div className="column">
+                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('7-10m')}> 7-10 million </button>
+                           </div>
+                           <div className="column">
+                                  <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('10m+')}> 10m+  </button>
+                           </div>
+                      </div>
+                   </div>
+
+            </div>
+
+
+          )
+        }
+
+
+
+
+
+
+
+
+
+
+
       return(
           <div style={{textAlign: 'center' }}>
 
@@ -110,22 +169,22 @@ renderOption(){
 renderIncome(){
         if (this.props.income_level ){
              if (this.props.income_level === '100'){
-               return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Income Level : </span> Greather than 100k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Income Level : </span> Greather than 100k </div>
              }
              if (this.props.income_level === '80-100'){
-               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 80 and 100k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Income Level : </span> Between 80 and 100k </div>
              }
              if (this.props.income_level === '60-80'){
-               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 60 and 80k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Income Level : </span> Between 60 and 80k </div>
              }
              if (this.props.income_level === '50-60'){
-               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 50 and 60k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Income Level : </span> Between 50 and 60k </div>
              }
              if (this.props.income_level === '40-50'){
-               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Between 40 and 50k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Income Level : </span> Between 40 and 50k </div>
              }
              else if (this.props.income_level === '40'){
-               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Income Level : </span> Less than 40k </div>
+               return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Income Level : </span> Less than 40k </div>
              }
              else
                return null
@@ -136,23 +195,50 @@ renderIncome(){
 renderPopulation(){
       if (this.props.population_rate){
        if (this.props.population_rate === '50'){
-         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Less than 50k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Population Level : </span> Less than 50k </div>
        }
        else if (this.props.population_rate === '50-100'){
-         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 50 and 100k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Population Level : </span> Between 50 and 100k </div>
        }
        else if (this.props.population_rate === '100-200'){
-         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 100 and 200k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Population Level : </span> Between 100 and 200k </div>
        }
        else if (this.props.population_rate === '200-500'){
-         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Population Level : </span> Between 200 and 500k </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Between 200 and 500k </div>
        }
        else if (this.props.population_rate === '500-1m'){
-         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> County Population Level : </span> Between 500k and 1m </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}}> <span style={{fontWeight: '700'}}> Population Level : </span> Between 500k and 1m </div>
        }
        else if (this.props.population_rate === '1m-15'){
-         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> County Population Level : </span> Greater than 1million </div>
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Greater than 1million </div>
        }
+
+//state data
+
+       else if (this.props.population_rate === 'less1m'){
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Less than 1 million </div>
+       }
+
+       else if (this.props.population_rate === '1-3m'){
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Between 1m and 3m </div>
+       }
+
+       else if (this.props.population_rate === '3-5m'){
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Between 3m and 5m </div>
+       }
+
+       else if (this.props.population_rate === '5-7m'){
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Between 5m and 7m </div>
+       }
+
+       else if (this.props.population_rate === '7-10m'){
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Between 7m and 10m </div>
+       }
+
+       else if (this.props.population_rate === '10m+'){
+         return <div className="ui message centeredText" style={{fontSize: '12px'}} > <span style={{fontWeight: '700'}}> Population Level : </span> Greater than 10 million </div>
+       }
+
        else
          return <div> </div>
     }
@@ -210,7 +296,8 @@ const mapStateToProps = (state)=>{
            income_level: state.income_level.income_level,
            population_rate : state.population_rate.population_rate,
            covid_densityDots: state.covid_densityDots.covid_dots,
-           covidFilter : state.cases_or_deaths.selection
+           covidFilter : state.cases_or_deaths.selection,
+           viewMode: state.viewMode.selection
          }
 }
 

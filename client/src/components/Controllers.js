@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity, selectedCounty , updateLocation , selectedFilterCovid} from '../actions'
+import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity, selectedCounty , updateLocation , selectedFilterCovid , selectedViewMode , selectedState} from '../actions'
 import '../srcStyles.css'
 
 
@@ -44,8 +44,16 @@ resetOptions(){
     this.props.getOption(null)
     this.props.showOrHideCovidDensity('off')
     this.props.selectedCounty(null)
+    this.props.selectedState(null)
     this.props.updateLocation(undefined)
     this.props.selectedFilterCovid('cases')
+
+}
+
+selectViewMode(option){
+  this.resetOptions()
+  this.props.selectedViewMode(option)
+
 }
 
 render(){
@@ -69,6 +77,14 @@ render(){
                    <button className=" ui negative basic fluid button"  onClick={ () => this.resetOptions()}> Reset  </button>
                   </div>
 
+                  <div className="eight wide column" >
+                    <button className=" ui basic fluid button"  onClick={ () => this.selectViewMode('county')}>County</button>
+                   </div>
+
+                   <div className="eight wide column" >
+                     <button className=" ui basic fluid button"  onClick={ () => this.selectViewMode('state')}> State</button>
+                    </div>
+
 
             </div>
 
@@ -82,4 +98,4 @@ const mapStateToProps=(state)=>{
             covid_densityDots : state.covid_densityDots.covid_dots }
 }
 
-export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity, selectedCounty  , updateLocation, selectedFilterCovid})(Controller)
+export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity, selectedCounty  , updateLocation, selectedFilterCovid , selectedViewMode , selectedState})(Controller)

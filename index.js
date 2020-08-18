@@ -8,12 +8,16 @@ const path = require('path');
 const app = express()
       app.use(bodyParser.json())
 
+var schedule = require('node-schedule');
+
 
 const keys = require('./config/keys')
 require('./MongoModels/County.js')
 require('./MongoModels/HistoricCovid.js')
 require('./MongoModels/NycBoros.js')
 require('./MongoModels/Country.js')
+require('./MongoModels/State.js')
+require('./MongoModels/HistoricalStateCovid.js')
 
 
 mongoose.connect(keys.mongoURI)
@@ -23,9 +27,8 @@ const County = mongoose.model('counties')
 const HistoricCounty = mongoose.model('counties_historic')
 const Boro = mongoose.model('boros')
 const America = mongoose.model('country')
-
-var schedule = require('node-schedule');
-
+const State = mongoose.model('states')
+const HistoricState = mongoose.model('states_historic')
 
 
 
@@ -43,7 +46,9 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 
 
-// const nycStats = require('./nycStats.js');
+
+
+
 
 //heroku is in Coordianted Universal Time
 
@@ -51,26 +56,21 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 schedule.scheduleJob('30 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
         console.log(`starting covid data gathering at ${new Date()}`);
-        const covidData = require('./covidData.js');
-        const nycStats = require('./nycStats.js');
+        const covidData = require('./ServerSide_Covid_Data/covidData.js');
+        const nycStats = require('./ServerSide_Covid_Data/nycStats.js');
+        const jhuData = require('./ServerSide_Covid_Data/jhu_stateData.js')
+        const usData = require('./ServerSide_Covid_Data/usData.js')
+
 });
 //HISTORIC DATA
 
-const usData = require('./usData.js')
 
-    //THIS IS A PROBLEM APPERENTLY
-// const historicCovidData = require('./covidHistoricData.js');
-
- //  needs to be optimized before implmeneting
- // pull in by specific county NOT ALL IN ONE SHOT
-
-
-
- schedule.scheduleJob('02 * * * *', function(){
+schedule.scheduleJob('02 * * * *', function(){
    //updates everyday at 10am
    // schedule.scheduleJob(rule , function(){
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
-         const historicCovidData = require('./covidHistoricData.js');
+         const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
+         const historic_stateData = require('./ServerSide_Covid_Data/historicStateCovid.js')
  });
 
 
@@ -103,6 +103,20 @@ app.get('/api/usdata' ,async (req,res)=>{
   // console.log(usCovidData)
   res.send(usCovidData)
       //will be updated to pull in all united states data
+})
+
+
+app.get('/api/stateData' ,async (req,res)=>{
+  const stateData = await State.find()
+  // console.log(usCovidData)
+    res.send(stateData)
+      //will be updated to pull in state data
+})
+
+app.get('/api/historicStateData' ,async (req,res)=>{
+  const historical_stateData = await HistoricState.find()
+    res.send(historical_stateData)
+      //will be updated to pull in historical state data
 })
 
 

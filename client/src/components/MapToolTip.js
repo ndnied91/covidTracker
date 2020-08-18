@@ -9,7 +9,11 @@ const ToolTip = (props)=>{
                     return props.county
                 }
                 else
-                    return  <div> Please hover a county </div>
+                    return(
+                      <div>
+                        {props.viewMode === 'county' ? '  Please hover a county' : '  Please hover a state'}
+                      </div>
+                    )
       }
 
 
@@ -22,7 +26,8 @@ const ToolTip = (props)=>{
 
 
 const mapStateToProps = (state)=>{
-  return { county: state.updateLocation.county}
+  return { county: state.updateLocation.county ,
+            viewMode: state.viewMode.selection}
 }
 
  export default connect(mapStateToProps)(ToolTip)
