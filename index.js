@@ -8,9 +8,6 @@ const path = require('path');
 const app = express()
       app.use(bodyParser.json())
 
-var schedule = require('node-schedule');
-
-
 const keys = require('./config/keys')
 require('./MongoModels/County.js')
 require('./MongoModels/HistoricCovid.js')
@@ -18,7 +15,6 @@ require('./MongoModels/NycBoros.js')
 require('./MongoModels/Country.js')
 require('./MongoModels/State.js')
 require('./MongoModels/HistoricalStateCovid.js')
-
 
 mongoose.connect(keys.mongoURI)
 // console.log(`THIS IS THE MONGOOSE KEY${keys.mongoURI}`)
@@ -31,47 +27,13 @@ const State = mongoose.model('states')
 const HistoricState = mongoose.model('states_historic')
 
 
-
-
-
-var rule = new schedule.RecurrenceRule();
-// rule.hour = 15; //THIS IS IN EST TIME (USE EST TIME)
-// rule.minute = 57;
-
-rule.hour = 20;
-rule.minute = 03;
-
-console.log(`CURRENT TIME IS :  ${new Date()}`);
+require('./scheduledProcesses.js')
+//all of scheduled processes
 
 
 
 
 
-
-
-
-//heroku is in Coordianted Universal Time
-
-
-schedule.scheduleJob('30 * * * *', function(){
-  // schedule.scheduleJob(rule , function(){
-        console.log(`starting covid data gathering at ${new Date()}`);
-        const covidData = require('./ServerSide_Covid_Data/covidData.js');
-        const nycStats = require('./ServerSide_Covid_Data/nycStats.js');
-        const jhuData = require('./ServerSide_Covid_Data/jhu_stateData.js')
-        const usData = require('./ServerSide_Covid_Data/usData.js')
-
-});
-//HISTORIC DATA
-
-
-schedule.scheduleJob('02 * * * *', function(){
-   //updates everyday at 10am
-   // schedule.scheduleJob(rule , function(){
-         console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
-         const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
-         const historic_stateData = require('./ServerSide_Covid_Data/historicStateCovid.js')
- });
 
 
 //will make a call to database to retreive covid data
@@ -121,6 +83,8 @@ app.get('/api/historicStateData' ,async (req,res)=>{
 
 
 
+
+
       // this makes sure express behaves correctly
       if (process.env.NODE_ENV === 'production') {
         // Express will serve up production assets
@@ -144,16 +108,6 @@ app.get('/api/historicStateData' ,async (req,res)=>{
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT , ()=> console.log('running'))
-
-
-
-
-
-
-
-
-
-
 
 
 

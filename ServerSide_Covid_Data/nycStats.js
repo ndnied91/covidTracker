@@ -49,10 +49,11 @@ const getNYCCoords=(county)=>{
 
 
 const getnewyorkcitycovidData = async() => {
-       d3.csv(url,  function(error, data) {
+       d3.csv(url, async function(error, data) {
            if (error) throw error;
            else {
-              Boro.collection.drop(()=>{console.log('cleared database')})
+              await Boro.collection.drop(()=>{console.log('cleared database')})
+
               data.forEach( (eachCounty)=>{
                       if(eachCounty.BOROUGH_GROUP === 'Bronx'){
                           // console.log(county.BOROUGH_GROUP , county.CASE_COUNT )

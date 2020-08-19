@@ -5,7 +5,10 @@ import '../srcStyles.css'
 
 
 class Controller extends React.Component{
-
+  constructor(props) {
+    super(props);
+    this.state = {   style_state: 'ui grey button' , style_county: 'ui button'};
+  }
 
 
 
@@ -57,8 +60,27 @@ selectViewMode(option){
 }
 
 render(){
+
+  const stateView= ()=>{ this.selectViewMode('state')
+                          this.setState({style_state: 'ui grey button' , style_county: 'ui button' })
+                        }
+  const countyView= ()=>{ this.selectViewMode('county')
+                          this.setState({style_state: 'ui button' , style_county: 'ui grey button' }) }
+
+
+
       return(
             <div className="ui grid stackable">
+
+            <div className="eight wide column" >
+              <button className={this.state.style_county +  'ui basic fluid button'}  onClick={ () => countyView()}>County</button>
+             </div>
+
+             <div className="eight wide column" >
+               <button className={this.state.style_state + "ui basic fluid button"}  onClick={ () => stateView()}> State</button>
+              </div>
+
+
 
               <div className="four wide column" >
                 <button className="covidStyling ui fluid button"  onClick={ () => this.showCovidData()}>Covid Data</button>
@@ -77,13 +99,7 @@ render(){
                    <button className=" ui negative basic fluid button"  onClick={ () => this.resetOptions()}> Reset  </button>
                   </div>
 
-                  <div className="eight wide column" >
-                    <button className=" ui basic fluid button"  onClick={ () => this.selectViewMode('county')}>County</button>
-                   </div>
 
-                   <div className="eight wide column" >
-                     <button className=" ui basic fluid button"  onClick={ () => this.selectViewMode('state')}> State</button>
-                    </div>
 
 
             </div>

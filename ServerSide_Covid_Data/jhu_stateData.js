@@ -8,8 +8,24 @@ const d3 = require('d3-request')
 
 const State = mongoose.model('states')
 
+var d = new Date();
+console.log('Today is: ' + d.toLocaleString() )
+d.setDate(d.getDate()-1);
 
-const url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports_us/08-16-2020.csv'
+
+let dd = d.getDate()
+let mm = d.getMonth()+1;
+let yyyy = d.getFullYear()
+
+if(dd<10) { dd='0'+dd }
+if(mm<10)  { mm='0'+mm }
+
+let filterDate = (mm + '-' + dd+ '-' + yyyy)
+
+
+// console.log(filterDate)
+
+const url = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports_us/${filterDate}.csv`
 
 const getStateLevelData = async() => {
        d3.csv(url,  function(error, data) {
@@ -33,7 +49,7 @@ const getStateLevelData = async() => {
 
                              coords : {latitude :  item.Lat  ,longitude : item.Long_ }
                            }) //end of for new State call
-                           state.save()
+                           state.save( ()=> console.log(`updating ${state}` ))
                          });
 
                  }
