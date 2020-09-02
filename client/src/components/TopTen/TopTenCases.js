@@ -22,6 +22,7 @@ class TopTenCases extends React.Component{
           return toptenCases.map( (county, i)=>{
 
             if( county.county !== 'New York City'){
+               if(i === 0){i = 1} 
                 return(
                       <div key={i}>
                         <div> {i}. {county.county} , {county.state} : {county.cases} </div>

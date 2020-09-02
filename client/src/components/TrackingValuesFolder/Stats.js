@@ -15,7 +15,7 @@ class Stats extends React.Component{
 
   render(){
 
-    // console.log(this.props.selectedState)
+    // console.log(this.props.selected)
 
 
         const newyork = [ '36047', '36061', '36081', '36005' ,  '36085' ]
@@ -32,7 +32,6 @@ class Stats extends React.Component{
 
                                 {this.props.nyc_data.map((item, i) => {
                                   if(id === item.fips){
-                                    // console.log(item)
                                     return(
 
                                       <div key={item.fips} className="ui  container ">
@@ -59,12 +58,14 @@ class Stats extends React.Component{
 
 
     const getCountyData = (id)=>{
+      // console.log(id)
               return this.props.covidData.map((county)=>{
+
                 if(newyork.includes(county.fips)){
                   return ''
                 }
                  if(county.fips === id ){
-                   // console.log(county)
+                   // console.log(county.fips)
                       return(
                         <div key={county.fips} >
                             <div className="statTitle"> {county.county} , {county.state} </div>

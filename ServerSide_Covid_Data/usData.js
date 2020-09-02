@@ -10,10 +10,10 @@ const url = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.c
 
 
 const getUSCovidData = async()=>{
- d3.csv(url, function(error, data){
+ d3.csv(url, async function(error, data){
    if(error) throw error;
    else{
-     America.collection.drop(()=>{console.log('cleared US database')})
+     await America.collection.drop(()=>{console.log('cleared US database')})
      console.log(data)
      data.forEach( (country)=>{
        const usData = new America({

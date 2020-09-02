@@ -12,9 +12,9 @@ console.log('in scheduledProcesses file')
 
 //heroku is in Coordianted Universal Time
 
-
+    const covidData = require('./ServerSide_Covid_Data/covidData.js');
 //HISTORIC DATA
-schedule.scheduleJob('02 * * * *', function(){
+schedule.scheduleJob('10 * * * *', function(){
    //updates everyday at 10am
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
          const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
@@ -22,7 +22,7 @@ schedule.scheduleJob('02 * * * *', function(){
 
 
 
- schedule.scheduleJob('10 * * * *', function(){
+ schedule.scheduleJob('20 * * * *', function(){
    // schedule.scheduleJob(rule , function(){
          console.log(`starting historical county data gathering at ${new Date()}`);
          const historic_stateData = require('./ServerSide_Covid_Data/historicStateCovid.js')
@@ -30,11 +30,11 @@ schedule.scheduleJob('02 * * * *', function(){
  });
 
 
- schedule.scheduleJob('20 * * * *', function(){
+ schedule.scheduleJob('30 * * * *', function(){
    // schedule.scheduleJob(rule , function(){
          console.log(`starting nyc and state data gathering at ${new Date()}`);
           const nycStats = require('./ServerSide_Covid_Data/nycStats.js')
-         const jhuStateData = require('./ServerSide_Covid_Data/jhu_stateData.js')
+         // const jhuStateData = require('./ServerSide_Covid_Data/jhu_stateData.js')
 
  });
 
@@ -43,7 +43,7 @@ schedule.scheduleJob('02 * * * *', function(){
 
 
 
-schedule.scheduleJob('30 * * * *', function(){
+schedule.scheduleJob('40 * * * *', function(){
   // schedule.scheduleJob(rule , function(){
         console.log(`starting covid data and America gathering at ${new Date()}`);
         const covidData = require('./ServerSide_Covid_Data/covidData.js');

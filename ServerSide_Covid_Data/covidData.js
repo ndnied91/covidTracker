@@ -31,11 +31,12 @@ const getCoords = (county, state)=>{
 }
 
 const getCovidCountyData = async() => {
-        d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-counties.csv",  function(error, data) {
+        d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-counties.csv",  async function(error, data) {
            if (error) throw error;
 
            else{
-                  County.collection.drop(()=>{console.log('cleared database')})
+                  await County.collection.drop(()=>{console.log('cleared database')})
+
                        data.forEach( eachCounty =>{
                             const county = new County({
                               date: eachCounty.date, county: eachCounty.county ,

@@ -300,4 +300,4 @@ const mapStateToProps =(state)=>{
           }
 }
 
-export default connect( mapStateToProps,  {updateLocation, selectedState, updateLocation })(StateView)
+export default connect( mapStateToProps,  {updateLocation, selectedState })(StateView)
