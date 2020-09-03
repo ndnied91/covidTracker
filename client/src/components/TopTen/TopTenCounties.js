@@ -13,25 +13,25 @@ class TopTenCounties extends React.Component{
 
 
 
-    return(
-      <div className="right floated four wide column topTen">
-          <div className="ui title" >
-              <div  className="ui grid stackable " style={{paddingTop : '75px'}}>
+   return(
+     <div className="right floated four wide column topTen">
+         <div className="ui title" >
+             <div  className="ui grid stackable " style={{paddingTop : '75px'}}>
 
-                  <div style={{paddingBottom: '50px' , paddingLeft:" 15%"}}>
-                  <h2> Top 10 counties By Cases</h2>
-                    <TopTenCases/>
-                    </div >
+                 <div style={{paddingBottom: '50px' , paddingLeft:" 15%"}}>
+                 <h2> Top 10 counties By Cases</h2>
+                   <TopTenCases/>
+                   </div >
 
-                    <div style={{paddingLeft:" 15%"}}>
-                    <h2> Top 10 counties By Death</h2>
-                      <TopTenDeaths/>
-                      </div>
-              </div>
-              </div>
-            </div>
-    )
-  }
+                   <div style={{paddingLeft:" 15%"}}>
+                   <h2> Top 10 counties By Death</h2>
+                     <TopTenDeaths/>
+                     </div>
+             </div>
+             </div>
+           </div>
+   )
+ }
 }
 
 

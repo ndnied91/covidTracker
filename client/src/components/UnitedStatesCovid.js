@@ -104,8 +104,8 @@ const renderContent = ()=>{
                   const changeDeaths = ()=>{ this.setState({ chart_selected: 'death' , style_all: 'ui red button ', style_new: 'ui button'}) }
 
               return(
-                <div >
-                    <div  >
+                <div className="">
+                    <div>
                           <Line
                             legend={legend}
                             data={this.state.chart_selected === 'cases' ? casesChart : deathChart}
@@ -136,16 +136,15 @@ const renderContent = ()=>{
 } //end of renderContent
 
 
+//  style={{paddingTop: '20px', paddingLeft: '10px' , paddingRight: '10px'}}
 
+return(
+    <div className="usGraph" style={{paddingTop: '10px', float: 'left' , width: '75%'}}>
+    <h1> United States Covid Data </h1>
+        {renderContent()}
+    </div>
 
-    return(
-      <div className="usGraph" style={{paddingTop: '10px', float: 'left' , width: '75%'}}>
-      <h1> United States Covid Data </h1>
-          {renderContent()}
-      </div>
-
-// data={this.state.chart_selected === 'all' ? all_cases : all_deaths}
-    )
+  )
   }
 }
 
