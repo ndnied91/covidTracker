@@ -82,7 +82,7 @@ class HistoricGraph extends React.Component{
                       pointHoverBorderWidth: 2,
                       pointRadius: 1,
                       pointHitRadius: 10,
-                      data: cases
+                      data: cases,
                     }
                   ]
                 };
@@ -125,8 +125,8 @@ const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui r
 
 
                       return (
-                        <div >
-                                 <div>
+                        <div className="">
+                                 <div  >
                                        <Line
                                          legend={legend}
                                           data={this.state.chart_selected === 'all' ? all_cases : new_cases}
@@ -173,7 +173,7 @@ const showStatus = () =>{
   }
     else if(this.props.historicalStateData.length>0 && this.props.selectedState === null){
       return(
-         <div> Please select a state </div>
+         <div className="centeredContent"  > Please select a state </div>
       )
     }
     else return renderContent()

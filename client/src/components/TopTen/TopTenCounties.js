@@ -2,6 +2,8 @@ import React from 'react'
 import TopTenCases from './TopTenCases'
 import TopTenDeaths from './TopTenDeaths'
 
+import '../../srcStyles.css'
+
 class TopTenCounties extends React.Component{
 
 
@@ -12,7 +14,7 @@ class TopTenCounties extends React.Component{
 
 
     return(
-      <div className="right floated four wide column">
+      <div className="right floated four wide column topTen">
           <div className="ui title" >
               <div  className="ui grid stackable " style={{paddingTop : '75px'}}>
 

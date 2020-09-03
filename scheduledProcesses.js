@@ -12,11 +12,12 @@ console.log('in scheduledProcesses file')
 
 //heroku is in Coordianted Universal Time
 
-    const covidData = require('./ServerSide_Covid_Data/covidData.js');
+// const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
 //HISTORIC DATA
 schedule.scheduleJob('10 * * * *', function(){
    //updates everyday at 10am
          console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
+         const covidData = require('./ServerSide_Covid_Data/covidData.js');
          const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
  });
 

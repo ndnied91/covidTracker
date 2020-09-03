@@ -42,7 +42,7 @@ class App extends React.Component{
 
                       </div>
 
-                      <div className="ui grid stackable" style={{paddingTop: '15px'}}>
+                      <div className="ui grid stackable topTen" style={{paddingTop: '15px'}}>
                       <UnitedStatesCovid/>
                         <TopTenCounties/>
                        </div>

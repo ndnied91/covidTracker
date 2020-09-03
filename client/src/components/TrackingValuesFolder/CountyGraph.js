@@ -133,7 +133,7 @@ const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui r
 
 
                       return (
-                        <div >
+                        <div>
                                  <div>
                                        <Line
                                          legend={legend}
@@ -196,7 +196,7 @@ const showStatus = () =>{
       <div>
         <div className="ui raised segment" style={{height: '350px', backgroundColor: 'rgba(247, 249, 251)'}}>
             <h3 style={{textAlign: 'center'}}> Trending Graph </h3>
-              {this.props.viewMode === 'county' ? showStatus() : <div className="centeredContent"> <HistoricGraph/> </div> }
+              {this.props.viewMode === 'county' ? showStatus() : <div > <HistoricGraph/> </div> }
         </div>
 
 
