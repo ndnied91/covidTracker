@@ -70,6 +70,7 @@
 
 
 
+
 .statTitle{
   font-size: 14px;
   font-weight: 700;
@@ -97,4 +98,22 @@
   .topTen{
     background-color: red !important;
   }
+}
+
+
+
+
+
+
+.centered {
+  margin: auto;
+  padding: 10px;
+}
+
+
+
+.sources{
+color: black;
+margin-bottom: -15px;
+font-size: 12px;
 }
