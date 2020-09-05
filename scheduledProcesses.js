@@ -55,7 +55,7 @@ schedule.scheduleJob('16 * * * *', function(){
            const jhuStateData = require('./ServerSide_Covid_Data/jhu_stateData.js')
   });
 
-
+const jhuStateData = require('./ServerSide_Covid_Data/jhu_stateData.js')
 
 
 

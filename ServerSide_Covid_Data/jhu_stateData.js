@@ -11,6 +11,7 @@ const State = mongoose.model('states')
 var d = new Date();
 console.log('Today is: ' + d.toLocaleString() )
 d.setDate(d.getDate()-1);
+// d.setDate(d.getDate()-1 CHANGES THIS
 
 
 let dd = d.getDate()
@@ -20,7 +21,7 @@ let yyyy = d.getFullYear()
 if(dd<10) { dd='0'+dd }
 if(mm<10)  { mm='0'+mm }
 
-let filterDate = (mm + '-' + dd+ '-' + yyyy)
+let filterDate = (mm + '-' + dd + '-' + yyyy)
 console.log(filterDate)
 
 
