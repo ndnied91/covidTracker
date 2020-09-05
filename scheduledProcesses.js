@@ -16,41 +16,29 @@ console.log('in scheduledProcesses file')
 //HISTORIC DATA
 schedule.scheduleJob('10 * * * *', function(){
    //updates everyday at 10am
-         console.log(`UPDATING HISTORICAL COVID DATA AT ${new Date()}`);
+         console.log(`updating county covid data and historic county covid data at ${new Date()}`);
          const covidData = require('./ServerSide_Covid_Data/covidData.js');
          const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
  });
 
 
 
- schedule.scheduleJob('20 * * * *', function(){
+ schedule.scheduleJob('15 * * * *', function(){
    // schedule.scheduleJob(rule , function(){
-         console.log(`starting historical county data gathering at ${new Date()}`);
+         console.log(`starting historical state data and united states data gathering at ${new Date()}`);
          const historic_stateData = require('./ServerSide_Covid_Data/historicStateCovid.js')
          const usData = require('./ServerSide_Covid_Data/usData.js')
-         // const usData = require('./ServerSide_Covid_Data/usData.js')
 
  });
 
 
- schedule.scheduleJob('30 * * * *', function(){
+ schedule.scheduleJob('* 2 * * *', function(){
    // schedule.scheduleJob(rule , function(){
-         console.log(`starting nyc and state data gathering at ${new Date()}`);
+         console.log(`starting nyc and jhu state data gathering at ${new Date()} TESTING MINUTE `);
           const nycStats = require('./ServerSide_Covid_Data/nycStats.js')
           const jhuStateData = require('./ServerSide_Covid_Data/jhu_stateData.js')
 
  });
 
 
-
-
-
-
-schedule.scheduleJob('40 * * * *', function(){
-  // schedule.scheduleJob(rule , function(){
-        console.log(`starting covid data and America gathering at ${new Date()}`);
-        const covidData = require('./ServerSide_Covid_Data/covidData.js');
-        const usData = require('./ServerSide_Covid_Data/usData.js')
-
-});
 //HISTORIC DATA
