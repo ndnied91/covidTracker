@@ -21,6 +21,7 @@ if(dd<10) { dd='0'+dd }
 if(mm<10)  { mm='0'+mm }
 
 let filterDate = (mm + '-' + dd+ '-' + yyyy)
+console.log(filterDate)
 
 
 // console.log(filterDate)
@@ -32,27 +33,33 @@ const getStateLevelData = async() => {
          if (error) throw error;
 
              else {
+
+               if(data !== undefined){
+
+                 State.collection.drop(()=>{console.log('cleared database')})
+                     data.forEach((item, i) => {
+                             const state = new State({
+                               date: item.Last_Update,
+                               state : item.Province_State,
+                               fips : item.FIPS,
+                               cases : item.Confirmed,
+                               deaths: item.Deaths,
+                               recovered: item.Recovered,
+                               active: item.Active,
+                               incident_rate: item.Incident_Rate,
+                               people_tested: item.People_Tested,
+                               mortality_rate: item.Mortality_Rate,
+
+                               coords : {latitude :  item.Lat  ,longitude : item.Long_ }
+                             }) //end of for new State call
+                             state.save( ()=> console.log(`updating ${state}` ))
+                           });
+
+                   } //end of if data !==
+
+               }
                //everything happens here
-               State.collection.drop(()=>{console.log('cleared database')})
-                   data.forEach((item, i) => {
-                           const state = new State({
-                             date: item.Last_Update,
-                             state : item.Province_State,
-                             fips : item.FIPS,
-                             cases : item.Confirmed,
-                             deaths: item.Deaths,
-                             recovered: item.Recovered,
-                             active: item.Active,
-                             incident_rate: item.Incident_Rate,
-                             people_tested: item.People_Tested,
-                             mortality_rate: item.Mortality_Rate,
 
-                             coords : {latitude :  item.Lat  ,longitude : item.Long_ }
-                           }) //end of for new State call
-                           state.save( ()=> console.log(`updating ${state}` ))
-                         });
-
-                 }
 
        })
 }
