@@ -7,7 +7,71 @@ import '../../srcStyles.css'
 
 let incomeFilter = []
 let populationFilter = []
+let click = false
 class Filter extends React.Component{
+constructor(props) {
+  super(props);
+  this.state = ({ btn40: false , btn4050: false, btn5060: false, btn6080: false, btn80100: false, btn100: false,
+                  btnless1m: false , btn13m:false , btn35m: false , btn57m: false , btn710m : false, btn10m: false,
+                  btn50: false, btn50100: false, btn100200: false, btn200500: false, btn5001 :false, btn1m15: false
+
+      })
+}
+
+clickedButton(atr){
+console.log(atr)
+    switch(atr){
+      case '40':
+          return this.state.btn40 === false ? this.setState({btn40: true }): this.setState({btn40: false })
+    case '40-50':
+          return this.state.btn4050 === false ? this.setState({btn4050: true }): this.setState({btn4050: false })
+    case '50-60':
+          return this.state.btn5060 === false ? this.setState({btn5060: true }): this.setState({btn5060: false })
+    case '60-80':
+          return this.state.btn6080 === false ? this.setState({btn6080: true }): this.setState({btn6080: false })
+    case '80-100':
+          return this.state.btn80100 === false ? this.setState({btn80100: true }): this.setState({btn80100: false })
+    case '100':
+          return this.state.btn100 === false ? this.setState({btn100: true }): this.setState({btn100: false })
+
+
+    case 'less1m':
+          return this.state.btnless1m === false ? this.setState({btnless1m: true }): this.setState({btnless1m: false })
+    case '1-3m':
+          return this.state.btn13m === false ? this.setState({btn13m: true }): this.setState({btn13m: false })
+    case '3-5m':
+          return this.state.btn35m === false ? this.setState({btn35m: true }): this.setState({btn35m: false })
+    case '5-7m':
+          return this.state.btn57m === false ? this.setState({btn57m: true }): this.setState({btn57m: false })
+    case '7-10m':
+          return this.state.btn710m === false ? this.setState({btn710m: true }): this.setState({btn710m: false })
+    case '10m+':
+          return this.state.btn10m === false ? this.setState({btn10m: true }): this.setState({btn10m: false })
+
+
+    case '50':
+          return this.state.btn50 === false ? this.setState({btn50: true }): this.setState({btn50: false })
+    case '50-100':
+          return this.state.btn50100 === false ? this.setState({btn50100: true }): this.setState({btn50100: false })
+    case '100-200':
+          return this.state.btn100200 === false ? this.setState({btn100200: true }): this.setState({btn100200: false })
+    case '200-500':
+          return this.state.btn200500 === false ? this.setState({btn200500: true }): this.setState({btn200500: false })
+    case '500-1m':
+          return this.state.btn5001 === false ? this.setState({btn5001: true }): this.setState({btn5001: false })
+    case '1m-15':
+          return this.state.btn1m15 === false ? this.setState({btn1m15: true }): this.setState({btn1m15: false })
+
+
+      default :
+      return ''
+    }
+
+
+
+
+}
+
 
   checkIncomeStatus(atr){
     if(incomeFilter.includes(atr)){
@@ -21,11 +85,15 @@ class Filter extends React.Component{
     }
 
     this.props.getIncomeLevel([...incomeFilter])
+
+    this.clickedButton(atr)
+
   }
 
 
 
 checkPopulationStatus(atr){
+
   if(populationFilter.includes(atr)){
             populationFilter = populationFilter.filter(function(item) {
             return item !== atr
@@ -34,13 +102,18 @@ checkPopulationStatus(atr){
   else{
     populationFilter.push(atr)
   }
-  console.log(populationFilter)
+
+
   this.props.getPopulationRate([...populationFilter])
+
+  this.clickedButton(atr)
+
 }
 
 
-
 renderOption(){
+
+  console.log(click)
   // console.log(this.props.custom_values)
   // console.log(this.props.income_level)
 
@@ -52,36 +125,38 @@ renderOption(){
           <div className="ui two column grid">
             <div className="row" style={{marginTop : '-10px'}}>
                  <div className="column">
-                   <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('40')}> Below 40k </button>
+                   <button className={this.state.btn40 === true ? "ui fluid button" : "incomeStyling ui fluid button" }  onClick={ () => this.checkIncomeStatus('40') } > Below 40k </button>
                  </div>
 
                  <div className="column">
-                   <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('40-50')}> 40k-50k </button></div>
+                   <button className={this.state.btn4050 === true ? "ui fluid button" : "incomeStyling ui fluid button" }  onClick={ () => this.checkIncomeStatus('40-50')}> 40k-50k </button></div>
                  </div>
             </div>
 
             <div className="ui two column grid">
               <div className="row" style={{marginTop : '-20px'}}>
                    <div className="column">
-                     <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('50-60')}>50k-60k </button>
+                     <button className={this.state.btn5060 === true ? "ui fluid button" : "incomeStyling ui fluid button" } onClick={ () => this.checkIncomeStatus('50-60')}>50k-60k </button>
                    </div>
 
                    <div className="column">
-                     <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('60-80')}> 60k-80k </button></div>
+                     <button className={this.state.btn6080 === true ? "ui fluid button" : "incomeStyling ui fluid button" } onClick={ () => this.checkIncomeStatus('60-80')}> 60k-80k </button></div>
                    </div>
               </div>
 
               <div className="ui two column grid">
                 <div className="row" style={{marginTop : '-20px'}}>
                      <div className="column">
-                       <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('80-100')}>80-100k </button>
+                       <button className= {this.state.btn80100 === true ? "ui fluid button" : "incomeStyling ui fluid button" } onClick={ (e) => this.checkIncomeStatus('80-100')   }>80-100k </button>
                      </div>
 
                      <div className="column">
-                       <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('100')}> 100k </button></div>
+                       <button className={this.state.btn100 === true ? "ui fluid button" : "incomeStyling ui fluid button" } onClick={ () => this.checkIncomeStatus('100')}> 100k </button></div>
                      </div>
                 </div>
 
+
+<script>  </script>
          </div>
       )
     }
@@ -95,21 +170,21 @@ renderOption(){
                  <div className="ui two column grid">
                    <div className="row" style={{marginTop : '-10px'}}>
                         <div className="column">
-                          <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('50')}>Less then 50k </button>
+                          <button className={this.state.btn50 === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('50')}>Less then 50k </button>
                         </div>
 
                         <div className="column">
-                          <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('50-100')}> 50k-100k </button></div>
+                          <button className={this.state.btn50100 === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('50-100')}> 50k-100k </button></div>
                         </div>
                    </div>
 
                    <div className="ui two column grid">
                      <div className="row" style={{marginTop : '-20px'}}>
                           <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('100-200')}> 100k-200k </button>
+                                <button className={this.state.btn100200 === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('100-200')}> 100k-200k </button>
                           </div>
                           <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('200-500')}> 200k-500k </button>
+                                <button className={this.state.btn200500 === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('200-500')}> 200k-500k </button>
                           </div>
                      </div>
                   </div>
@@ -117,10 +192,10 @@ renderOption(){
                   <div className="ui two column grid">
                     <div className="row" style={{marginTop : '-20px'}}>
                          <div className="column">
-                              <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('500-1m')}> 500k-1million </button>
+                              <button className={this.state.btn5001 === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('500-1m')}> 500k-1million </button>
                          </div>
                          <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('1m-15')}> 1million+  </button>
+                                <button className={this.state.btn1m15 === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('1m-15')}> 1million+  </button>
                          </div>
                     </div>
                  </div>
@@ -144,21 +219,21 @@ renderOption(){
                    <div className="ui two column grid">
                      <div className="row" style={{marginTop : '-10px'}}>
                           <div className="column">
-                            <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('less1m')}>Less then 1m </button>
+                            <button className={this.state.btnless1m === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('less1m')}>Less then 1m </button>
                           </div>
 
                           <div className="column">
-                            <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('1-3m')}> 1-3million </button></div>
+                            <button className={this.state.btn13m === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('1-3m')}> 1-3million </button></div>
                           </div>
                      </div>
 
                      <div className="ui two column grid">
                        <div className="row" style={{marginTop : '-20px'}}>
                             <div className="column">
-                                  <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('3-5m')}> 3-5 million </button>
+                                  <button className={this.state.btn35m === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('3-5m')}> 3-5 million </button>
                             </div>
                             <div className="column">
-                                  <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('5-7m')}> 5-7million </button>
+                                  <button className={this.state.btn57m === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('5-7m')}> 5-7million </button>
                             </div>
                        </div>
                     </div>
@@ -166,10 +241,10 @@ renderOption(){
                     <div className="ui two column grid">
                       <div className="row" style={{marginTop : '-20px'}}>
                            <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('7-10m')}> 7-10 million </button>
+                                <button className={this.state.btn710m === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('7-10m')}> 7-10 million </button>
                            </div>
                            <div className="column">
-                                  <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('10m+')}> 10m+  </button>
+                                  <button className={this.state.btn10m === true ? "ui fluid button" : "populationStyling ui fluid button" } onClick={ () => this.checkPopulationStatus('10m+')}> 10m+  </button>
                            </div>
                       </div>
                    </div>

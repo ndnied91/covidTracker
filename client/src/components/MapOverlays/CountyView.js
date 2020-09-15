@@ -132,7 +132,7 @@ const renderCovidMarkers = () =>{
               if( (props.selection === 'income' && props.income_level === null) || ( props.selection === 'income' && props.income_level.length === 0) ){ return filter }
 
               if(props.income_level){
-                console.log(props.income_level)
+                // console.log(props.income_level)
 
                 if(props.income_level.includes('40')){
                      if(cur && cur.income <40000){
