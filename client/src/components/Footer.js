@@ -51,7 +51,7 @@ const Footer = () =>{
 
                        <div className="ui horizontal small divided link list">
                        <h4 className="ui header" style={{fontSize: '20px', marginTop: '-20px'}}>Designed and Implemented by Daniel Niedzwiedzki </h4>
-                        <a className="item" href="https://github.com/ndnied91" target="_blank"> <i className="github large icon"></i>  </a>
+                        <a className="ui item" href="https://github.com/ndnied91" target="_blank"> <i className="github large icon"></i>  </a>
                         <a className="item" href="https://www.linkedin.com/in/daniel-niedzwiedzki/" target="_blank"> <i className="linkedin large icon "></i> </a>
                         <a href= "mailto: danielniedzwiedzki.1@gmail.com" className="item" > <i className="envelope large icon "></i> </a>
                        </div>
