@@ -34,7 +34,7 @@ let colorLegend = [  "#DEE8E0", "#BFD3C5", "#9EBFAD",
         .attr("font-size", "12px")
         .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
         .attr("y", 20)
-        .text("Medium Income Scale")
+        .text("Median Income Scale")
 
         svgLegend.append("text")
             .attr("font-size", "9px")
