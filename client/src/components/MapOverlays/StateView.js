@@ -15,6 +15,8 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const fillColor = '#F5F5F5'
 
+var fullArr = []
+var filterArr = []
 
 
 const offsets = {
@@ -79,6 +81,9 @@ const StateView = (props) => {
   const [income, setIncome] = useState([]);
   const [pop, setPop] = useState([]);
 
+    // console.log(Number(props.custom_values.term))
+    // console.log(Number(props.custom_values.second))
+
   const onClick = (e) =>{
           // console.log(e)
           props.selectedState(e.properties.name)
@@ -122,85 +127,122 @@ const StateView = (props) => {
                     const handlePopulationData = ()=>{
                       let fullArr = []
 
+
                       const cur = pop.find(s => s.id === geo.id);
                       const filter = popColorScale(cur ? cur.population : "blue")
 
-                      if(props.selection === 'population' && props.population_rate === null) return filter
+                      if( (props.selection === 'population' && props.population_rate === null) || ( props.selection === 'population' && props.population_rate.length === 0) ){return filter}
 
-
-                      if(props.population_rate === '10m+'){
-                       cur && cur.population >= 10000000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                         return fullArr
-                          }
-
-
-                       if(props.population_rate === '7-10m'){
-                       (cur && cur.population < 10000000 && cur.population >= 7000000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                          return fullArr
+                      if(props.population_rate.includes('10m+')){
+                           if(cur && cur.population >=10000000){
+                             fullArr.push(filter)
+                             return fullArr
                            }
+                      }
 
-                       if(props.population_rate === '5-7m'){
-                       (cur && cur.population < 7000000 && cur.population >= 5000000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                          return fullArr
+
+                      if(props.population_rate.includes('7-10m')){
+                           if(cur && cur.population < 10000000 && cur.population >= 7000000){
+                             fullArr.push(filter)
+                             return fullArr
                            }
+                      }
 
+                      if(props.population_rate.includes('5-7m')){
+                           if(cur && cur.population < 7000000 && cur.population >= 5000000){
+                             fullArr.push(filter)
+                             return fullArr
+                           }
+                      }
+                      if(props.population_rate.includes('3-5m')){
+                           if(cur && cur.population < 5000000 && cur.population >= 3000000){
+                             fullArr.push(filter)
+                             return fullArr
+                           }
+                      }
 
-                         if(props.population_rate === '3-5m'){
-                         (cur && cur.population < 5000000 && cur.population >= 3000000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                            return fullArr
-                             }
+                      if(props.population_rate.includes('1-3m')){
+                           if(cur && cur.population < 3000000 && cur.population >= 1000000){
+                             fullArr.push(filter)
+                             return fullArr
+                           }
+                      }
 
+                      if(props.population_rate.includes('less1m')){
+                           if(cur && cur.population < 1000000){
+                             fullArr.push(filter)
+                             return fullArr
+                           }
+                      }
 
-                         if(props.population_rate === '1-3m'){
-                         (cur && cur.population < 3000000 && cur.population >= 1000000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                            return fullArr
-                             }
-
-
-                         if(props.population_rate === 'less1m'){
-                           cur && cur.population < 1000000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                            return fullArr
-                             }
-
-                          else
-                          return null
+                          fullArr.push(fillColor)
+                          return fullArr
 
                     } //end of handlePopulationData
 
 
                       const handleIncomeData =()=>{
+
+                          let filterArr = []
                           let fullArr = []
                           const cur = income.find(s => s.id === geo.id);
                           const filter = incomeScale(cur ? cur.income : "blue")
-                          if(props.selection === 'income' && props.income_level === null) return filter
-                          if( props.income_level === '100'){
-                                cur && cur.income >= 100000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                                //this checks if the income is above 0.7, adds to return array, if not adds the default color
-                                return fullArr
+                          if( (props.selection === 'income' && props.income_level === null) || ( props.selection === 'income' && props.income_level.length === 0) ){ return filter }
+
+                          if(props.income_level){
+                            console.log(props.income_level)
+
+                            if(props.income_level.includes('40')){
+                                 if(cur && cur.income <40000){
+                                   fullArr.push(filter)
+                                   return fullArr
+                                 }
+                            }
+
+                                if(props.income_level.includes('40-50')){
+                                     if(cur && cur.income <50000 && cur.income >=40000){
+                                       fullArr.push(filter)
+                                       return fullArr
+                                     }
+                               }
+
+                                if(props.income_level.includes('50-60')){
+                                     if(cur && cur.income <60000 && cur.income >=50000){
+                                       fullArr.push(filter)
+                                       return fullArr
+                                     }
+                               }
+
+                               if(props.income_level.includes('60-80')){
+                                    if(cur && cur.income <80000 && cur.income >=60000){
+                                      fullArr.push(filter)
+                                      return fullArr
+                                    }
                               }
-                          if(props.income_level === '80-100'){
-                             (cur && cur.income <100000 && cur.income >=80000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
-                          }
-                          if(props.income_level === '60-80'){
-                             (cur && cur.income <80000 && cur.income >=60000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
-                          }
-                          if(props.income_level === '50-60'){
-                             (cur && cur.income <60000 && cur.income >=50000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
-                          }
-                          if(props.income_level === '40-50'){
-                             (cur && cur.income <50000 && cur.income >=40000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
-                          }
-                          if(props.income_level === '40'){
-                             cur && cur.income < 40000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
+
+                              if(props.income_level.includes('80-100')){
+                                   if(cur && cur.income <100000 && cur.income >=80000){
+                                     fullArr.push(filter)
+                                     return fullArr
+                                   }
                               }
-                          else {
-                            return null
-                          }
+
+                              if(props.income_level.includes('100')){
+                                   if(cur && cur.income >=100000){
+                                     fullArr.push(filter)
+                                     return fullArr
+                                   }
+                              }
+
+
+                               fullArr.push(fillColor)
+                               return fullArr
+                             }
+                              // fullArr.push(...fillColor)
+                              // console.log(filterArr)
+                               // return fullArr
+
+
 
                       } //end of handleIncomeData
 
@@ -296,7 +338,8 @@ const mapStateToProps =(state)=>{
             income_level: state.income_level.income_level,
             population_rate : state.population_rate.population_rate,
             covid_densityDots : state.covid_densityDots.covid_dots,
-            viewMode : state.viewMode.selection
+            viewMode : state.viewMode.selection,
+            custom_values : state.customValues
           }
 }
 

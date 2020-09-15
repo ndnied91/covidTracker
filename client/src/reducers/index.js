@@ -22,6 +22,7 @@ import selectedStateReducer from './selectedStateReducer'
 import stateCovidReducer from './stateCovidReducer'
 import historicalStateDataReducer from './historicalStateDataReducer'
 import statePopulationReducer from './statePopulationReducer'
+import customValuesReducer from './customValuesReducer'
 
 export default combineReducers({
   option: optionReducer,
@@ -41,5 +42,6 @@ export default combineReducers({
   selectedState : selectedStateReducer,
   state_covid_data : stateCovidReducer,
   historicalStateData: historicalStateDataReducer,
-  statePopulation : statePopulationReducer
+  statePopulation : statePopulationReducer,
+  customValues : customValuesReducer
 })

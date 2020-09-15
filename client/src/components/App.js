@@ -10,6 +10,10 @@ import UnitedStatesCovid from './UnitedStatesCovid'
 import Footer from './Footer'
 
 
+
+import CustomValues from './TrackingValuesFolder/CustomValues'
+
+
 import '../srcStyles.css'
 
 class App extends React.Component{
@@ -39,7 +43,6 @@ class App extends React.Component{
                                 <div className="ui center aligned segment" style={{height: '675px', padding: 0 , backgroundColor : "#C0E5F6" }}>
                                 <MapContainer/>
                                 </div>
-
 
 
                                 </div>

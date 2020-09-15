@@ -152,6 +152,17 @@ export const selectedViewMode = (option) =>{
 
 
 
+
+export const selectedCustomValues = (option) =>{
+  return {
+    type: 'CUSTOM_VALUES',
+    payload: option
+  }
+}
+
+
+
+
 export const fetchCovidData = () => async dispatch => {
   const res = await axios.get('/api/countyData')
     // console.log(res.data[0].date)

@@ -5,10 +5,45 @@ import {getIncomeLevel , getPopulationRate , selectedFilterCovid} from '../../ac
 
 import '../../srcStyles.css'
 
+let incomeFilter = []
+let populationFilter = []
 class Filter extends React.Component{
+
+  checkIncomeStatus(atr){
+    if(incomeFilter.includes(atr)){
+              incomeFilter = incomeFilter.filter(function(item) {
+              return item !== atr
+          })
+    }
+    else{
+      incomeFilter.push(atr)
+      // console.log(incomeFilter)
+    }
+
+    this.props.getIncomeLevel([...incomeFilter])
+  }
+
+
+
+checkPopulationStatus(atr){
+  if(populationFilter.includes(atr)){
+            populationFilter = populationFilter.filter(function(item) {
+            return item !== atr
+        })
+  }
+  else{
+    populationFilter.push(atr)
+  }
+  console.log(populationFilter)
+  this.props.getPopulationRate([...populationFilter])
+}
+
 
 
 renderOption(){
+  // console.log(this.props.custom_values)
+  // console.log(this.props.income_level)
+
     if(  this.props.option === 'income'){
       return(
         <div>
@@ -17,33 +52,33 @@ renderOption(){
           <div className="ui two column grid">
             <div className="row" style={{marginTop : '-10px'}}>
                  <div className="column">
-                   <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('40')}> Below 40k </button>
+                   <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('40')}> Below 40k </button>
                  </div>
 
                  <div className="column">
-                   <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('40-50')}> 40k-50k </button></div>
+                   <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('40-50')}> 40k-50k </button></div>
                  </div>
             </div>
 
             <div className="ui two column grid">
               <div className="row" style={{marginTop : '-20px'}}>
                    <div className="column">
-                     <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('50-60')}>50k-60k </button>
+                     <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('50-60')}>50k-60k </button>
                    </div>
 
                    <div className="column">
-                     <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('60-80')}> 60k-80k </button></div>
+                     <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('60-80')}> 60k-80k </button></div>
                    </div>
               </div>
 
               <div className="ui two column grid">
                 <div className="row" style={{marginTop : '-20px'}}>
                      <div className="column">
-                       <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('80-100')}>80-100k </button>
+                       <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('80-100')}>80-100k </button>
                      </div>
 
                      <div className="column">
-                       <button className="incomeStyling ui fluid button" onClick={ () => this.props.getIncomeLevel('100')}> 100k </button></div>
+                       <button className="incomeStyling ui fluid button" onClick={ () => this.checkIncomeStatus('100')}> 100k </button></div>
                      </div>
                 </div>
 
@@ -60,21 +95,21 @@ renderOption(){
                  <div className="ui two column grid">
                    <div className="row" style={{marginTop : '-10px'}}>
                         <div className="column">
-                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('50')}>Less then 50k </button>
+                          <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('50')}>Less then 50k </button>
                         </div>
 
                         <div className="column">
-                          <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('50-100')}> 50k-100k </button></div>
+                          <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('50-100')}> 50k-100k </button></div>
                         </div>
                    </div>
 
                    <div className="ui two column grid">
                      <div className="row" style={{marginTop : '-20px'}}>
                           <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('100-200')}> 100k-200k </button>
+                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('100-200')}> 100k-200k </button>
                           </div>
                           <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('200-500')}> 200k-500k </button>
+                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('200-500')}> 200k-500k </button>
                           </div>
                      </div>
                   </div>
@@ -82,10 +117,10 @@ renderOption(){
                   <div className="ui two column grid">
                     <div className="row" style={{marginTop : '-20px'}}>
                          <div className="column">
-                              <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('500-1m')}> 500k-1million </button>
+                              <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('500-1m')}> 500k-1million </button>
                          </div>
                          <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('1m-15')}> 1million+  </button>
+                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('1m-15')}> 1million+  </button>
                          </div>
                     </div>
                  </div>
@@ -109,21 +144,21 @@ renderOption(){
                    <div className="ui two column grid">
                      <div className="row" style={{marginTop : '-10px'}}>
                           <div className="column">
-                            <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('less1m')}>Less then 1m </button>
+                            <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('less1m')}>Less then 1m </button>
                           </div>
 
                           <div className="column">
-                            <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('1-3m')}> 1-3million </button></div>
+                            <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('1-3m')}> 1-3million </button></div>
                           </div>
                      </div>
 
                      <div className="ui two column grid">
                        <div className="row" style={{marginTop : '-20px'}}>
                             <div className="column">
-                                  <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('3-5m')}> 3-5 million </button>
+                                  <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('3-5m')}> 3-5 million </button>
                             </div>
                             <div className="column">
-                                  <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('5-7m')}> 5-7million </button>
+                                  <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('5-7m')}> 5-7million </button>
                             </div>
                        </div>
                     </div>
@@ -131,10 +166,10 @@ renderOption(){
                     <div className="ui two column grid">
                       <div className="row" style={{marginTop : '-20px'}}>
                            <div className="column">
-                                <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('7-10m')}> 7-10 million </button>
+                                <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('7-10m')}> 7-10 million </button>
                            </div>
                            <div className="column">
-                                  <button className="populationStyling ui fluid button" onClick={ () => this.props.getPopulationRate('10m+')}> 10m+  </button>
+                                  <button className="populationStyling ui fluid button" onClick={ () => this.checkPopulationStatus('10m+')}> 10m+  </button>
                            </div>
                       </div>
                    </div>
@@ -297,7 +332,8 @@ const mapStateToProps = (state)=>{
            population_rate : state.population_rate.population_rate,
            covid_densityDots: state.covid_densityDots.covid_dots,
            covidFilter : state.cases_or_deaths.selection,
-           viewMode: state.viewMode.selection
+           viewMode: state.viewMode.selection,
+           custom_values : state.customValues
          }
 }
 

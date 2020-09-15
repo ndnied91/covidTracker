@@ -40,7 +40,7 @@ let colorLegend = [  "#DEE8E0", "#BFD3C5", "#9EBFAD",
             .attr("font-size", "9px")
             .attr("font-family", "HelveticaNeue-Bold, Helvetica, sans-serif")
             .attr("y", 75)
-            .text("Depicts approximate medium income per county")
+            .text("Depicts approximate median income per county")
 
     // add numbers as labels
     let labelsLegend = ["30k","40k","50k","60k","80-100k","120k","130k","140k+"];

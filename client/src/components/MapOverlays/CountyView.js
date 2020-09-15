@@ -129,44 +129,59 @@ const renderCovidMarkers = () =>{
               const filter = incomeScale(cur ? cur.income : "blue")
               // console.log(filter)
 
-                    if(props.selection === 'income' && props.income_level === null) return filter
+              if( (props.selection === 'income' && props.income_level === null) || ( props.selection === 'income' && props.income_level.length === 0) ){ return filter }
 
-                      if( props.income_level === '100'){
-                            cur && cur.income >= 100000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                            //this checks if the income is above 0.7, adds to return array, if not adds the default color
-                            return fullArr
-                          }
+              if(props.income_level){
+                console.log(props.income_level)
 
+                if(props.income_level.includes('40')){
+                     if(cur && cur.income <40000){
+                       fullArr.push(filter)
+                       return fullArr
+                     }
+                }
 
-                          if(props.income_level === '80-100'){
-                             (cur && cur.income <100000 && cur.income >=80000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
-                          }
-
-
-                        if(props.income_level === '60-80'){
-                           (cur && cur.income <80000 && cur.income >=60000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                    if(props.income_level.includes('40-50')){
+                         if(cur && cur.income <50000 && cur.income >=40000){
+                           fullArr.push(filter)
                            return fullArr
+                         }
+                   }
+
+                   if(props.income_level.includes('50-60')){
+                        if(cur && cur.income <60000 && cur.income >=50000){
+                          fullArr.push(filter)
+                          return fullArr
                         }
-
-                        if(props.income_level === '50-60'){
-                           (cur && cur.income <60000 && cur.income >=50000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                           return fullArr
-                        }
-
-                        if(props.income_level === '40-50'){
-                           (cur && cur.income <50000 && cur.income >=40000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                           return fullArr
-                        }
-
-                        if(props.income_level === '40'){
-                           cur && cur.income < 40000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                           return fullArr
-                            }
-
-                  else {
-                    return null
                   }
+
+                  if(props.income_level.includes('60-80')){
+                       if(cur && cur.income <80000 && cur.income >=60000){
+                         fullArr.push(filter)
+                         return fullArr
+                       }
+                 }
+
+                 if(props.income_level.includes('80-100')){
+                      if(cur && cur.income <100000 && cur.income >=80000){
+                        fullArr.push(filter)
+                        return fullArr
+                      }
+                 }
+
+                 if(props.income_level.includes('100')){
+                      if(cur && cur.income >=100000){
+                        fullArr.push(filter)
+                        return fullArr
+                      }
+                 }
+
+
+
+             } //end of props.income_level
+                            fullArr.push(fillColor)
+                            return fullArr
+
                 } //end of handleFilterData
 
 
@@ -177,45 +192,61 @@ const renderCovidMarkers = () =>{
                       const cur = pop.find(s => s.id === geo.id);
                       const filter = popColorScale(cur ? cur.population : "blue")
 
-                        if(props.selection === 'population' && props.population_rate === null) return filter
+
+                         if( (props.selection === 'population' && props.population_rate === null) || ( props.selection === 'population' && props.population_rate.length === 0) ){return filter}
+
+                         if(props.population_rate.includes('50')){
+                              if(cur && cur.population <50000){
+                                fullArr.push(filter)
+                                return fullArr
+                              }
+                         }
 
 
-                         if(props.population_rate === '1m-15'){
-                          cur && cur.population >= 1000000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                            return fullArr
+                         if(props.population_rate.includes('50-100')){
+                              if(cur && cur.population < 100000 && cur.population >= 50000){
+                                fullArr.push(filter)
+                                return fullArr
+                              }
+                        }
+
+
+                        if(props.population_rate.includes('100-200')){
+                             if(cur && cur.population < 200000 && cur.population >= 100000){
+                               fullArr.push(filter)
+                               return fullArr
                              }
+                       }
 
+                       if(props.population_rate.includes('200-500')){
+                            if(cur && cur.population < 500000 && cur.population >= 200000){
+                              fullArr.push(filter)
+                              return fullArr
+                            }
+                      }
 
-                          if(props.population_rate === '500-1m'){
-                          (cur && cur.population < 1000000 && cur.population >= 500000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
+                      if(props.population_rate.includes('500-1m')){
+                           if(cur && cur.population < 1000000 && cur.population >= 500000){
+                             fullArr.push(filter)
                              return fullArr
-                              }
+                           }
+                     }
+
+                     if(props.population_rate.includes('1m-15')){
+                          if(cur && cur.population >= 1000000){
+                            fullArr.push(filter)
+                            return fullArr
+                          }
+                    }
 
 
 
-                          if(props.population_rate === '200-500'){
-                          (cur && cur.population < 500000 && cur.population >= 200000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                             return fullArr
-                              }
 
 
-                            if(props.population_rate === '100-200'){
-                            (cur && cur.population < 200000 && cur.population >= 100000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                               return fullArr
-                                }
 
 
-                            if(props.population_rate === '50-100'){
-                            (cur && cur.population < 100000 && cur.population >= 50000)  ? fullArr.push(filter) :   fullArr.push(fillColor)
-                               return fullArr
-                                }
-
-
-                            if(props.population_rate === '50'){
-                              cur && cur.population < 50000 ? fullArr.push(filter) :   fullArr.push(fillColor)
-                               return fullArr
-                                }
-
+                          fullArr.push(fillColor)
+                          return fullArr
 
                       }
 
@@ -297,7 +328,8 @@ const mapStateToProps =(state)=>{
   return { selection: state.option.selection,
             income_level: state.income_level.income_level,
             population_rate : state.population_rate.population_rate,
-            covid_densityDots : state.covid_densityDots.covid_dots
+            covid_densityDots : state.covid_densityDots.covid_dots,
+            custom_values : state.customValues
           }
 }
 
