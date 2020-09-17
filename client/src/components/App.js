@@ -11,8 +11,6 @@ import Footer from './Footer'
 
 
 
-import CustomValues from './TrackingValuesFolder/CustomValues'
-
 
 import '../srcStyles.css'
 

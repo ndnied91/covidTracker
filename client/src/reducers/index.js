@@ -23,6 +23,8 @@ import stateCovidReducer from './stateCovidReducer'
 import historicalStateDataReducer from './historicalStateDataReducer'
 import statePopulationReducer from './statePopulationReducer'
 import customValuesReducer from './customValuesReducer'
+import incomeStatReducer from './incomeStatReducer'
+import incomeStateStatReducer from './incomeStateStatReducer'
 
 export default combineReducers({
   option: optionReducer,
@@ -43,5 +45,7 @@ export default combineReducers({
   state_covid_data : stateCovidReducer,
   historicalStateData: historicalStateDataReducer,
   statePopulation : statePopulationReducer,
-  customValues : customValuesReducer
+  customValues : customValuesReducer,
+  incomeCountyStat: incomeStatReducer,
+  incomeStateStat : incomeStateStatReducer
 })

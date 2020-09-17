@@ -10,9 +10,10 @@ var rule = new schedule.RecurrenceRule();
 console.log(`CURRENT TIME IS :  ${new Date()}`);
 
 //heroku is in Coordianted Universal Time
-const covidData = require('./ServerSide_Covid_Data/covidData.js');
+// const covidData = require('./ServerSide_Covid_Data/covidData.js');
 
-
+// const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
+ const historic_stateData = require('./ServerSide_Covid_Data/historicStateCovid.js')
 //county covid data
 schedule.scheduleJob('55 * * * *', function(){
    //updates everyday at 10am

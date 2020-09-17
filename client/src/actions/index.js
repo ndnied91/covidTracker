@@ -192,6 +192,29 @@ export const getPopulationForStats = ()=> async dispatch =>{
 }
 
 
+
+export const getCountyIncomeForStats = ()=> async dispatch =>{
+  const res = await csv("/INCOME_CLASSES.csv")
+  // console.log(res)
+  dispatch({ type: 'GET_COUNTY_INCOME_STATS' , payload: res})
+  //gets county income stats for "stats"
+}
+
+
+
+export const getStateIncomeForStats = ()=> async dispatch =>{
+  const res = await csv("/STATE_INCOME_2018.csv")
+  // console.log(res)
+  dispatch({ type: 'GET_STATE_INCOME_STATS' , payload: res})
+  //gets STATE income stats for "stats"
+}
+
+
+
+
+
+
+
 export const getStatePopulationForStats = ()=> async dispatch =>{
   const res = await csv("/STATE_POPULATION_2018.csv")
     dispatch({ type: 'STATE_POPULATION_RATE' , payload: res})

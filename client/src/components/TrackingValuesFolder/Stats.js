@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getPopulationForStats, fetchNYCCovidData, fetchStateData , getStatePopulationForStats} from '../../actions'
+import {getPopulationForStats, fetchNYCCovidData, fetchStateData , getStatePopulationForStats , getCountyIncomeForStats , getStateIncomeForStats} from '../../actions'
 
 import '../../srcStyles.css'
 
@@ -11,11 +11,14 @@ class Stats extends React.Component{
     this.props.fetchNYCCovidData()
     this.props.fetchStateData()
     this.props.getStatePopulationForStats()
+    this.props.getCountyIncomeForStats()
+    this.props.getStateIncomeForStats()
   }
 
   render(){
 
-    // console.log(this.props.selected)
+    console.log(this.props.incomeCountyStat) //gets county income stats
+    console.log(this.props.incomeStateStat) //gets state income stats
 
 
         const newyork = [ '36047', '36061', '36081', '36005' ,  '36085' ]
@@ -38,6 +41,7 @@ class Stats extends React.Component{
                                           <div className="ui clearing divider"></div>
                                           <div className="statTitle" >County:  {item.county} </div>
                                           <div className="meta"> {getPopulation(id)} </div>
+                                          <div className="meta"> {getIncome(id)} </div>
                                           <div> County Cases : {item.cases}</div>
                                           <div> County Deaths : {item.confirmed_deaths}</div>
                                       </div>
@@ -70,6 +74,7 @@ class Stats extends React.Component{
                         <div key={county.fips} >
                             <div className="statTitle"> {county.county} , {county.state} </div>
                             <div className="meta"> {getPopulation(id)} </div>
+                            <div className="meta"> {getIncome(id)} </div>
                             <div> Current Cases : {county.cases} </div>
                               <div> Current Probable Cases : {county.probable_cases} </div>
                               <div> Current Confirmed Deaths : {Number(county.confirmed_deaths) } </div>
@@ -94,7 +99,15 @@ const getPopulation = (id)=>{
 
 
 
-
+const getIncome = (id)=>{
+  return this.props.incomeCountyStat.map((county)=>{
+    if(county.id === id){
+      console.log(county)
+      return <div key={county.id}> County Income:  {county.income}  </div>
+    }
+    else return null
+  })
+}
 
 
     const renderCountyContent=()=>{
@@ -131,6 +144,15 @@ const getStatePopulation = (id)=>{
 }
 
 
+const getStateIncome = (id)=>{
+  return this.props.incomeStateStat.map((state)=>{
+    if(state.state === id){
+        return <div key={state.id}> State Population:  {state.income}  </div>
+    }
+    return null
+  })
+}
+
 
 
 
@@ -145,6 +167,7 @@ const renderStateContent =()=>{
           <div key={state._id}>
                   <div className="statTitle"> {state.state} </div>
                   <div className="meta"> {getStatePopulation(state.state)} </div>
+                  <div className="meta"> {getStateIncome(state.state)} </div>
                   <div> State Cases:  {state.cases} </div>
                   <div> Recovered:  {state.recovered} </div>
                   <div> Number of People Tested:  {state.people_tested } </div>
@@ -214,7 +237,7 @@ const heightChange=()=>{
 
 
 const mapStateToProps = (state)=>{
-  // console.log(state)
+
   return { selected : state.selected_County.selected_county,
            covidData : state.covidData,
            countyPopulation: state.populationStat ,
@@ -222,8 +245,10 @@ const mapStateToProps = (state)=>{
            viewMode: state.viewMode.selection,
            selectedState: state.selectedState.selected_state,
            state_CovidData : state.state_covid_data,
-           statePopulation: state.statePopulation.population_rate
+           statePopulation: state.statePopulation.population_rate,
+           incomeCountyStat: state.incomeCountyStat,
+           incomeStateStat : state.incomeStateStat
       }
 }
 
-export default connect(mapStateToProps, {getPopulationForStats, fetchNYCCovidData, fetchStateData , getStatePopulationForStats} )(Stats)
+export default connect(mapStateToProps, {getPopulationForStats, fetchNYCCovidData, fetchStateData , getStatePopulationForStats , getCountyIncomeForStats, getStateIncomeForStats} )(Stats)
