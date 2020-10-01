@@ -17,8 +17,8 @@ class Stats extends React.Component{
 
   render(){
 
-    console.log(this.props.incomeCountyStat) //gets county income stats
-    console.log(this.props.incomeStateStat) //gets state income stats
+    // console.log(this.props.incomeCountyStat) //gets county income stats
+    // console.log(this.props.incomeStateStat) //gets state income stats
 
 
         const newyork = [ '36047', '36061', '36081', '36005' ,  '36085' ]

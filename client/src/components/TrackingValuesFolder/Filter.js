@@ -1,24 +1,50 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {getIncomeLevel , getPopulationRate , selectedFilterCovid} from '../../actions'
+import {getIncomeLevel , getPopulationRate , selectedFilterCovid } from '../../actions'
 
 import '../../srcStyles.css'
 
 let incomeFilter = []
 let populationFilter = []
 let click = false
+
 class Filter extends React.Component{
 constructor(props) {
   super(props);
-  this.state = ({ btn40: false , btn4050: false, btn5060: false, btn6080: false, btn80100: false, btn100: false,
-                  btnless1m: false , btn13m:false , btn35m: false , btn57m: false , btn710m : false, btn10m: false,
+
+  this.state = ({ btn40: false , btn4050: false, btn5060: false, btn6080: false, btn80100: false, btn100: false, btnless1m: false ,
+                  btn13m:false , btn35m: false , btn57m: false , btn710m : false, btn10m: false,
                   btn50: false, btn50100: false, btn100200: false, btn200500: false, btn5001 :false, btn1m15: false
 
       })
+
 }
 
+
+
+
+
+
+componentDidUpdate(prevProps) {
+  if ( (this.props.viewMode !== prevProps.viewMode) || (this.props.option !== prevProps.option)   ) {
+    this.props.getIncomeLevel(null)
+    incomeFilter = []
+    this.setState({ btn40: false , btn4050: false, btn5060: false, btn6080: false, btn80100: false, btn100: false,
+                    btnless1m: false , btn13m:false , btn35m: false , btn57m: false , btn710m : false, btn10m: false,
+                    btn50: false, btn50100: false, btn100200: false, btn200500: false, btn5001 :false, btn1m15: false
+        })
+  }
+
+
+
+
+
+}
+
+
 clickedButton(atr){
+
 console.log(atr)
     switch(atr){
       case '40':
@@ -67,13 +93,17 @@ console.log(atr)
       return ''
     }
 
-
-
-
 }
 
 
   checkIncomeStatus(atr){
+
+
+    if(this.props.income_level === null){
+      incomeFilter = []
+      // this.setState({btn40 : false , btn4050 :false ,btn5060: false ,btn6080: false , btn80100: false , btn100: false })
+    }
+
     if(incomeFilter.includes(atr)){
               incomeFilter = incomeFilter.filter(function(item) {
               return item !== atr
@@ -81,7 +111,7 @@ console.log(atr)
     }
     else{
       incomeFilter.push(atr)
-      // console.log(incomeFilter)
+      console.log(incomeFilter)
     }
 
     this.props.getIncomeLevel([...incomeFilter])
@@ -94,6 +124,10 @@ console.log(atr)
 
 checkPopulationStatus(atr){
 
+  if(this.props.population_rate === null){
+    populationFilter = [null]
+  }
+
   if(populationFilter.includes(atr)){
             populationFilter = populationFilter.filter(function(item) {
             return item !== atr
@@ -101,6 +135,7 @@ checkPopulationStatus(atr){
   }
   else{
     populationFilter.push(atr)
+
   }
 
 
@@ -113,9 +148,12 @@ checkPopulationStatus(atr){
 
 renderOption(){
 
-  console.log(click)
-  // console.log(this.props.custom_values)
+  // console.log(this.props.population_rate)
+
+  // console.log(click)
   // console.log(this.props.income_level)
+
+
 
     if(  this.props.option === 'income'){
       return(
@@ -248,7 +286,6 @@ renderOption(){
                            </div>
                       </div>
                    </div>
-
             </div>
 
 
@@ -355,6 +392,7 @@ renderPopulation(){
 }
 
 
+
   // <h3 style={{textAlign: 'center', marginTop : '-5px'}}> Covid Filter </h3>
 renderCovidOptions(){
   if(this.props.covid_densityDots === 'on'){
@@ -380,8 +418,11 @@ renderCovidOptions(){
 }
 
 
+
+
+
   render(){
-    // console.log(this.props.covidFilter)
+
     return(
       <div className="ui raised segment" style={{height: 'auto', minHeight: '290px' , backgroundColor: 'rgba(247, 249, 251)'}} >
         {this.renderOption()}
@@ -401,15 +442,14 @@ renderCovidOptions(){
 
 
 const mapStateToProps = (state)=>{
-  // console.log(state)
+
   return { option : state.option.selection ,
            income_level: state.income_level.income_level,
            population_rate : state.population_rate.population_rate,
            covid_densityDots: state.covid_densityDots.covid_dots,
            covidFilter : state.cases_or_deaths.selection,
-           viewMode: state.viewMode.selection,
-           custom_values : state.customValues
+           viewMode: state.viewMode.selection
          }
 }
 
-export default connect(mapStateToProps, { getIncomeLevel , getPopulationRate , selectedFilterCovid })(Filter)
+export default connect(mapStateToProps, { getIncomeLevel , getPopulationRate , selectedFilterCovid   })(Filter)

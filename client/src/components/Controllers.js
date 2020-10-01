@@ -1,12 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity, selectedCounty , updateLocation , selectedFilterCovid , selectedViewMode , selectedState} from '../actions'
+import {getOption , getIncomeLevel , getPopulationRate, showOrHideCovidDensity, selectedCounty , updateLocation , selectedFilterCovid , selectedViewMode , selectedState } from '../actions'
 import '../srcStyles.css'
 
 
 class Controller extends React.Component{
   constructor(props) {
     super(props);
+    // console.log(this.props.population_rate)
     this.state = {   style_state: 'ui grey button' , style_county: 'ui button'};
   }
 
@@ -50,6 +51,7 @@ resetOptions(){
     this.props.selectedState(null)
     this.props.updateLocation(undefined)
     this.props.selectedFilterCovid('cases')
+
 
 }
 
@@ -110,8 +112,10 @@ render(){
 
 
 const mapStateToProps=(state)=>{
+    // console.log(state)
   return { selection: state.option.selection ,
-            covid_densityDots : state.covid_densityDots.covid_dots }
+      population_rate : state.population_rate.population_rate,
+        covid_densityDots : state.covid_densityDots.covid_dots }
 }
 
-export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity, selectedCounty  , updateLocation, selectedFilterCovid , selectedViewMode , selectedState})(Controller)
+export default connect(mapStateToProps, {getOption , getIncomeLevel, getPopulationRate , showOrHideCovidDensity, selectedCounty  , updateLocation, selectedFilterCovid , selectedViewMode , selectedState })(Controller)

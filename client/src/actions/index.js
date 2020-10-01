@@ -152,14 +152,12 @@ export const selectedViewMode = (option) =>{
 
 
 
-
-export const selectedCustomValues = (option) =>{
+export const buttonValues = (values) =>{
   return {
-    type: 'CUSTOM_VALUES',
-    payload: option
+    type: 'BUTTONS_VALUES',
+    payload: values
   }
 }
-
 
 
 

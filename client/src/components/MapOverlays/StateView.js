@@ -15,8 +15,8 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const fillColor = '#F5F5F5'
 
-var fullArr = []
-var filterArr = []
+// var fullArr = []
+// var filterArr = []
 
 
 const offsets = {
@@ -183,7 +183,7 @@ const StateView = (props) => {
 
                       const handleIncomeData =()=>{
 
-                          let filterArr = []
+                          // let filterArr = []
                           let fullArr = []
                           const cur = income.find(s => s.id === geo.id);
                           const filter = incomeScale(cur ? cur.income : "blue")
