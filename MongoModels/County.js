@@ -12,8 +12,6 @@ const countySchema = new Schema({
   confirmed_deaths: String,
   probable_cases: String,
   probable_deaths: String,
-  // latitude : String,
-  // longitude : String
   coords : {latitude :  Number  ,longitude : Number }
 })
 

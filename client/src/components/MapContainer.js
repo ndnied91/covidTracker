@@ -53,6 +53,7 @@ async componentDidMount(){
         return(
            <div>
             <ToolTip/>
+
                 <ComposableMap projection="geoAlbersUsa" style={{height: '550px' , width: '100%' , backgroundColor : "#C0E5F6" }}  >
                         <ZoomableGroup
                               style={{ default: { outline: "1px solid red" } , pressed: { outline: "none" }  }} >

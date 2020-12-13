@@ -292,7 +292,7 @@ const renderFilterData=()=>{
                          case 'population':
                            return renderFilterData();
                          case 'error':
-                           return <div> hi </div>;
+                           return <div> </div>;
                          default:
                            return fillColor;
                        }
@@ -300,7 +300,6 @@ const renderFilterData=()=>{
 
 
                     onClick = { ()=> onClick(geo) }
-                    // onClick = { (e)=> handleColor(e) }
                     onMouseOver = { ()=> onHover(geo)}
 
                   />

@@ -28,22 +28,15 @@ class App extends React.Component{
             <div className="ui huge center aligned header stackable" style={{fontSize:'65px', paddingTop: '10px', marginBottom: '-10px', paddingLeft: '30%'}}  > COVID-19 Tracker </div>
 
                     <div className="ui grid stackable" style={{width: '100%' }}>
+                          <div className="right floated four wide column" style={{marginTop: '-5%'}}> <TrackingValues/>   </div>
 
-                          <div className="right floated four wide column" style={{marginTop: '-5%'}}>
-                          <TrackingValues/>
-                          </div>
-
-                                <div className="left floated twelve wide column" style={{paddingTop: '20px'}}>
+                          <div className="left floated twelve wide column" style={{paddingTop: '20px'}}>
                                 <div> <Menu/> </div>
 
-
-
-                                <div className="ui center aligned segment" style={{height: '675px', padding: 0 , backgroundColor : "#C0E5F6" }}>
+                            <div className="ui center aligned segment" style={{height: '675px', padding: 0 , backgroundColor : "#C0E5F6" }}>
                                 <MapContainer/>
-                                </div>
-
-
-                                </div>
+                            </div>
+                      </div>
 
                           <div className="ui grid" style={{width:'100%'}}>
 

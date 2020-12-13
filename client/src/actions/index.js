@@ -163,16 +163,15 @@ export const buttonValues = (values) =>{
 
 export const fetchCovidData = () => async dispatch => {
   const res = await axios.get('/api/countyData')
-    // console.log(res.data[0].date)
     dispatch({ type: 'FETCH_COVID_DATA' , payload: res.data})
 }
-
-
 
 export const fetchHistoricCovidData = () => async dispatch => {
   const res = await axios.get('/api/historicCountyData')
     dispatch({ type: 'FETCH_HISTORIC_COVID_DATA' , payload: res.data})
 }
+
+
 
 
 

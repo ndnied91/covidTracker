@@ -29,6 +29,7 @@ const getHistoricCovidData = async() => {
            else{
                   // HistoricState.collection.drop()
                     await HistoricState.collection.drop()
+
                        data.forEach( eachState =>{
                              if(eachState.date >= filterDate ){
                                //this date needs to be dynamic

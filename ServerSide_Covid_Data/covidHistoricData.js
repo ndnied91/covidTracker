@@ -20,14 +20,17 @@ if(mm<10)  { mm='0'+mm }
 let filterDate = (yyyy + '-' + mm + '-' + dd)
 
 
-console.log(filterDate)
+// console.log(filterDate)
 
 
 const getHistoricCovidData = async() => {
         d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv",  async function(error, data) {
            if (error) throw error;
            else{
+
                   await HistoricCounty.collection.drop()
+
+
                        data.forEach( eachCounty =>{
                          if(eachCounty.date >= filterDate ){
                            //this date needs to be dynamic

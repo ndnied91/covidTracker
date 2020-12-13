@@ -7,7 +7,7 @@ const d3 = require('d3-request')
 const Boro = mongoose.model('boros')
 
 
-const url = 'https://raw.githubusercontent.com/nychealth/coronavirus-data/master/by-boro.csv'
+const url = 'https://raw.githubusercontent.com/nychealth/coronavirus-data/master/totals/by-boro.csv'
 
 const getNYCFips =(county)=>{
   switch (county) {
@@ -54,7 +54,13 @@ const getnewyorkcitycovidData = async() => {
            else {
               await Boro.collection.drop(()=>{console.log('cleared database')})
 
+                console.log(data)
+
               data.forEach( (eachCounty)=>{
+
+
+
+
                       if(eachCounty.BOROUGH_GROUP === 'Bronx'){
                           // console.log(county.BOROUGH_GROUP , county.CASE_COUNT )
                                 const boro = new Boro({

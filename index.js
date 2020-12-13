@@ -8,6 +8,7 @@ const path = require('path');
 const app = express()
       app.use(bodyParser.json())
 
+
 const keys = require('./config/keys')
 require('./MongoModels/County.js')
 require('./MongoModels/HistoricCovid.js')
@@ -19,28 +20,22 @@ require('./MongoModels/HistoricalStateCovid.js')
 mongoose.connect(keys.mongoURI)
 // console.log(`THIS IS THE MONGOOSE KEY${keys.mongoURI}`)
 
+
 const County = mongoose.model('counties')
 const HistoricCounty = mongoose.model('counties_historic')
-const Boro = mongoose.model('boros')
+const Boro = mongoose.model('boros') //Specific only to filter New York City
 const America = mongoose.model('country')
 const State = mongoose.model('states')
 const HistoricState = mongoose.model('states_historic')
 
 
 require('./scheduledProcesses.js')
-//all of scheduled processes
+// //all of scheduled processes
 
-
-
-
-
-
-
-//will make a call to database to retreive covid data
+//will make a call to database to retreive covid19 county data
 app.get('/api/countyData' ,async (req,res)=>{
   const counties = await County.find()
-  res.send(counties)
-      //will be updated to pull in county data
+  res.send(counties) //sends the data to the ReactJs
 })
 
 
@@ -54,7 +49,6 @@ app.get('/api/historicCountyData' ,async (req,res)=>{
 
 app.get('/api/countyData/nyc' ,async (req,res)=>{
   const nycCovidData = await Boro.find()
-  // console.log(nycCovidData)
   res.send(nycCovidData)
       //will be updated to pull in new york city county data
 })

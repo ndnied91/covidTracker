@@ -35,9 +35,8 @@ const getStateLevelData = async() => {
 
              else {
 
-               if(data !== undefined){
+               if(data !== undefined){ State.collection.drop(()=>{console.log('cleared database')})
 
-                 State.collection.drop(()=>{console.log('cleared database')})
                      data.forEach((item, i) => {
                              const state = new State({
                                date: item.Last_Update,

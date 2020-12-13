@@ -30,7 +30,7 @@ cities.push(...props.nycCovidData)
 
 const renderMarkers=()=> {
       return cities.map((location, i) => {
-        if(location.county !== 'New York City'){
+        if(location.county !== 'New York City'){ //this made sure that it split up the NYC into its 5 boros
               return (
                 <Marker
                     key={ i }

@@ -286,13 +286,12 @@ const StateView = (props) => {
 
 
                          {props.covid_densityDots === 'on' && props.viewMode ==='state' ? <StateMarkers/> : null}
+
+
                          </React.Fragment>
                      );
 
                 })}  {/* end of geo.map*/}
-
-
-
 
 
 
