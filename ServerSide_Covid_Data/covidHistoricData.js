@@ -20,7 +20,8 @@ if(mm<10)  { mm='0'+mm }
 let filterDate = (yyyy + '-' + mm + '-' + dd)
 
 
-// console.log(filterDate)
+console.log(filterDate)
+
 
 
 const getHistoricCovidData = async() => {
@@ -32,7 +33,11 @@ const getHistoricCovidData = async() => {
 
 
                        data.forEach( eachCounty =>{
-                         if(eachCounty.date >= filterDate ){
+
+                          if(eachCounty.date >= filterDate ){
+
+                          // console.log(eachCounty)
+
                            //this date needs to be dynamic
                                 const historicCounty = new HistoricCounty({
                                   date: eachCounty.date, county: eachCounty.county ,

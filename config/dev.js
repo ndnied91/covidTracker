@@ -1,11 +1,3 @@
 module.exports = {
-    mongoURI:""
+    mongoURI:"mongodb+srv://danny:Maya2020@covid-data.htp8j.mongodb.net/covid-data?retryWrites=true&w=majority"
 }
-<<<<<<< HEAD
-//database credentials go here
-=======
-
-
-
- 
->>>>>>> 8484c0638c8dafc242b02a1c7941c099402c75ab
