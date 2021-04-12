@@ -170,23 +170,22 @@ const changeAll = ()=>{ this.setState({ chart_selected: 'all' , style_all: 'ui r
 
 
 const showStatus = () =>{
-  // if(this.props.historiCovidData.length === 0 ){
+  if(this.props.historiCovidData.length === 0 ){
     return (
-
       <div className="centeredContent" >
-       County Data unavailable
+          Loading
        </div>
 
     )
-  // }
-    // else if(this.props.historiCovidData.length>0 && this.props.selected_County === null){
-    //   return(
-    //      <div className="centeredContent" >
-    //       County Data not available
-    //       </div>
-    //   )
-    // }
-    // else return renderContent()
+  }
+    else if(this.props.historiCovidData.length>0 && this.props.selected_County === null){
+      return(
+         <div className="centeredContent" >
+          Please select a county
+          </div>
+      )
+    }
+    else return renderContent()
 
 }
 
@@ -209,7 +208,9 @@ const showStatus = () =>{
 
 
 const mapStateToProps= (state)=>{
+  console.log(state.historicCovidData)
   return {
+            historiCovidData: state.historicCovidData,
             selected_County : state.selected_County.selected_county,
             viewMode: state.viewMode.selection
             }

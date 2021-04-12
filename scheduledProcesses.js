@@ -34,12 +34,12 @@ schedule.scheduleJob('55 * * * *', function(){
  });
 
 
- //historic county data
- // schedule.scheduleJob('05 * * * *', function(){
- //    //updates everyday at 10am
- //          console.log(`updating historic county covid data at ${new Date()}`);
- //          const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
- //  });
+ // historic county data
+ schedule.scheduleJob('05 * * * *', function(){
+    //updates everyday at 10am
+          console.log(`updating historic county covid data at ${new Date()}`);
+          const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
+  });
 
 
 //nyc data
