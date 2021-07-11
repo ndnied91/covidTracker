@@ -46,8 +46,9 @@ const getCovidCountyData = async() => {
                               probable_cases: eachCounty.probable_cases, probable_deaths: eachCounty.probable_deaths,
                               coords : getCoords(eachCounty.county ,  eachCounty.state)
                             })
-                              county.save(()=>{console.log(`updating datbase:  ${eachCounty.county}`)})
+                              county.save()
                       })
+                      console.log('successfully upated county data')
                     }
                 })
 

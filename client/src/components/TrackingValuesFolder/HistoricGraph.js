@@ -193,6 +193,7 @@ const showStatus = () =>{
 
 
 const mapStateToProps= (state)=>{
+  // console.log(state)
   return { historicalStateData : state.historicalStateData,
             selectedState : state.selectedState.selected_state,
             // viewMode: state.viewMode.selection

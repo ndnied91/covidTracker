@@ -21,6 +21,7 @@ let filterDate = (yyyy + '-' + mm + '-' + dd)
 
 
 console.log(filterDate)
+console.log('in covid historic data')
 
 
 
@@ -29,14 +30,15 @@ const getHistoricCovidData = async() => {
            if (error) throw error;
            else{
 
-                  // await HistoricCounty.collection.drop()
+                  await HistoricCounty.collection.drop()
 
+                      // console.log(data)
 
                        data.forEach( eachCounty =>{
 
                           if(eachCounty.date >= filterDate ){
 
-                          // console.log(eachCounty)
+
 
                            //this date needs to be dynamic
                                 const historicCounty = new HistoricCounty({
@@ -46,6 +48,7 @@ const getHistoricCovidData = async() => {
                                   // confirmed_cases: eachCounty.confirmed_cases, confirmed_deaths: eachCounty.confirmed_deaths,
                                   // probable_cases: eachCounty.probable_cases, probable_deaths: eachCounty.probable_deaths
                                 })
+
                                   historicCounty.save()
                           } //date
                       })

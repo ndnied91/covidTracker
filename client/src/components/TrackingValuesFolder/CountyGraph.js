@@ -208,7 +208,6 @@ const showStatus = () =>{
 
 
 const mapStateToProps= (state)=>{
-  console.log(state.historicCovidData)
   return {
             historiCovidData: state.historicCovidData,
             selected_County : state.selected_County.selected_county,

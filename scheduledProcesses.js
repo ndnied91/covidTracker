@@ -15,11 +15,11 @@ console.log(`CURRENT TIME IS :  ${new Date()}`);
 // const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
 
 
-
+//fixed issues
+// const covidData = require('./ServerSide_Covid_Data/covidData.js');
 
  // const historic_stateData = require('./ServerSide_Covid_Data/historicStateCovid.js')
-// const covidData = require('./ServerSide_Covid_Data/covidData.js');
-// const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js');
+// const historicCovidData = require('./ServerSide_Covid_Data/covidHistoricData.js'); //county
 // const jhuStateData = require('./ServerSide_Covid_Data/jhu_stateData.js')
 // const nycStats = require('./ServerSide_Covid_Data/nycStats.js')
 // const usData = require('./ServerSide_Covid_Data/usData.js')
